@@ -1,0 +1,33 @@
+# .cshrc
+
+setenv CDS_DEFAULT_BROWSER firefox
+
+setenv LM_LICENSE_FILE /cad_area/Cadence/license.dat 
+
+setenv CDS_Netlisting_Mode "Analog"
+
+setenv CDS_INST_DIR /cad_area/Cadence
+
+setenv VIRTUOSO /cad_area/Cadence/IC615ISR_lnx86
+
+setenv CDSHOME $VIRTUOSO
+
+setenv SPECTRE /cad_area/Cadence/ccstools/MMSIM111ISR_lnx86/
+
+setenv IUSHOME /cad_area/Cadence/IUS/
+
+setenv ASSURAHOME /cad_area/Cadence/Assura412
+
+setenv ENCOUNTER /cad_area/Cadence/soc
+
+setenv PDK_DIR /cad_area/Cadence/Cadence_PDK/UMC180FDK
+
+setenv MGC_HOME /cad_area/Cadence/Cadence_PDK/FreePDK45/ncsu_basekit/techfile/calibre
+
+set path = ( $SPECTRE/tools/bin  $VIRTUOSO/tools/bin $VIRTUOSO/tools/dfII/bin $IUSHOME/tools/bin $ENCOUNTER/tools/bin $ASSURAHOME/tools/bin $ASSURAHOME/tools/dfII/bin $ASSURAHOME/tools/assura/bin  $path )
+
+alias rm 'rm -i'
+
+alias cp 'cp -i'
+
+alias mv 'mv -i'

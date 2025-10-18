@@ -1,0 +1,38 @@
+hiSetBindKey( "Layout" "<key>1" "leiMouseSetEntryLayer(10)")
+hiSetBindKey( "Layout" "<key>2" "leiMouseSetEntryLayer(12)")
+hiSetBindKey( "Layout" "<key>3" "leiMouseSetEntryLayer(15)")
+hiSetBindKey( "Layout" "<key>4" "leiMouseSetEntryLayer(17)")
+hiSetBindKey( "Layout" "<key>5" "leiMouseSetEntryLayer(19)")
+hiSetBindKey( "Layout" "<key>6" "leiMouseSetEntryLayer(21)")
+hiSetBindKey( "Layout" "<key>0" "leiMouseSetEntryLayer(6)")
+hiSetBindKey( "Layout" "<key>s" "leHiStretch()")
+hiSetBindKey( "Layout" "Ctrl<key>0" "leiMouseSetEntryLayer(0)")
+hiSetBindKey( "Layout" "<key>o" "leHiCreateContact()")
+hiSetBindKey( "Layout" "Shift<key>o" "leHiCreateMPP()")
+hiSetBindKey( "Layout" "Ctrl<key>1" "leSetAllLayerVisible(nil) leSetEntryLayer(07) hiRedraw()")
+hiSetBindKey( "Layout" "Ctrl<key>2" "leSetAllLayerVisible(nil) leSetEntryLayer(09) hiRedraw()")
+hiSetBindKey( "Layout" "Ctrl<key>3" "leSetAllLayerVisible(nil) leSetEntryLayer(11) hiRedraw()")
+hiSetBindKey( "Layout" "Ctrl<key>4" "leSetAllLayerVisible(nil) leSetEntryLayer(13) hiRedraw()")
+hiSetBindKey( "Layout" "Ctrl<key>9" "leSetAllLayerVisible(t)  hiRedraw()")
+hiSetBindKey( "Layout" "Alt<key>0" "leSetAllLayerVisible(nil) leSetEntryLayer(6) hiRedraw()")
+hiSetBindKey( "Layout" "Alt<key>1" "leSetAllLayerVisible(nil) leSetEntryLayer(8) hiRedraw()")
+hiSetBindKey( "Layout" "Alt<key>1" "leSetAllLayerVisible(nil) leSetEntryLayer(10) hiRedraw()")
+hiSetBindKey( "Layout" "Alt<key>2" "leSetAllLayerVisible(nil) leSetEntryLayer(16) hiRedraw()")
+hiSetBindKey( "Layout" "<key>n" "leHiMarkNet()")
+hiSetBindKey( "Layout" "Shift<key>n" "leHiUnmarkNet()")
+v1="orientation"
+MY="MY"
+MX="MX"
+hiSetBindKey( "Layout" "<key>-" "leSetEnv(v1 MY)")
+hiSetBindKey( "Layout" "Shift<key>-" "leSetEnv(v1 MX)")
+anyAngle="anyAngle"
+orthogonal="orthogonal"
+hiSetBindKey( "Layout" "<key>`" "le0MoveForm->segSnapMode->value = anyAngle")
+hiSetBindKey( "Layout" "Shift<key>`" "le0MoveForm->segSnapMode->value = orthogonal")
+
+
+hiSetUserPreferences()
+hiSysProps->hiSetUndoLevel->value = "10"
+hiFormDone(hiSysProps)
+
+

@@ -1,0 +1,2059 @@
+/*********************************************************************
+   Title    : Assura LVS Extract Rule of 0.18um Mixed Mode/RFCMOS Technology 
+              1.8V/3.3V 1P6M with Metal/Metal Capacitor Process 
+   Document : G-02-MIXED_MODE/RFCMOS18-1.8V/3.3V-1P6M-MMC-EDR v1.3-p1 (03/21/2005)
+
+   Copyright (c) United Microelectronics Corporation, 1980-2005   
+   All Rights Reserved                                            
+                                                                  
+   This source file is proprietary information of United          
+   Microelectronics Corporation.  It may not be distributed,      
+   in whole or in any part without prior written permission.      
+                                                                  
+ DISCLAIMER OF WARRANTY                                           
+   United Microelectronics Corporation information and associated 
+   files  are  provided  "as is"  and  without  warranty.  United 
+   Microelectronics Corporation has no obligation to support or   
+   otherwise  maintain  software.  United  Microelectronics       
+   Corporation makes no warranties,  expressed or  implied, with  
+   respect to the information contained herein, including, but    
+   not limited to, any warranty of merchantability or fitness     
+   for a particular application.                                  
+                                                                  
+ LIMITATION OF LIABILITY                                          
+   United Microelectronics Corporation is not liable for any      
+   property  damage,  personal  injury, loss of  profits,         
+   interruption of  business, or for any other special,           
+   consequential or incidental damages, however caused, whether   
+   for breach of warranty, contract tort (including negligence),  
+   strict liability or otherwise. United Microelectronics         
+   Corporationfurther further assumes no responsibility for any   
+   errors that may appear within this set of files for any        
+   damages, direct or indirect, that may result from using this   
+   document.                                                      
+
+ STATEMENT OF USE                                                                  
+   This information contains confidential and proprietary information of
+   UMC.  No part of this information may be reproduced, transmitted,
+   transcribed, stored in a retrieval system, or translated into any
+   human or computer language, in any form or by any means, electronic,
+   mechanical, magnetic, optical, chemical, manual, or otherwise, without
+   the prior written permission of UMC.  This information was prepared
+   for informational purpose and is for use by UMC's customers only.
+   UMC reserves the right to make changes in the information at any time
+   and without notice.
+  
+  *---------------------------------------------------------------------*
+  * Cadence Design Systems shall not be liable for the accuracy of      *
+  * this design rule deck or it's ability to capture errors. The user   *
+  * is responsible for thoroughly testing and implementing it's         *
+  * features.                                                           *
+  *---------------------------------------------------------------------*
+
+ HISTORY
+====================================================================
+ 1.2-P1 12/18/2002 Provided by James Kuo, DS/DVS 
+ 1.2-P2 02/21/2003 Updating PO1 definition in DF2 section
+                   Updating DF2 layer definition 
+		   extractMos => extractDevice + mosDevice :
+		    N_L18W500_18_RF,N_L34W500_33_RF,N_PO7W500_18_RF,
+		    N_PO7W500_33_RF,P_L18W500_18_RF,P_L34W500_33_RF,
+		    P_PO7W500_18_RF,P_PO7W500_33_RF
+		   extractRes => extractDevice + resDevice :
+		    RM1_MM,RM2_MM,RM3_MM,RM4_MM,RM5_MM,RM6_MM,RNHR1000_MM,
+		    RNHR_RF,RNND_MM,RNNPO_MM,RNNPO_RF,RNPD_MM,RNPPO_MM,
+		    RNPPO_RF,RSND_MM,RSNWELL_MM,RSPD_MM
+		   extractCap => extractDevice + capDevice :
+		    MIMCAPM_RF,MIMCAPS_MM,PAD_RF,VARDIOP_RF,VARMIS_18_RF
+ 1.2-P3 03/18/2003 Add nmoscap and pmoscap
+ 		   Update mixed mode salicide diffusion resistor to fix the 
+ 		   extraction issue of dog-bone-like pattern.
+        03/26/2003 Add "HSPICE_extraction" switch with GDSII input 
+        03/31/2003 Add inductor device
+        04/08/2003 Prohibit pin swapping of all capacitor devices
+        	   Add "index" parameter for RF PAD.
+        04/10/2003 Update seed layers and terminal layers of all RF MOS 
+                   devices and remove "HSPICE_extraction" switch 
+        04/14/2003 Set inductor does not have swappable pins
+ 1.2-P4 04/22/2003 Add device switches
+ 		   Add filter option to filter out the devices which all its
+ 		   terminals are shorted together.
+ 		   Remove mixed mode salicide poly resistor devices
+ 		   (RSNPO_MM,RSPPO_MM)
+ 1.2-P5 04/29/2003 Specify not to merge any RF devices as comparison
+        05/12/2003 Add RF MOS source recognition layer
+                   Update source terminal definition of RF MOS so that
+                   source and drain terminals can not swap.
+        06/12/2003 Prohibit pin swapping of MIMCAPS_MM and RF devices(except
+                   resistors)in schematic
+                   Simplify parameter extraction definitions of logic and mixed 
+                   mode devices including MOS and resistor.                          
+        06/23/2003 Change BJT definitions to distinguish emitter size without
+                   SIZEx layers 
+ 1.2-P6 08/28/2003 Update width and length definitions of RF devices including 
+ 		   all RF MOS devices, varactor diode, MIMCAPM_RF and N+/Nwell
+ 		   varactor to make width parameters in back-annotation netlist
+ 		   consistent with the input netlist.  		   	
+ 1.2-P7 09/30/2003 Add "w","l"( lower case ) parameters in RNHR1000_MM, 
+ 		   MIMCAPS_MM, RNHR_RF, VARMIS_18_RF,VARDIOP_RF, MIMCAPM_RF.
+ 		   Add "physical" into extractDevice function to match by 
+ 		   physical terminal count rather than logical terminal count 
+ 		   for mixed mode resistor and capacitor devices.
+ 1.2-P8 02/10/2004 James Yeh/UMC
+		   Update RNHR1000_MM parameter: nameParameter( width "w" )
+ 1.2-P9 06/07/2004 Eric Chang/UMC modify N-well resistor layer from WSYMBOL(83) to NWR(40)
+ 1.2-P10 03/18/2005 Eric Chang/UMC 
+                    modify namePrefix of MIMCAPM_RF from ("X") to ("XC")
+                    Modify DFII layer name of many input layers.
+                    Modify NOTES 2) and 3).
+ 1.3-P1  06/06/2005 Updated by Eric Chang/UMC to align version to EDR. The content unchanged.
+******************************* USAGE ********************************
+NOTES ON THE USE OF THIS FILE:
+ 
+   1) LVS files are provided as working templates.                  
+      Some modification may be required for additional devices or   
+      recognition/construction issues.
+
+   2) This extract file runs under Assura version 3.1.3_USR1
+      
+   3) This extract file was validated against the UMC 0.18um MM/RF FDK
+      library ( UMC document no. G-DBT-021202-003 ) ver2.6-P1.   
+   
+   4) File contains two layer definition sections. One for GDS2 format
+      and the other for DF2 format.  This file can be used to run on
+      either of the above specified formats.
+            
+   5) Node labeling: Nodes should be labelled with texts on any
+      metal layer (metal1-6).  The origin of the text must be
+      placed within the appropriate metal.  For example, a metal6
+      label must be placed within a metal6 shape.
+      
+   6) Pin: To let Assura RCX generate correct port information in DFII, pins 
+           must be properly placed on layout view. It's recommanded to check 
+           pins by "MSPS Check Pins.." in Virtuoso before running LVS in DFII.
+
+   7) Soft connect checks:  Set the switch "Soft-Connect_Checks" in
+      the rsf to report floating, multStamp, and multConnect errors.
+      
+   8) N-Well resistors:  UMC recommends a width >= 2.0 to minimize
+      resistance variation (EDR spec).
+      
+   9) Resistor value calculations are mainly based on the area covered by 
+      dummy marker layer. 
+      
+   10) Netlist elements include:                                      
+    a. MOS Devices :
+       . 1.8V Logic MOS device (P/N)
+       . 3.3V Logic MOS device (PT/NT)
+       . 1.8V Logic VST RAM Cell (PB/NB) option
+       . 1.8V Mixed Mode MOS device (P_18_MM/N_18_MM)
+       . 3.3V Mixed Mode MOS device (P_33_MM/N_33_MM)
+       . 1.8V Mixed Mode low Vt MOS device (P_LV_18_MM/N_LV_18_MM)
+       . 3.3V Mixed Mode low Vt MOS device (P_LV_33_MM/N_LV_33_MM)
+       . 1.8V Mixed Mode zero Vt NMOS device (N_ZERO_18_MM)
+       . 3.3V Mixed Mode zero Vt NMOS device (N_ZERO_33_MM)
+       . 1.8V Mixed Mode NMOS devices in T-Well(N_BPW_18_MM)
+       . 3.3V Mixed Mode NMOS devices in T-Well(N_BPW_33_MM)
+       . 1.8V RF NMOS device scalable with Finger Length (N_PO7W500_18_RF)
+       . 1.8V RF NMOS device scalable with Finger Number (N_L18W500_18_RF)
+       . 1.8V RF PMOS device scalable with Finger Length (P_PO7W500_18_RF)
+       . 1.8V RF PMOS device scalable with Finger Number (P_L18W500_18_RF)
+       . 3.3V RF NMOS device scalable with Finger Length (N_PO7W500_33_RF)
+       . 3.3V RF NMOS device scalable with Finger Number (N_L34W500_33_RF)
+       . 3.3V RF PMOS device scalable with Finger Length (P_PO7W500_33_RF)
+       . 3.3V RF PMOS device scalable with Finger Number (P_L34W500_33_RF)
+    b. Resistor Elements :
+       . N-Well Resistor  
+         - 2 terminal Logic N-Well sheet resistor  (RSNWELL)
+         - 3 terminal Mixed Mode N-Well sheet resistor  (RSNWELL_MM)
+       . Non-Salicide Resistors
+         - 2 terminal Logic N+ sheet resistor    (RNND)
+         - 2 terminal Logic P+ sheet resistor    (RNPD)
+         - 2 terminal Logic N+ Poly sheet resistor (RNNPO)
+         - 2 terminal Logic P+ Poly sheet resistor (RNPPO)
+         - 3 terminal Mixed Mode N+ sheet resistor    (RNND_MM)
+         - 3 terminal Mixed Mode P+ sheet resistor    (RNPD_MM)
+         - 3 terminal Mixed Mode N+ Poly sheet resistor (RNNPO_MM)
+         - 3 terminal Mixed Mode P+ Poly sheet resistor (RNPPO_MM)
+         - 3 terminal Mixed Mode HR Ploy Sheet resistor (RNHR1000_MM)
+         - 3 terminal RF N+ Poly sheet resistor (RNNPO_RF)
+         - 3 terminal RF P+ Poly sheet resistor (RNPPO_RF)
+         - 3 terminal RF HR Ploy Sheet resistor (RNHR_RF)
+       . Salicide Resistors
+         - 2 terminal Logic N+ sheet resistor (RSND)
+         - 2 terminal Logic P+ sheet resistor (RSPD)
+         - 2 terminal Logic N+ Poly sheet resistor (RSNPO)
+         - 2 terminal Logic P+ Poly sheet resistor (RSPPO)
+         - 3 terminal Mixed Mode N+ sheet resistor (RSND_MM)
+         - 3 terminal Mixed Mode P+ sheet resistor (RSPD_MM)
+       . Metal Resistors
+         - 2 terminal Metal 1 resistor (RM1_MM)
+         - 2 terminal Metal 2 resistor (RM2_MM)
+         - 2 terminal Metal 3 resistor (RM3_MM)
+         - 2 terminal Metal 4 resistor (RM4_MM)
+         - 2 terminal Metal 5 resistor (RM5_MM)
+         - 2 terminal Metal 6 resistor (RM6_MM)
+    c. MIM Capacitor :
+       . Metal5 Mixed Mode MMC Capacitor (MIMCAPS_MM)
+       . Metal5 Multi-squared RF MMC Capacitor (MIMCAPM_RF)
+    d. MIS Varactor
+       . 3 terminal N+/N-Well(MIS) Varactor (VARMIS_18_RF)
+    e. Diode Varactor
+       . P+/Nwell Diode Varactor (VARDIOP_RF)
+    f. Diode
+       . Logic P+/N-Well Diode (DP)
+       . Logic N+/P-Well Diode (DN)
+       . Mixed Mode P+/N-Well Diode (DIOP_MM)
+       . Mixed Mode N+/P-Well Diode (DION_MM)
+    g. BJT
+       . Logic pnp Bipolar Transistor(5*5)        (PNP_V50X50)
+       . Logic pnp Bipolar Transistor(10*10)      (PNP_V100X100)
+       . Mixed Mode pnp Bipolar Transistor(5*5)    (PNP_V50X50_MM)
+       . Mixed Mode pnp Bipolar Transistor(10*10)  (PNP_V100X100_MM)
+    h. Inductor (L_SLCR20k_RF)
+
+    11) Marker Layer Usage in Defining Devices:     
+        Assura      DFII       GDS2
+        layer       layer      layer	 purpose
+       ------------------------------------------------------------
+         MRSYMBOL   "CAD111"     111(30) Metal resistor
+         CSYMBOL    "CAD112"     112(30) MOS capacitor
+	 BJTSYMBOL  "CAD113"     113(30) Vertical BJT
+         DSYMBOL    "CAD114"     114(30) Diode & Varactors
+         LSYMBOL    "CAD117"     117(30) Inductors 
+	 MMSYMBOL   "CAD118"     118(30) Mixed Mode
+	 RFSYMBOL   "CAD119"     119(30) RF
+	 RFMOS_S    "CAD119"     119(31) source terminal marker of RF MOS
+	 size1      "CAD111"     111(33) 5X5 Vpnp, mimcaprf_SSQ
+	 size2      "CAD112"     112(33) 10X10 Vpnp, mimcaprf_MSQ
+ 
+	 VSTRES     "VSTRES"     92     Resistors
+ 
+	 RSYMBOL    "RSYMBOL"    81     Diffusion resistor - this marker
+	                                is not used in VST library
+	 PSYMBOL    "PSYMBOL"    82     Poly resistor - this marker is
+	                                not used in the VST library
+	 NWR        "NWR"        40     Nwell resistor - this marker is
+	                                not used in the VST library
+
+        - RES (92) is the marker layer to VST resistors
+
+    12) Switches:
+        a) "Skip_Soft-Connect_Checks" -- Setting this switch causes LVS 
+          to skip the reporting of multStamp, floating, and multConnect 
+          errors.
+          
+        b) Top Metal Thickness:
+        - Default: 8K 
+        - "Top_Metal_Thickness--20K"   
+          
+	c) Metal Options:
+	-  Default: 1P6M
+	- "Top_Metal--ME5" -- to switch this LVS to 1P5M 
+	- "Top_Metal--ME4" -- to switch this LVS to 1P4M
+	
+       Warning! Do not turn on 2 or more metal options simultaneously
+           or a fatal error could occur. 
+
+	d) Device Switches:
+	   If users wish to run Assura RCX in DFII, the extraction statements 
+	   of the devices without IVPCELL view need to be skipped to prevent 
+	   RCX run-time errors. For example: users of Mixed Mode PDK should 
+	   skip logic and RF device extraction since there is no ivpcell
+	   view of logic and RF devices.
+	
+	- "Skip_Logic_Device_Extraction"      
+	- "Skip_Mixed_Mode_Device_Extraction" 
+        - "Skip_RF_Device_Extraction"  
+        
+        e) Library Switches:
+        - Default: VST Lib
+        - "Artisan_Lib"   
+	
+*********************************************************************/
+
+drcExtractRules(
+
+  fileTitle = "Assura LVS of UMC 0.18um 1.8V/3.3V 1P6M MM/RF Process "
+  fileVer   = "Version 1.3 P1"
+  fileDate  = "June 6, 2005"
+  stars     = 
+    "*************************************************************"
+
+  printf("\n%s \n\n" stars)
+  printf(" %s \n" fileTitle )
+  printf(" %s \n" fileVer )
+  printf(" %s \n" fileDate )
+  printf(" \n" )
+  printf("\n%s \n\n" stars)
+  
+      layerDefs( "df2"     
+	DIFF	= layer( "DIFF" type("drawing") )
+	NWEL	= layer( "NWEL" type("drawing") )
+	TWEL	= layer( "TWEL" type("drawing") )
+	PPLUS	= layer( "PPLUS" type("drawing") )
+	NPLUS	= layer( "NPLUS" type("drawing") )
+        VTPL	= layer( "VT" type("VTPL") )
+        VTPHL	= layer( "VTPHL" type("drawing") )
+        VTNL	= layer( "VT" type("VTNL") )
+        VTNI	= layer( "VTNI" type("drawing") )
+        VTNHL	= layer( "VTNHL" type("drawing") )
+	SAB	= layer( "SAB" type("drawing") )
+	TG	= layer( "TG" type("drawing") )
+	HR	= layer( "HR" type("drawing") )
+	CONT	= layer( "CONT" type("drawing") )
+	PO1	= layer( "PO1" type("drawing") )
+	ME1	= layer( "ME1" type("drawing") )
+	VI1	= layer( "VI1" type("drawing") )
+	ME2	= layer( "ME2" type("drawing") )
+	VI2	= layer( "VI2" type("drawing") )
+	ME3	= layer( "ME3" type("drawing") )
+	VI3	= layer( "VI3" type("drawing") )
+	ME4	= layer( "ME4" type("drawing") )
+	VI4	= layer( "VI4" type("drawing") )
+	ME5	= layer( "ME5" type("drawing") )
+	VI5	= layer( "VI5" type("drawing") )
+	ME6	= layer( "ME6" type("drawing") )
+	MMC	= layer( "MMC" type("drawing") )
+        PAD	= layer( "PAD" type("drawing") )
+	MCAP	= layer( "MMC" type("MCAP") )
+	IND	= layer( "IND_CAD" type("IND") )
+       	LSYMBOL	= layer( "SYMBOL" type("LSYMBOL") )
+       	
+	RSYMBOL   = layer( "RSYMBOL" type("drawing") )
+	PSYMBOL   = layer( "PSYMBOL" type("drawing") )
+	NWR	  = layer( "NWR" type("drawing") )
+        VSTRES	  = layer( "VSTRES" type("drawing") )
+        XDIODE	  = layer( "XDIODE" type("drawing") )
+        IRAM	  = layer( "IRAM" type("drawing") )
+	SEPGND	  = layer( "SEPGND" type("drawing") )
+	
+	MRSYMBOL  = layer( "SYMBOL" type("MRSYMBOL") )
+	CSYMBOL	  = layer( "SYMBOL" type("CSYMBOL") )
+	BJTSYMBOL = layer( "SYMBOL" type("BJTSYMBOL") )
+	DSYMBOL	  = layer( "SYMBOL" type("DSYMBOL") )
+        MMSYMBOL  = layer( "SYMBOL" type("MMSYMBOL") )
+        RFSYMBOL  = layer( "SYMBOL" type("RFSYMBOL") )
+        RFMOS_S   = layer( "SYMBOL" type("RFMOS_S") )
+        SIZE1     = layer( "SIZE" type("SIZE1") )
+        SIZE2     = layer( "SIZE" type("SIZE2") )
+	
+        
+        po_textt  = textToPin( "PO1" type("drawing") )
+	m1_textt  = textToPin( "ME1" type("drawing") )
+        m2_textt  = textToPin( "ME2" type("drawing") )
+        m3_textt  = textToPin( "ME3" type("drawing") )
+        m4_textt  = textToPin( "ME4" type("drawing") )
+        m5_textt  = textToPin( "ME5" type("drawing") )
+        m6_textt  = textToPin( "ME6" type("drawing") )
+
+        po_text  = textToPin( "PO1_CAD" type("TEXT") )
+	m1_text  = textToPin( "M1_CAD" type("TEXT") )
+	m2_text  = textToPin( "M2_CAD" type("TEXT") )
+	m3_text  = textToPin( "M3_CAD" type("TEXT") )
+	m4_text  = textToPin( "M4_CAD" type("TEXT") )
+	m5_text  = textToPin( "M5_CAD" type("TEXT") )
+	m6_text  = textToPin( "M6_CAD" type("TEXT") )
+
+      ) ; DF2 layerDefs complete
+
+      layerDefs( "gds2"
+        DIFF     = layer( 1 )
+        NWEL     = layer( 3 )
+        TWEL     = layer( 6 )
+	PPLUS    = layer( 11 )
+	NPLUS    = layer( 12 )
+        VTPL     = layer( 20 )
+        VTPHL    = layer( 21 )
+        VTNL     = layer( 22 )
+        VTNI     = layer( 23 )
+        VTNHL    = layer( 24 )
+	SAB      = layer( 36 )
+	TG       = layer( 37 )
+        HR       = layer( 38 )
+	CONT     = layer( 39 )
+	PO1      = layer( 41 ) 
+	ME1      = layer( 46 )
+	VI1      = layer( 47 )
+	ME2      = layer( 48 )
+	VI2      = layer( 49 )
+	ME3      = layer( 50 )
+	VI3      = layer( 51 )
+	ME4      = layer( 52 )
+	VI4      = layer( 53 )
+	ME5      = layer( 54 )
+	VI5      = layer( 55 )
+	ME6      = layer( 56 )
+        MMC      = layer( 65 ) 
+        PAD	 = layer( 66 )  
+	MCAP	 = layer( 112 type(36))
+	IND	 = layer( 117 type(36))
+        LSYMBOL  = layer( 117 type(30)) ; Inductor Mark Layer
+
+ 	RSYMBOL  = layer( 81 ) ; Diff resistor mark layer
+	PSYMBOL  = layer( 82 ) ; Poly resistor mark layer
+	NWR      = layer( 40 ) ; N-Well resistor layer 
+	VSTRES	 = layer( 92 ) ; VST resistor mark layer
+        XDIODE   = layer( 96 ) ; Ignored diode device mark layer
+        IRAM     = layer( 97 ) ; SRAM cell array mark Layer
+        SEPGND   = layer( 99 ) ; define separate ground for the multiple 
+                               ; ground application
+
+        MRSYMBOL  = layer( 111 type(30)) ; Metal Resistor Mark Layer
+        CSYMBOL   = layer( 112 type(30)) ; Diode Mark Layer
+        BJTSYMBOL = layer( 113 type(30)) ; BJT Mark Layer
+        DSYMBOL   = layer( 114 type(30)) ; Diode Mark Layer
+        MMSYMBOL  = layer( 118 type(30)) ; Mixed Mode Device Mark Layer
+        RFSYMBOL  = layer( 119 type(30)) ; RF Device Mark Layer
+        RFMOS_S   = layer( 119 type(31)) ; source terminal marker of RF MOS
+        SIZE1     = layer( 111 type(33)) ; Size 1 Mark Layer
+        SIZE2     = layer( 112 type(33)) ; Size 2 Mark Layer
+
+        po_textt  = textToPin( 41 )
+        m1_textt  = textToPin( 46 )
+	m2_textt  = textToPin( 48 )
+	m3_textt  = textToPin( 50 )
+	m4_textt  = textToPin( 52 )
+	m5_textt  = textToPin( 54 )
+	m6_textt  = textToPin( 56 )
+	
+	po_text  = textToPin( 100 ) ; Poly Text Layer 
+	m1_text  = textToPin( 101 ) ; Metal1 Text Layer
+	m2_text  = textToPin( 102 ) ; Metal2 Text Layer
+	m3_text  = textToPin( 103 ) ; Metal3 Text Layer
+	m4_text  = textToPin( 104 ) ; MEtal4 Text Layer
+	m5_text  = textToPin( 105 ) ; Metal5 Text Layer
+	m6_text  = textToPin( 106 ) ; Metal6 Text Layer
+
+      )
+       ; GDS2 layerDefs complete
+
+/* Derive Substrate */
+    sepgnd_1 	= geomSize( SEPGND 0.01 )
+    sepgnd_2 	= geomAndNot( sepgnd_1 SEPGND )
+    psub_all 	= geomAndNot( geomBkgnd() NWEL)
+    psub 	= geomAndNot( psub_all sepgnd_2)
+    nwell	= geomAndNot( NWEL TWEL ) 
+
+/* Layer Derivations */
+
+    bpdiff = geomAnd( DIFF PPLUS )
+    bndiff = geomAnd( DIFF NPLUS )
+
+/* Define N-well resistor */
+
+    welres1 	= geomAvoiding( geomAnd( nwell geomCat( NWR VSTRES )) PPLUS)
+    welres  	= geomAvoiding( welres1 MMSYMBOL )
+    welres_mm 	= geomOverlap( welres1 MMSYMBOL )
+    wel     	= geomAndNot( nwell welres1 )
+
+/* Define P+ diffusion resistor */
+   
+    pdres 	= geomInside( geomAnd( bpdiff geomCat( RSYMBOL VSTRES) ) wel )
+    nspdres1 	= geomAnd( pdres SAB ) 
+    nspdres	= geomAvoiding( nspdres1 MMSYMBOL )
+    nspdres_mm	= geomOverlap( nspdres1 MMSYMBOL )
+    spdres1 	= geomAvoiding( pdres SAB )
+    spdres 	= geomAvoiding( spdres1 MMSYMBOL )
+    spdres_mm1 	= geomOverlap( spdres1 MMSYMBOL )
+    spdres_mma1	= geomGetVertex( geomOverlap( bpdiff spdres_mm1 ) keep == 12 )
+    spdres_mma 	= geomOverlap( spdres_mm1 spdres_mma1 )
+    spdres_mm	= geomAndNot( spdres_mm1 spdres_mma )
+    psd         = geomAndNot( geomAndNot( bpdiff pdres ) PO1 )
+
+    rfpsd	= geomOverlap( psd RFSYMBOL )
+    rfpd	= geomAvoiding( rfpsd RFMOS_S )
+    rfps	= geomOverlap( rfpsd RFMOS_S ) 
+
+/* Define N+ diffusion resistor */
+
+    ndres   	= geomAvoiding( geomAnd( bndiff geomCat( RSYMBOL VSTRES) ) wel)
+    nsndres1 	= geomAnd( ndres SAB ) 
+    nsndres	= geomAvoiding( nsndres1 MMSYMBOL )
+    nsndres_mm 	= geomOverlap( nsndres1 MMSYMBOL )
+
+    sndres1 	= geomAvoiding( ndres SAB )
+    sndres    	= geomAvoiding( sndres1 MMSYMBOL )
+    sndres_mm1	= geomOverlap( sndres1 MMSYMBOL )
+    sndres_mma1	= geomGetVertex( geomOverlap( bndiff sndres_mm1 ) keep == 12 )
+    sndres_mma 	= geomOverlap( sndres_mm1 sndres_mma1 )
+    sndres_mm	= geomAndNot( sndres_mm1 sndres_mma )
+    nsd         = geomAndNot( geomAndNot( bndiff ndres ) PO1 ) 
+
+    rfnsd	= geomOverlap( nsd RFSYMBOL )
+    rfnd	= geomAvoiding( rfnsd RFMOS_S )
+    rfns	= geomOverlap( rfnsd RFMOS_S ) 
+
+    ntap = geomAnd( nsd nwell )
+    ptap = geomAndNot( psd nwell )
+
+    nbutdif	= geomButting( nsd psd )
+    pbutdif	= geomButting( psd nsd )
+    npbutdif	= geomOr( nbutdif pbutdif )
+
+/* Poly resistor derivations  */
+
+    hrpyres1	= geomOverlap( geomAnd( geomAnd( PO1 HR ) SAB ) PPLUS )
+    hrpyres	= geomAvoiding( hrpyres1 RFSYMBOL )
+    hrpyres_rf	= geomOverlap( hrpyres1 RFSYMBOL )
+    ply1  	= geomAndNot( PO1 hrpyres1 )
+
+    pyres   	= geomAnd( ply1 geomCat( PSYMBOL VSTRES ) )
+    ppyres  	= geomAnd( pyres PPLUS )
+    nsppyr1 	= geomAnd( geomAnd( ppyres SAB ) wel )
+    nsppyr  	= geomAvoiding( geomAvoiding( nsppyr1 MMSYMBOL ) RFSYMBOL )
+    nsppyr_mm	= geomOverlap( nsppyr1 MMSYMBOL )
+    nsppyr_rf	= geomOverlap( nsppyr1 RFSYMBOL )
+
+    sppyr1   	= geomAvoiding( ppyres SAB )
+    sppyr	= geomAvoiding( sppyr1 MMSYMBOL )
+    sppyr_mm	= geomOverlap( sppyr1 MMSYMBOL )
+
+    npyres 	= geomAnd( pyres NPLUS )
+    nsnpyr1 	= geomAndNot( geomAnd( npyres SAB ) nwell )
+    nsnpyr	= geomAvoiding( geomAvoiding( nsnpyr1 MMSYMBOL) RFSYMBOL )
+    nsnpyr_mm	= geomOverlap( nsnpyr1 MMSYMBOL )
+    nsnpyr_rf	= geomOverlap( nsnpyr1 RFSYMBOL )
+
+    snpyr1	= geomAvoiding( npyres SAB )
+    snpyr	= geomAvoiding( snpyr1 MMSYMBOL )
+    snpyr_mm	= geomOverlap( snpyr1 MMSYMBOL )
+
+    ply      	= geomAndNot( ply1 pyres ) 
+
+/* metal resistor derivations */
+
+    m1res	= geomAnd( ME1 MRSYMBOL )
+    M1     	= geomAndNot( ME1 m1res )
+    m2res	= geomAnd( ME2 MRSYMBOL )
+    M2     	= geomAndNot( ME2 m2res )
+    m3res	= geomAnd( ME3 MRSYMBOL )
+    M3      	= geomAndNot( ME3 m3res )
+    m4res	= geomAnd( ME4 MRSYMBOL )
+    M4      	= geomAndNot( ME4 m4res )
+    m5res	= geomAnd( ME5 MRSYMBOL )
+    M5      	= geomAndNot( ME5 m5res )
+    m6res	= geomAnd( ME6 MRSYMBOL )
+    M6      	= geomAndNot( ME6 m6res )
+
+/* Derive Transistor Device */
+   
+    ngate1  	= geomSize( geomAnd( bndiff ply ) -0.05 downUp )
+    pgate1  	= geomSize( geomAnd( bpdiff ply ) -0.05 downUp )
+    pgate 	= geomAnd( pgate1 wel )
+    ngate	= geomAnd( ngate1 psub )
+
+    ngate_lv	= geomAndNot( ngate TG )
+    ngate_hv	= geomAnd( ngate TG )
+    pgate_lv	= geomAndNot( pgate TG )
+    pgate_hv	= geomAnd( pgate TG )
+
+    spgate 	= geomAndNot( geomAndNot( pgate VTPL) VTPHL ) 
+    spgate1_lv	= geomAndNot( spgate TG )
+    spgate_lv	= geomAvoiding( spgate1_lv IRAM )
+    spgate_hv	= geomAnd( spgate TG )
+
+    sngate1	= geomAndNot( geomAndNot( geomAndNot( ngate1 VTNL) VTNI) VTNHL)
+    sngate 	= geomAnd( sngate1 psub )
+    sngate1_lv	= geomAndNot( sngate TG )
+    sngate_lv	= geomAvoiding( sngate1_lv IRAM )
+    sngate_hv	= geomAnd( sngate TG )
+    
+/*  MOS Device Recognition Layer */
+
+    mmrf    	= geomCat( MMSYMBOL RFSYMBOL )
+    ngate_sp	= geomAvoiding( sngate_lv mmrf ) 
+    pgate_sp	= geomAvoiding( spgate_lv mmrf )
+    hngate_sp	= geomAvoiding( sngate_hv mmrf )
+    hpgate_sp	= geomAvoiding( spgate_hv mmrf )
+
+    pg_sram	= geomSize( geomAnd( spgate1_lv IRAM ) -0.02 downUp )
+    ng_sram	= geomSize( geomAnd( sngate1_lv IRAM ) -0.02 downUp )
+
+    ngate_mm1	= geomAvoiding( geomOverlap( sngate_lv MMSYMBOL ) RFSYMBOL )
+    pgate_mm1	= geomAvoiding( geomOverlap( spgate_lv MMSYMBOL ) RFSYMBOL )
+    hngate_mm	= geomAvoiding( geomOverlap( sngate_hv MMSYMBOL ) RFSYMBOL )
+    hpgate_mm	= geomAvoiding( geomOverlap( spgate_hv MMSYMBOL ) RFSYMBOL )
+
+    ngate_mm	= geomAvoiding( ngate_mm1 CSYMBOL )
+    nmos_cap	= geomAnd( ngate_mm1 CSYMBOL )
+    pgate_mm	= geomAvoiding( pgate_mm1 CSYMBOL )
+    pmos_cap	= geomAnd( pgate_mm1 CSYMBOL )
+    
+    ngate_lvt	= geomAndNot( geomAnd( ngate_lv VTNL ) VTNI ) 
+    pgate_lvt	= geomAnd( pgate_lv VTPL ) 
+    hngate_lvt	= geomAndNot( geomAnd( ngate_hv VTNHL ) VTNL ) 
+    hpgate_lvt	= geomAnd( pgate_hv VTPHL )
+
+    ngate_zt	= geomAndNot( geomAnd( ngate_lv VTNI ) VTNL ) 
+    hngate_zt	= geomAndNot( geomAnd( ngate_hv VTNL ) VTNHL ) 
+
+    ngate_bpw	= geomAndNot( geomAnd( sngate1 TWEL ) TG )
+    hngate_bpw	= geomAnd( geomAnd( sngate1 TWEL ) TG )
+
+
+/* RF MOS derivations */
+
+    ngate_rf	= geomOverlap( geomOverlap( sngate_lv RFSYMBOL ) SIZE2 )
+    ngate_srf	= geomOverlap( geomOverlap( sngate_lv RFSYMBOL ) SIZE1 )
+    pgate_rf	= geomOverlap( geomOverlap( spgate_lv RFSYMBOL ) SIZE2 )
+    pgate_srf	= geomOverlap( geomOverlap( spgate_lv RFSYMBOL ) SIZE1 )
+
+    hngate_rf	= geomOverlap( geomOverlap( sngate_hv RFSYMBOL ) SIZE2 )
+    hngate_srf	= geomOverlap( geomOverlap( sngate_hv RFSYMBOL ) SIZE1 )
+    hpgate_rf	= geomOverlap( geomOverlap( spgate_hv RFSYMBOL ) SIZE2 )
+    hpgate_srf	= geomOverlap( geomOverlap( spgate_hv RFSYMBOL ) SIZE1 )
+
+    rfdiff	= geomOverlap( DIFF RFSYMBOL )    
+    ng_rf	= geomOverlap( rfdiff ngate_rf )
+    ng_srf	= geomOverlap( rfdiff ngate_srf )
+    pg_rf	= geomOverlap( rfdiff pgate_rf )
+    pg_srf	= geomOverlap( rfdiff pgate_srf )
+    hng_rf    	= geomOverlap( rfdiff hngate_rf )
+    hng_srf    	= geomOverlap( rfdiff hngate_srf )
+    hpg_rf    	= geomOverlap( rfdiff hpgate_rf )
+    hpg_srf    	= geomOverlap( rfdiff hpgate_srf )
+
+/* BJT derivations */
+
+   bjtpod  	= geomAnd( psd BJTSYMBOL )
+   bjtnod  	= geomAnd( nsd BJTSYMBOL )
+   qte     	= geomInside( bjtpod wel )
+   qtb     	= geomInside( bjtnod wel )
+   qtc     	= geomOutside( bjtpod NWEL )
+   bjt_all 	= geomHoles( qtc )
+   qte5		= geomContactCheck( qte length <=5.5 width <= 5.5 )
+   qte10	= geomAndNot( qte qte5 )
+   bjt5		= geomEnclose( bjt_all qte5 )
+   bjt10	= geomEnclose( bjt_all qte10 )
+   bjt_v5  	= geomAvoiding( bjt5 MMSYMBOL )
+   bjt_v10 	= geomAvoiding( bjt10 MMSYMBOL )
+   bjt_v5_mm  	= geomOverlap( bjt5 MMSYMBOL )
+   bjt_v10_mm 	= geomOverlap( bjt10 MMSYMBOL )
+
+/* Diode Device Derivations */
+
+    dioden_1  	= geomAnd( nsd psub )
+    dioden_2  	= geomAvoiding( dioden_1 PO1 )
+    dioden_3  	= geomAvoiding( dioden_2 ptap )
+    dioden_4  	= geomAvoiding( dioden_3 RSYMBOL )
+    dioden_5  	= geomAvoiding( dioden_4 BJTSYMBOL )
+    dioden_6  	= geomAndNot( dioden_5 XDIODE )
+    dioden    	= geomAvoiding( dioden_6 MMSYMBOL )
+    dioden_mm 	= geomOverlap( dioden_6 MMSYMBOL )
+
+    diodep_1  	= geomAnd( psd wel )
+    diodep_2  	= geomAvoiding(diodep_1 PO1 )
+    diodep_3  	= geomAvoiding( diodep_2 ntap ) 
+    diodep_4  	= geomAvoiding( diodep_3 RSYMBOL )
+    diodep_5  	= geomAvoiding( diodep_4 BJTSYMBOL )
+    diodep_6  	= geomAndNot( diodep_5 XDIODE )
+    diodep_7	= geomAvoiding( diodep_6 CSYMBOL )
+    diodep    	= geomAvoiding( diodep_7 MMSYMBOL )
+    diodep_mm 	= geomOverlap( diodep_7 MMSYMBOL )
+
+    pnvar	= geomOverlap( diodep_6 CSYMBOL )
+    vard_rf     = geomButtOrOver( wel pnvar )
+
+;    varw 	= geomGrow( pnvar 0.1 0 )
+
+;; Assign top metal and second last metal
+
+    if( (avSwitch "Top_Metal--ME4") then
+	top_m		= M4 
+	sec_last_met	= M3 
+	top_via		= VI3 
+    else
+    	if( (avSwitch "Top_Metal--ME5") then
+	    top_m	= M5
+	    sec_last_met= M4
+	    top_via	= VI4 
+	else
+	    top_m	= M6
+	    sec_last_met= M5
+	    top_via	= VI5
+	) ;; endif 1P5M
+    ) ;; endif 1P4M
+
+;; Define inductor with Top Metal
+
+    top_m_l	= geomAnd( top_m LSYMBOL )
+    slm_ll	= geomAnd( sec_last_met LSYMBOL )
+    ind_me	= geomAnd( geomOr( top_m_l slm_ll ) IND )
+    top_m_c	= geomAndNot( top_m ind_me )
+    slm_c	= geomAndNot( sec_last_met ind_me )
+    
+;; Because of spiral inductor round off, resize top_m_l to check 
+;; width and space
+
+    top_m_lb	= geomSize( top_m_l 0.1 )
+    top_m_ls	= geomSize( top_m_l -0.1 )
+
+    slm_lt	= geomOverlap( geomAnd( sec_last_met top_m_l ) top_via )
+    slm_l	= geomOverlap( sec_last_met top_m_l )
+
+    ldimeter	= geomGetBBox( ind_me width >= 1 )
+    
+    slm_l1a	= geomAndNot( geomAndNot( slm_l slm_lt ) top_m_l ) 
+    slm_l1 	= geomAvoiding( slm_l1a top_via )
+    slm_l2	= geomAvoiding( geomAnd( slm_l top_m_l ) slm_lt )
+    
+    ind_pin	= geomAnd( top_m_c top_m_lb )
+    ind_minus1 	= geomGetVertex( top_m_l keep < 16 )
+    ind_minus	= geomButtOrOver( ind_pin ind_minus1 )
+    ind_plus	= geomAndNot( ind_pin ind_minus )
+
+;; Define RF PAD
+
+    rf_pad	= geomOverlap( geomAnd( geomAnd( top_m_c PAD ) M1 ) RFSYMBOL )
+    type1	= geomAnd( rf_pad PAD )	
+
+if( (avSwitch "Top_Metal--ME4") then
+
+    type2   = geomOverlap( type1 geomOverlap( M3 geomOverlap( VI3 type1 ) ) )
+    type3   = geomOverlap( type2 geomOverlap( M2 geomOverlap( VI2 type2 ) ) )
+
+else
+  if( (avSwitch "Top_Metal--ME5") then
+
+    type2   = geomOverlap( type1 geomOverlap( M4 geomOverlap( VI4 type1 ) ) )
+    type3   = geomOverlap( type2 geomOverlap( M3 geomOverlap( VI3 type2 ) ) )
+    type4   = geomOverlap( type3 geomOverlap( M2 geomOverlap( VI2 type3 ) ) )
+
+  else
+
+    type2   = geomOverlap( type1 geomOverlap( M5 geomOverlap( VI5 type1 ) ) )
+    type3   = geomOverlap( type2 geomOverlap( M4 geomOverlap( VI4 type2 ) ) )
+    type4   = geomOverlap( type3 geomOverlap( M3 geomOverlap( VI3 type3 ) ) )
+    type5   = geomOverlap( type4 geomOverlap( M2 geomOverlap( VI2 type4 ) ) )
+
+  )  ;endif 1P5M
+)  ; endif 1P4M     
+
+/* Define MIS N+/N-Well Capacitor */
+
+    vargate	= geomOverlap( geomAnd( sngate1 wel ) RFSYMBOL )
+    var_nwel 	= geomAnd( wel geomOverlap( ply vargate ) )
+    varmis_rf	= geomOverlap( RFSYMBOL vargate )
+    slm_term    = geomInside( geomOverlap( slm_c ply ) RFSYMBOL )
+
+;; Define MIM Capacitor 
+
+    cmmc  	= geomAnd( MMC slm_c )
+    cmmc_msq	= geomInside( geomOverlap( cmmc RFSYMBOL ) geomCat( M1 MCAP ) )
+    cmmc_mm	= geomOverlap( cmmc MMSYMBOL )
+    cmmc_msq_rf = geomOverlap( slm_c cmmc_msq )
+
+;    cmmc_w	= geomGrow( cmmc 0.1 0   )
+
+/* Contact Layer derivations */
+
+    polycon	= geomAnd( ply  CONT )
+    nsdcon   	= geomAnd( nsd  CONT )
+    psdcon   	= geomAnd( psd  CONT )
+
+    pad1 	= PAD 
+    null1	= geomAndNot( PAD pad1 )
+    null2	= geomAndNot( PAD pad1 )  
+    
+/* Establish connectivity */
+	
+    if( (avSwitch "Top_Metal--ME4") then
+        geomConnect(
+            overlap( null1 M6 )
+            overlap( null2 M5 )
+
+            svia( VI3     top_m_c MMC slm_c )
+            via( VI2      slm_c M2 )
+            via( VI1      M2  M1 )
+            via( polycon  M1  ply )
+            via( nsdcon   M1  nsd ntap )
+            via( psdcon   M1  psd ptap )
+
+            label( po_text ply )
+            label( m1_text M1 )
+            label( m2_text M2 )
+            label( m3_text slm_c )
+            label( m4_text top_m_c )
+               
+            label( po_textt ply )
+            label( m1_textt M1 )
+            label( m2_textt M2 )
+            label( m3_textt slm_c )
+            label( m4_textt top_m_c )
+        )
+	else
+	    if( (avSwitch  "Top_Metal--ME5") then 
+                geomConnect(
+                    overlap( M6 null1 )
+
+                    svia( VI4 top_m_c MMC slm_c )
+                    via( VI3  slm_c M3 )
+                    via( VI2     M3  M2 )
+                    via( VI1     M2  M1 )
+                    via( polycon  M1  ply )
+                    via( nsdcon   M1  nsd ntap )
+                    via( psdcon   M1  psd ptap )
+
+                    label( po_text ply )
+                    label( m1_text M1 )
+                    label( m2_text M2 )
+                    label( m3_text M3 )
+                    label( m4_text slm_c )
+                    label( m5_text top_m_c )
+
+                    label( po_textt ply )
+                    label( m1_textt M1 )
+                    label( m2_textt M2 )
+                    label( m3_textt M3 )
+                    label( m4_textt slm_c )
+                    label( m5_textt top_m_c )
+                )
+	    else
+                geomConnect(
+                    svia( VI5    top_m_c MMC slm_c )
+                    via( VI4     slm_c M4 )
+                    via( VI3     M4  M3 )
+                    via( VI2     M3  M2 )
+                    via( VI1     M2  M1 )
+                    via( polycon  M1  ply )
+                    via( nsdcon   M1  nsd ntap )
+                    via( psdcon   M1  psd ptap )
+
+                    label( po_text ply )
+                    label( m1_text M1 )
+                    label( m2_text M2 )
+                    label( m3_text M3 )
+                    label( m4_text M4 )
+                    label( m5_text slm_c )
+                    label( m6_text top_m_c )
+
+                    label( po_textt ply )
+                    label( m1_textt M1 )
+                    label( m2_textt M2 )
+                    label( m3_textt M3 )
+                    label( m4_textt M4 )
+                    label( m5_textt slm_c )
+                    label( m6_textt top_m_c )
+		)  ; 1P6M
+	    )	; endif 1P5M
+	)    ; endif 1P4M
+
+
+  if( ( avSwitch "Skip_Soft-Connect_Checks" ) then
+    geomStamp( psub ptap )
+    geomStamp( wel ntap )
+    geomStamp( TWEL ptap )
+  else
+    geomStamp( psub  ptap error )
+    geomStamp( wel ntap error )
+    geomStamp( TWEL ptap error )
+  ) ; endif
+
+  geomStamp( rfpd psd )        
+  geomStamp( rfps psd )        
+  geomStamp( rfnd nsd )
+  geomStamp( rfns nsd )
+
+  geomStamp( qte psd )        
+  geomStamp( qtb nsd )
+  geomStamp( qtc psd )
+
+  geomStamp( ind_plus top_m_c )
+  geomStamp( ind_minus top_m_c )
+  geomStamp( slm_term top_m_c )
+  
+  saveInterconnect( (ply "PO1") )
+  saveInterconnect( (M1 "ME1") )
+  saveInterconnect( (M2 "ME2") )
+  saveInterconnect( (M3 "ME3") )
+  saveInterconnect( (M4 "ME4") )
+  saveInterconnect( (slm_c "ME5") )
+  saveInterconnect( (top_m_c "ME6") )
+
+/* Assign metal resistor pin layers */
+
+    if( (avSwitch "Top_Metal--ME4") then
+	me6c	= M6
+	me5c	= M5
+	me4c	= top_m_c
+	me3c	= slm_c
+    else
+    	if( (avSwitch "Top_Metal--ME5") then
+	    me6c	= M6
+	    me5c	= top_m_c
+	    me4c	= slm_c
+	    me3c	= M3
+	else
+	    me6c	= top_m_c
+	    me5c	= slm_c
+	    me4c	= M4
+	    me3c	= M3
+	) ;; endif 1P5M
+    ) ;; endif 1P4M 
+    
+    me2c	= M2
+    me1c	= M1
+  
+/************** Device Recognition & Parameter Extraction *************/
+
+/***** Logic Device Extraction ******/
+
+if( ( avSwitch "Skip_Logic_Device_Extraction" ) then
+else
+
+/* 1.8V NMOS_LOGIC   */
+
+  extractMOS( "N" ngate_sp ply("G") nsd("S" "D") psub("B") flagMalformed 
+    cellView( "N ivpcell" ) )
+   
+  w_mos1 = measureParameter( length (ngate_sp coincident ply ) 0.5e-6 )
+  l_mos1 = measureParameter( length (ngate_sp inside     ply ) 0.5e-6 )
+  bend_count = measureParameter( bends_all ( ngate_sp ) )
+
+  if( ( avSwitch "Artisan_Lib" ) then
+    if( bend_count >=4 
+	l_mos1 = calculateParameter( floor( ( l_mos1 * 1e8 ) + 0.5 ) *1e-8 )
+    )
+    w_mos1 = calculateParameter( floor( ( w_mos1 * 1e8 ) + 0.5 ) *1e-8 )
+  )
+  nameParameter( l_mos1 "l" )
+  nameParameter( w_mos1 "w" )
+
+/* 1.8V PMOS_LOGIC   */
+
+  extractMOS( "P" pgate_sp ply("G") psd("S" "D") wel("B") flagMalformed 
+    cellView( "P ivpcell" ) )
+   
+  w_mos2 = measureParameter( length (pgate_sp coincident ply ) 0.5e-6 )
+  l_mos2 = measureParameter( length (pgate_sp inside     ply ) 0.5e-6 )
+  bend_count = measureParameter( bends_all ( pgate_sp ) )
+
+  if( ( avSwitch "Artisan_Lib" ) then
+    if( bend_count >=4 
+	l_mos2 = calculateParameter( floor( ( l_mos2 * 1e8 ) + 0.5 ) *1e-8 )
+    )
+    w_mos2 = calculateParameter( floor( ( w_mos2 * 1e8 ) + 0.5 ) *1e-8 )
+  )
+  nameParameter( l_mos2 "l" )
+  nameParameter( w_mos2 "w" )
+
+/* 3.3V NMOS_LOGIC   */
+
+  extractMOS( "NT" hngate_sp ply("G") nsd("S" "D") psub("B") flagMalformed 
+    cellView( "NT ivpcell" ) )
+   
+  w_mos3 = measureParameter( length ( hngate_sp coincident ply ) 0.5e-6 )
+  l_mos3 = measureParameter( length ( hngate_sp inside     ply ) 0.5e-6 )
+  bend_count = measureParameter( bends_all ( hngate_sp ) )
+
+  if( ( avSwitch "Artisan_Lib" ) then
+    if( bend_count >=4 
+	l_mos3 = calculateParameter( floor( ( l_mos3 * 1e8 ) + 0.5 ) *1e-8 )
+    )
+    w_mos3 = calculateParameter( floor( ( w_mos3 * 1e8 ) + 0.5 ) *1e-8 )
+  )
+  nameParameter( l_mos3 "l" )
+  nameParameter( w_mos3 "w" )
+
+/* 3.3V PMOS_LOGIC   */
+
+  extractMOS( "PT" hpgate_sp ply("G") psd("S" "D") wel("B") flagMalformed 
+    cellView( "PT ivpcell" ) )
+   
+  w_mos4 = measureParameter( length ( hpgate_sp coincident ply ) 0.5e-6 )
+  l_mos4 = measureParameter( length ( hpgate_sp inside     ply ) 0.5e-6 )
+  bend_count = measureParameter( bends_all ( hpgate_sp ) )
+
+  if( ( avSwitch "Artisan_Lib" ) then
+    if( bend_count >=4 
+	l_mos4 = calculateParameter( floor( ( l_mos4 * 1e8 ) + 0.5 ) *1e-8 )
+    )
+    w_mos4 = calculateParameter( floor( ( w_mos4 * 1e8 ) + 0.5 ) *1e-8 )
+  )
+  nameParameter( l_mos4 "l" )
+  nameParameter( w_mos4 "w" )
+;;-----  VST SRAM NMOS ------
+
+  extractMOS( "NB" ng_sram ply("G") nsd("S" "D") psub("B") flagMalformed 
+    cellView( "NB ivpcell" ) )
+   
+  w_mos5 = measureParameter( length (ng_sram coincident ply ) 0.5e-6 )
+  l_mos5 = measureParameter( length (ng_sram inside     ply ) 0.5e-6 )
+  nameParameter( l_mos5 "l" )
+  nameParameter( w_mos5 "w" )
+
+;;-----  VST SRAM PMOS ------
+
+  extractMOS( "PB" pg_sram ply("G") psd("S" "D") wel("B") flagMalformed 
+    cellView( "PB ivpcell" ) )
+   
+  w_mos6 = measureParameter( length ( pg_sram coincident ply ) 0.5e-6 )
+  l_mos6 = measureParameter( length ( pg_sram inside     ply ) 0.5e-6 )
+  nameParameter( l_mos6 "l" )
+  nameParameter( w_mos6 "w" )
+
+/* N-Well sheet resistor */
+ 
+  extractRES( "RSNWELL" welres wel("PLUS" "MINUS") flagMalformed 
+    cellView( "RSNWELL ivpcell" ) )
+
+  l_r1 = measureParameter( length ( welres coincident nwell ) 0.5e-6 )
+  w_r1 = measureParameter( length ( welres inside     nwell ) 0.5e-6 )
+
+  Rs     = 415 
+
+  res = calculateParameter( Rs * ( l_r1 / w_r1 ) )
+
+; For width effect
+; res = calculateParameter(( l_r1 / w_r1 ) * ( 408 * w_r1 / ( w_r1 - 0.32e-6 )))
+
+  nameParameter( l_r1 "l" )
+  nameParameter( w_r1 "w" )
+  nameParameter( res "r" )
+
+/* Salicide N+ sheet resistor */
+
+  extractRES( "RSND" sndres nsd("PLUS" "MINUS") flagMalformed  
+    cellView( "RSND ivpcell" ) )
+
+  width  = measureParameter( length (sndres inside     bndiff ) 0.5e-6 )
+  length = measureParameter( length (sndres coincident bndiff ) 0.5e-6 )
+  RhoD = 8.0
+  res = calculateParameter( (RhoD * length) / width )
+
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+  
+/* Salicide P+ sheet resistor */
+
+  extractRES( "RSPD" spdres psd("PLUS" "MINUS") flagMalformed 
+    cellView( "RSPD ivpcell" ) )
+
+  width  = measureParameter( length (spdres inside     bpdiff ) 0.5e-6 ) 
+  length = measureParameter( length (spdres coincident bpdiff ) 0.5e-6 )
+  RhoD = 8.0
+
+  res = calculateParameter( (RhoD * length) / width )
+
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+
+
+/* Salicide N+ Poly sheet resistor */
+
+  extractRES( "RSNPO" snpyr ply("PLUS" "MINUS") flagMalformed 
+    cellView( "RSNPO ivpcell" ) ) 
+
+  width  = measureParameter( length ( snpyr inside     PO1 ) 0.5e-6 )
+  length = measureParameter( length ( snpyr coincident PO1 ) 0.5e-6 )
+  RhoD = 8.0
+
+  res = calculateParameter( (RhoD * length) / width )
+
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+
+/* Salicide P+ Poly sheet resistor */
+
+  extractRES( "RSPPO" sppyr ply("PLUS" "MINUS") flagMalformed 
+    cellView( "RSPPO ivpcell" ) )
+
+  width  = measureParameter( length ( sppyr inside     PO1 ) 0.5e-6 )
+  length = measureParameter( length ( sppyr coincident PO1 ) 0.5e-6 )
+  RhoD = 8.0
+  res = calculateParameter( (RhoD * length) / width )
+
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+
+/* Non-Salicide N+ sheet resistor */
+
+  extractRES( "RNND" nsndres nsd("PLUS" "MINUS") flagMalformed 
+    cellView( "RNND ivpcell" ) )
+
+  width  = measureParameter( length (nsndres inside     bndiff ) 0.5e-6 )
+  length = measureParameter( length (nsndres coincident bndiff ) 0.5e-6 )
+  Rs     = 80 
+  res = calculateParameter( Rs * ( length / width ) )
+     
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+
+/* Non-Salicide P+ Diffusion resistor */
+
+  extractRES( "RNPD" nspdres psd("PLUS" "MINUS") flagMalformed 
+    cellView( "RNPD ivpcell" ) )
+
+  width  = measureParameter( length (nspdres inside     bpdiff ) 0.5e-6 )
+  length = measureParameter( length (nspdres coincident bpdiff ) 0.5e-6 )
+  Rs     = 158 
+  res = calculateParameter( Rs * ( length / width ) )
+     
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+
+/* Non-Salicide N+ poly resistor */
+
+  extractRES( "RNNPO" nsnpyr ply("PLUS" "MINUS") flagMalformed 
+    cellView( "RNNPO ivpcell" ) )
+
+  width  = measureParameter( length ( nsnpyr inside     PO1 ) 0.5e-6 )
+  length = measureParameter( length ( nsnpyr coincident PO1 ) 0.5e-6 )
+  Rs = 113
+
+  res = calculateParameter( Rs * ( length / width ) )
+
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+
+/* Non-Salicide P+ poly resistor */
+
+  extractRES( "RNPPO" nsppyr ply("PLUS" "MINUS") flagMalformed 
+    cellView( "RNPPO ivpcell" ) )
+
+  width  = measureParameter( length ( nsppyr inside     PO1 ) 0.5e-6 )
+  length = measureParameter( length ( nsppyr coincident PO1 ) 0.5e-6 )
+  Rs = 352
+  res = calculateParameter( Rs * ( length / width ) )
+
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+
+/* Logic BJT 5.0umx5.0um */
+
+  extractBJT( "PNP_V50X50" bjt_v5 qtc("C") qtb("B") qte("E") flagMalformed  
+    cellView( "PNP_V50X50 ivpcell" ) )
+
+  emitArea = measureParameter( area ( bjt_v5 over qte ) )
+  normalizedEmitArea = calculateParameter( emitArea * 1e-12 )
+
+  nameParameter( normalizedEmitArea "ea" )
+
+/* Logic BJT 10.0umx10.0um */
+
+  extractBJT( "PNP_V100X100" bjt_v10 qtc("C") qtb("B") qte("E") flagMalformed 
+    cellView( "PNP_V100X100 ivpcell" ) )
+
+  emitArea = measureParameter( area ( bjt_v10 over qte ) )
+  normalizedEmitArea = calculateParameter( emitArea * 1e-12 )
+
+  nameParameter( normalizedEmitArea "ea" )
+
+/* Logic N+/Psub Diode */
+
+  extractDIODE( "DN" dioden psub("PLUS") nsd("MINUS") flagMalformed 
+      cellView( "DN ivpcell" ) )
+
+  area_dn 	= measureParameter( area ( dioden ) 1e-12 )
+  perim_dn 	= measureParameter( perimeter ( dioden ) 1e-6 )
+
+  nameParameter( area_dn "area" )
+  nameParameter( perim_dn "pj" )
+
+/* Logic P+/N-Well Diode */
+
+  extractDIODE( "DP" diodep psd("PLUS") wel("MINUS") flagMalformed 
+      cellView( "DP ivpcell" ) )
+
+  area_dp 	= measureParameter( area ( diodep ) 1e-12 )
+  perim_dp 	= measureParameter( perimeter ( diodep ) 1e-6 )
+
+  nameParameter( area_dp "area" )
+  nameParameter( perim_dp "pj" )
+
+) ;; endif Skip_Logic_Device_Extraction
+
+
+if( ( avSwitch "Skip_Mixed_Mode_Device_Extraction" ) then
+else
+
+;;-----  1.8V Mixed Mode NMOS ------
+
+  extractMOS( "N_18_MM" ngate_mm ply("G") nsd("S" "D") psub("B") flagMalformed 
+    cellView( "N_18_MM ivpcell" ) )
+   
+  w_mos7 = measureParameter( length ( ngate_mm coincident ply ) 0.5e-6 )
+  l_mos7 = measureParameter( length ( ngate_mm inside     ply ) 0.5e-6 )
+  nameParameter( l_mos7 "l" )
+  nameParameter( w_mos7 "w" )
+  nameParameter( w_mos7 "effW" )
+
+;;-----  1.8V Mixed Mode PMOS ------
+
+  extractMOS( "P_18_MM" pgate_mm ply("G") psd("S" "D") wel("B") flagMalformed 
+    cellView( "P_18_MM ivpcell" ) )
+   
+  w_mos8 = measureParameter( length ( pgate_mm coincident ply ) 0.5e-6 )
+  l_mos8 = measureParameter( length ( pgate_mm inside     ply ) 0.5e-6 )
+  nameParameter( l_mos8 "l" )
+  nameParameter( w_mos8 "w" )
+  nameParameter( w_mos8 "effW" )
+
+;;-----  1.8V Mixed Mode NMOS Capacitor ------
+ 
+  extractMOS( "N_18_MM" nmos_cap ply("G") nsd("S" "D") psub("B") flagMalformed 
+    cellView( "NCAP_MM ivpcell" ) )
+   
+  w_cap = measureParameter( length ( nmos_cap coincident ply ) 0.5e-6 )
+  l_cap = measureParameter( length ( nmos_cap inside     ply ) 0.5e-6 )
+  nameParameter( l_cap "l" )
+  nameParameter( w_cap "w" )
+  nameParameter( w_cap "effW" )
+
+;;-----  1.8V Mixed Mode PMOS Capacitor ------
+
+  extractMOS( "P_18_MM" pmos_cap ply("G") psd("S" "D") wel("B") flagMalformed 
+    cellView( "PCAP_MM ivpcell" ) )
+   
+  w_cap = measureParameter( length ( pmos_cap coincident ply ) 0.5e-6 )
+  l_cap = measureParameter( length ( pmos_cap inside     ply ) 0.5e-6 )
+  nameParameter( l_cap "l" )
+  nameParameter( w_cap "w" )
+  nameParameter( w_cap "effW" )
+ 
+;;-----  3.3V Mixed Mode NMOS ------
+
+  extractMOS( "N_33_MM" hngate_mm ply("G") nsd("S" "D") psub("B") flagMalformed 
+    cellView( "N_33_MM ivpcell" ) )
+   
+  w_mos9 = measureParameter( length ( hngate_mm coincident ply ) 0.5e-6 )
+  l_mos9 = measureParameter( length ( hngate_mm inside     ply ) 0.5e-6 )
+  nameParameter( l_mos9 "l" )
+  nameParameter( w_mos9 "w" )
+  nameParameter( w_mos9 "effW" )
+
+;;-----  3.3V Mixed Mode PMOS ------
+
+  extractMOS( "P_33_MM" hpgate_mm ply("G") psd("S" "D") wel("B") flagMalformed 
+    cellView( "P_33_MM ivpcell" ) )
+   
+  w_mos10 = measureParameter( length ( hpgate_mm coincident ply ) 0.5e-6 )
+  l_mos10 = measureParameter( length ( hpgate_mm inside     ply ) 0.5e-6 )
+  nameParameter( l_mos10 "l" )
+  nameParameter( w_mos10 "w" )
+  nameParameter( w_mos10 "effW" )
+
+;;-----  1.8V Low Vt NMOS ------
+
+  extractMOS( "N_LV_18_MM" ngate_lvt ply("G") nsd("S" "D") psub("B") 
+    cellView( "N_LV_18_MM ivpcell" ) flagMalformed )
+   
+  w_mos11 = measureParameter( length ( ngate_lvt coincident ply ) 0.5e-6 )
+  l_mos11 = measureParameter( length ( ngate_lvt inside     ply ) 0.5e-6 )
+  nameParameter( l_mos11 "l" )
+  nameParameter( w_mos11 "w" )
+  nameParameter( w_mos11 "effW" )
+
+;;-----  1.8V Low Vt PMOS ------
+
+  extractMOS( "P_LV_18_MM" pgate_lvt ply("G") psd("S" "D") wel("B") 
+    cellView( "P_LV_18_MM ivpcell" ) flagMalformed )
+   
+  w_mos12 = measureParameter( length ( pgate_lvt coincident ply ) 0.5e-6 )
+  l_mos12 = measureParameter( length ( pgate_lvt inside     ply ) 0.5e-6 )
+  nameParameter( l_mos12 "l" )
+  nameParameter( w_mos12 "w" )
+  nameParameter( w_mos12 "effW" )
+
+;; -----  3.3V Low Vt NMOS ------
+
+  extractMOS( "N_LV_33_MM" hngate_lvt ply("G") nsd("S" "D") psub("B") 
+    cellView( "N_LV_33_MM ivpcell" ) flagMalformed )
+   
+  w_mos13 = measureParameter( length ( hngate_lvt coincident ply ) 0.5e-6 )
+  l_mos13 = measureParameter( length ( hngate_lvt inside     ply ) 0.5e-6 )
+  nameParameter( l_mos13 "l" )
+  nameParameter( w_mos13 "w" )
+  nameParameter( w_mos13 "effW" )
+
+;;-----  3.3V Low Vt PMOS ------
+
+  extractMOS( "P_LV_33_MM" hpgate_lvt ply("G") psd("S" "D") wel("B") 
+    cellView( "P_LV_33_MM ivpcell" ) flagMalformed )
+   
+  w_mos14 = measureParameter( length ( hpgate_lvt coincident ply ) 0.5e-6 )
+  l_mos14 = measureParameter( length ( hpgate_lvt inside     ply ) 0.5e-6 )
+  nameParameter( l_mos14 "l" )
+  nameParameter( w_mos14 "w" )
+  nameParameter( w_mos14 "effW" )
+
+;;-----  1.8V Zero Vt NMOS ------
+
+  extractMOS( "N_ZERO_18_MM" ngate_zt ply("G") nsd("S" "D") psub("B") 
+    cellView( "N_ZERO_18_MM ivpcell" ) flagMalformed)
+   
+  w_mos15 = measureParameter( length ( ngate_zt coincident ply ) 0.5e-6 )
+  l_mos15 = measureParameter( length ( ngate_zt inside     ply ) 0.5e-6 )
+  nameParameter( l_mos15 "l" )
+  nameParameter( w_mos15 "w" )
+  nameParameter( w_mos15 "effW" )
+
+;;-----  3.3V Zero Vt PMOS ------
+
+  extractMOS( "N_ZERO_33_MM" hngate_zt ply("G") nsd("S" "D") psub("B") 
+    cellView( "N_ZERO_33_MM ivpcell" ) flagMalformed )
+   
+  w_mos16 = measureParameter( length ( hngate_zt coincident ply ) 0.5e-6 )
+  l_mos16 = measureParameter( length ( hngate_zt inside     ply ) 0.5e-6 )
+  nameParameter( l_mos16 "l" )
+  nameParameter( w_mos16 "w" )
+  nameParameter( w_mos16 "effW" )
+
+;;-----  1.8V Mixed Mode NMOS in TWEL------
+
+  extractMOS( "N_BPW_18_MM" ngate_bpw ply("G") nsd("S" "D") TWEL("B") 
+    cellView( "N_BPW_18_MM ivpcell" ) flagMalformed )
+   
+  w_mos17 = measureParameter( length ( ngate_bpw coincident ply ) 0.5e-6 )
+  l_mos17 = measureParameter( length ( ngate_bpw inside     ply ) 0.5e-6 )
+  nameParameter( l_mos17 "l" )
+  nameParameter( w_mos17 "w" )
+  nameParameter( w_mos17 "effW" )
+
+;;-----  3.3V Mixed Mode NMOS in TWEL------
+
+  extractMOS( "N_BPW_33_MM" hngate_bpw ply("G") nsd("S" "D") TWEL("B") 
+    cellView( "N_BPW_33_MM ivpcell" ) flagMalformed )
+   
+  w_mos18 = measureParameter( length ( hngate_bpw coincident ply ) 0.5e-6 )
+  l_mos18 = measureParameter( length ( hngate_bpw inside     ply ) 0.5e-6 )
+  nameParameter( l_mos18 "l" )
+  nameParameter( w_mos18 "w" )
+  nameParameter( w_mos18 "effW" )
+
+/* Mixed Mode N-Well resistor */
+
+  extractDevice( "RSNWELL_MM" welres_mm wel("PLUS" "MINUS") psub("B") 
+       cellView( "RSNWELL_MM ivpcell" ) namePrefix("X") bulkLayers( psub ) 
+       flagMalformed physical )
+
+  l_r1 = measureParameter( length ( welres_mm coincident nwell ) 0.5e-6 )
+  w_r1 = measureParameter( length ( welres_mm inside     nwell ) 0.5e-6 )
+
+  Rs     = 415 
+
+;  res = calculateParameter( Rs * ( l_r1 / w_r1 ) )
+
+; For width effect
+  res = calculateParameter(( l_r1 / w_r1 ) * ( 408 * w_r1 / ( w_r1 - 0.32e-6 )))
+
+  nameParameter( l_r1 "lr" )
+  nameParameter( w_r1 "wr" )
+  nameParameter( l_r1 "l" )
+  nameParameter( w_r1 "w" )
+  nameParameter( res "r" )
+
+/* Mixed Mode Salicide N+ sheet resistor with normal width */
+
+  extractDevice( "RSND_MM" sndres_mm nsd("PLUS" "MINUS") psub("B") 
+       cellView( "RSND_MM ivpcell" ) namePrefix("X") bulkLayers( psub ) 
+       flagMalformed physical )
+
+  width	 = measureParameter( length ( sndres_mm inside     bndiff ) 0.5e-6 )
+  length = measureParameter( length ( sndres_mm coincident bndiff ) 0.5e-6 )
+
+  RhoD = 8.0
+  res = calculateParameter( (RhoD * length) / width )
+
+  attachParameter( length "lr" sndres_mm )
+  attachParameter( width "wr" sndres_mm )
+  attachParameter( length "l" sndres_mm )
+  attachParameter( width "w" sndres_mm )
+  attachParameter( res "r" sndres_mm )
+
+/* Mixed Mode Salicide N+ sheet resistor with small width( <0.44um ) */  
+
+  extractDevice( "RSND_MM" sndres_mma nsd("PLUS" "MINUS") psub("B") 
+       cellView( "RSND_MM ivpcell" ) namePrefix("X") bulkLayers( psub ) 
+       flagMalformed physical )
+
+  width1 = measureParameter( length ( sndres_mma butting nsd ) 0.5e-6 )
+  width  = calculateParameter( width1 - 0.2e-6 )
+  perim	 = measureParameter( perimeter ( sndres_mma ) 0.5e-6 )
+  length = calculateParameter( perim - width )
+
+  RhoD = 8.0
+  res = calculateParameter( (RhoD * length) / width )
+
+  attachParameter( length "lr" sndres_mma )
+  attachParameter( width "wr" sndres_mma )
+  attachParameter( length "l" sndres_mma )
+  attachParameter( width "w" sndres_mma )
+  attachParameter( res "r" sndres_mma )  
+  
+/* Mixed Mode Salicide P+ sheet resistor with normal width */
+
+  extractDevice( "RSPD_MM" spdres_mm psd("PLUS" "MINUS") wel("B") 
+       cellView( "RSPD_MM ivpcell" ) namePrefix("X") bulkLayers( wel ) 
+       flagMalformed physical )
+
+  width  = measureParameter( length (spdres_mm inside     bpdiff ) 0.5e-6 )
+  length = measureParameter( length (spdres_mm coincident bpdiff ) 0.5e-6 )
+  RhoD = 8.0
+  res = calculateParameter( (RhoD * length) / width )
+
+  attachParameter( length "lr" spdres_mm )
+  attachParameter( width "wr" spdres_mm )
+  attachParameter( length "l" spdres_mm )
+  attachParameter( width "w" spdres_mm )
+  attachParameter( res "r" spdres_mm )
+
+/* Mixed Mode Salicide P+ sheet resistor */
+
+  extractDevice( "RSPD_MM" spdres_mma psd("PLUS" "MINUS") wel("B") 
+       cellView( "RSPD_MM ivpcell" ) namePrefix("X") bulkLayers( wel ) 
+       flagMalformed physical )
+
+  width1 = measureParameter( length (spdres_mma butting psd ) 0.5e-6 )
+  width  = calculateParameter( width1 - 0.2e-6 )
+  perimlength = measureParameter( perimeter ( spdres_mma ) 0.5e-6 )
+  length = calculateParameter( perimlength - width )
+  RhoD = 8.0
+  res = calculateParameter( (RhoD * length) / width )
+
+  attachParameter( length "lr" spdres_mma )
+  attachParameter( width "wr" spdres_mma )
+  attachParameter( length "l" spdres_mma )
+  attachParameter( width "w" spdres_mma )
+  attachParameter( res "r" spdres_mma )
+
+/* Mixed Mode Salicide N+ Poly sheet resistor  
+
+  extractDevice( "RSNPO_MM" snpyr_mm ply("PLUS" "MINUS") psub("B") 
+       cellView( "RSNPO_MM ivpcell" ) namePrefix("X") bulkLayers( psub ) 
+       flagMalformed physical )
+
+  width  = measureParameter( length ( snpyr_mm inside     PO1 ) 0.5e-6 )
+  length = measureParameter( length ( snpyr_mm coincident PO1 ) 0.5e-6 )
+  RhoD = 8.0
+
+  res = calculateParameter( (RhoD * length) / width )
+
+  nameParameter( length "lr" )
+  nameParameter( width "wr" )
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )          */
+
+/* Mixed Mode Salicide P+ Poly sheet resistor  
+
+  extractDevice( "RSPPO_MM" sppyr_mm ply("PLUS" "MINUS") wel("B") 
+       cellView( "RSPPO_MM ivpcell" ) namePrefix("X") bulkLayers( wel ) 
+       flagMalformed physical )
+
+  width  = measureParameter( length ( sppyr_mm inside     PO1 ) 0.5e-6 )
+  length = measureParameter( length ( sppyr_mm coincident PO1 ) 0.5e-6 )
+  RhoD = 8.0
+  res = calculateParameter( (RhoD * length) / width )
+
+  nameParameter( length "lr" )
+  nameParameter( width "wr" )
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )         */
+
+/* Mixed Mode Non-Salicide N+ sheet resistor */
+
+  extractDevice( "RNND_MM" nsndres_mm nsd("PLUS" "MINUS") psub("B") 
+       cellView( "RNND_MM ivpcell" ) namePrefix("X") bulkLayers( psub ) 
+       flagMalformed physical )
+
+  width  = measureParameter( length (nsndres_mm inside     bndiff ) 0.5e-6 )
+  length = measureParameter( length (nsndres_mm coincident bndiff ) 0.5e-6 )
+  RhoD = 80
+  res = calculateParameter( (RhoD * length) / ( width + 0.0675e-6 ) )
+
+  nameParameter( length "lr" )
+  nameParameter( width "wr" )
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+  
+/* Mixed Mode Non-Salicide P+ sheet resistor */
+
+  extractDevice( "RNPD_MM" nspdres_mm psd("PLUS" "MINUS") wel("B") 
+       cellView( "RNPD_MM ivpcell" ) namePrefix("X") bulkLayers( wel ) 
+       flagMalformed physical )
+
+  width  = measureParameter( length (nspdres_mm inside     bpdiff ) 0.5e-6 )
+  length = measureParameter( length (nspdres_mm coincident bpdiff ) 0.5e-6 )
+  RhoD = 158.66
+
+  res = calculateParameter( (RhoD * length) / ( width + 0.087e-6 ) )
+
+  nameParameter( length "lr" )
+  nameParameter( width "wr" )
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+
+/* Mixed Mode Non-Salicide N+ poly resistor */
+
+  extractDevice( "RNNPO_MM" nsnpyr_mm ply("PLUS" "MINUS") psub("B") 
+       cellView( "RNNPO_MM ivpcell" ) namePrefix("X") bulkLayers( psub ) 
+       flagMalformed physical )
+
+  width  = measureParameter( length ( nsnpyr_mm inside     PO1 ) 0.5e-6 )
+  length = measureParameter( length ( nsnpyr_mm coincident PO1 ) 0.5e-6 )
+  Rs = 113
+  Rend = 17e-6
+  deltaW = -0.097e-6
+  res = calculateParameter(2*Rend/(width+deltaW) + Rs*(length/(width + deltaW)))
+
+  nameParameter( length "lr" )
+  nameParameter( width "wr" )
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+
+/* Mixed Mode Non-Salicide P+ poly resistor */
+
+  extractDevice( "RNPPO_MM" nsppyr_mm ply("PLUS" "MINUS") wel("B") 
+       cellView( "RNPPO_MM ivpcell" ) namePrefix("X") bulkLayers( wel ) 
+       flagMalformed physical )
+
+  width  = measureParameter( length ( nsppyr_mm inside     PO1 ) 0.5e-6 )
+  length = measureParameter( length ( nsppyr_mm coincident PO1 ) 0.5e-6 )
+  Rs = 352
+  Rend = 105e-6
+  deltaW = -0.046e-6
+  res = calculateParameter(2*Rend/(width+deltaW) + Rs*(length/(width + deltaW)))
+  
+  nameParameter( length "lr" )
+  nameParameter( width "wr" )
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+
+/* Mixed Mode HR poly resistor */
+
+  extractDevice( "RNHR1000_MM" hrpyres ply("PLUS" "MINUS") wel("B") 
+       cellView( "RNHR1000_MM ivpcell" ) namePrefix("X") bulkLayers( wel ) 
+       flagMalformed physical )
+
+  width  	= measureParameter( length ( hrpyres inside     PO1 ) 0.5e-6 )
+  length   	= measureParameter( length ( hrpyres coincident PO1 ) 0.5e-6 )
+  lx	  	= calculateParameter( length - 0.4e-6 )
+  Rs = 1039
+  Rend = 120e-6
+  deltaW = -0.043e-6
+  res = calculateParameter(2*Rend/(width + deltaW) + Rs * (lx/(width + deltaW)))
+
+  nameParameter( length "lr" )
+  nameParameter( width "wr" )
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+  
+/* Metal-1 resistors */
+
+  extractDevice( "RM1_MM" m1res M1("PLUS") M1("MINUS") namePrefix("X") 
+       cellView( "RM1_MM ivpcell" ) flagMalformed physical )
+
+  width  	= measureParameter( length ( m1res inside     ME1 ) 0.5e-6 )
+  length   	= measureParameter( length ( m1res coincident ME1 ) 0.5e-6 )
+  Rs = 0.077
+  res = calculateParameter( Rs * length / width )
+
+  nameParameter( length "lr" )
+  nameParameter( width "wr" )
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+
+/* Metal-2 resistors */
+
+  extractDevice( "RM2_MM" m2res M2("PLUS" "MINUS") namePrefix("X") 
+       cellView( "RM2_MM ivpcell" ) flagMalformed physical )
+
+  width  	= measureParameter( length ( m2res inside     ME2 ) 0.5e-6 )
+  length   	= measureParameter( length ( m2res coincident ME2 ) 0.5e-6 )
+  Rs = 0.062
+  res = calculateParameter( Rs * length / width )
+
+  nameParameter( length "lr" )
+  nameParameter( width "wr" )
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+
+  
+/* Metal-3 resistors */
+
+  extractDevice( "RM3_MM" m3res me3c("PLUS" "MINUS") namePrefix("X") 
+       cellView( "RM3_MM ivpcell" ) flagMalformed physical )
+
+  width  	= measureParameter( length ( m3res inside     ME3 ) 0.5e-6 )
+  length   	= measureParameter( length ( m3res coincident ME3 ) 0.5e-6 )
+  Rs = 0.062
+  res = calculateParameter( Rs * length / width )
+
+
+  nameParameter( length "lr" )
+  nameParameter( width "wr" )
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+  
+/* Metal-4 resistors */
+
+  extractDevice( "RM4_MM" m4res me4c("PLUS" "MINUS") namePrefix("X") 
+       cellView( "RM4_MM ivpcell" ) flagMalformed physical )
+
+  width  	= measureParameter( length ( m4res inside     ME4 ) 0.5e-6 )
+  length   	= measureParameter( length ( m4res coincident ME4 ) 0.5e-6 )
+
+  if( (avSwitch "Top_Metal--ME4") then
+      if( (avSwitch "Top_Metal_Thickness--20K") then
+  	Rs = 0.020
+      else
+	Rs = 0.041
+      )
+  else
+      Rs = 0.062
+  )
+  res = calculateParameter( Rs * length / width )
+
+  nameParameter( length "lr" )
+  nameParameter( width "wr" )
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+  
+/* Metal-5 resistors */
+
+  extractDevice( "RM5_MM" m5res me5c("PLUS" "MINUS") namePrefix("X") 
+       cellView( "RM5_MM ivpcell" ) flagMalformed physical )
+
+  width  	= measureParameter( length ( m5res inside     ME5 ) 0.5e-6 )
+  length   	= measureParameter( length ( m5res coincident ME5 ) 0.5e-6 )
+
+  if( (avSwitch "Top_Metal--ME5") then
+      if( (avSwitch "Top_Metal_Thickness--20K") then
+  	Rs = 0.020
+      else
+	Rs = 0.041
+      )
+  else
+      Rs = 0.062
+  )
+  res = calculateParameter( Rs * length / width )
+
+  nameParameter( length "lr" )
+  nameParameter( width "wr" )
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" )
+  
+/* Metal-6 resistors */
+
+  extractDevice( "RM6_MM" m6res me6c("PLUS" "MINUS") namePrefix("X") 
+       cellView( "RM6_MM ivpcell" ) flagMalformed physical )
+
+  width  	= measureParameter( length ( m6res inside     ME6 ) 0.5e-6 )
+  length   	= measureParameter( length ( m6res coincident ME6 ) 0.5e-6 )
+
+  if( (avSwitch "Top_Metal_Thickness--20K") then
+  	Rs = 0.020
+  else
+	Rs = 0.041
+  )
+  res = calculateParameter( Rs * length / width )
+
+  nameParameter( length "lr" )
+  nameParameter( width "wr" )
+  nameParameter( length "l" )
+  nameParameter( width "w" )
+  nameParameter( res "r" ) 
+  
+/* Mixed Mode BJT 5.0um x5.0um */
+
+  extractBJT( "PNP_V50X50_MM" bjt_v5_mm qtc("C") qtb("B") qte("E") 
+    cellView( "PNP_V50X50_MM ivpcell" ) flagMalformed )
+
+  emitArea = measureParameter( area ( bjt_v5_mm over qte ) )
+  normalizedEmitArea = calculateParameter( emitArea * 1e-12 )
+
+  nameParameter( normalizedEmitArea "ea" )
+
+/* Mixed Mode BJT 10.0umx10.0um */
+
+  extractBJT( "PNP_V100X100_MM" bjt_v10_mm qtc("C") qtb("B") qte("E") 
+    cellView( "PNP_V100X100_MM ivpcell" ) flagMalformed )
+
+  emitArea = measureParameter( area ( bjt_v10_mm over qte ) )
+  normalizedEmitArea = calculateParameter( emitArea * 1e-12 )
+
+  nameParameter( normalizedEmitArea "ea" )
+  
+/* Mixed Mode MIM Capacitor */
+
+  extractDevice( "MIMCAPS_MM" cmmc_mm MMC("PLUS") slm_c("MINUS") namePrefix("X")
+       cellView( "MIMCAPS_MM ivpcell" ) flagMalformed physical )
+
+  A 		= measureParameter( area ( cmmc_mm ) 1e-12 )
+  P 		= measureParameter( perimeter ( cmmc_mm ) 1e-6 )
+  Ca    	= 1e-3
+  Cf    	= 7.5e-11
+  Cap_mmc   	= calculateParameter( ( Ca * A ) + ( Cf * P ) )
+  width_mmc	= calculateParameter( (P/2 - sqrt( P*P/4 - 4*A )) / 2 )
+;  width_mmc 	= measureParameter( length ( cmmc_mm inside cmmc_w ) 1e-6 )
+  length_mmc	= calculateParameter(  A / width_mmc )
+
+  nameParameter( Cap_mmc "c" )
+  nameParameter( width_mmc "w" )
+  nameParameter( length_mmc "l" )
+
+/* Mixed Mode N+/Psub Diode */
+
+  extractDIODE( "DION_MM" dioden_mm psub("PLUS") nsd("MINUS") flagMalformed 
+      cellView( "DION_MM ivpcell" ) )
+
+  area_dn_mm 	= measureParameter( area ( dioden_mm ) 1e-12 )
+  perim_dn_mm 	= measureParameter( perimeter ( dioden_mm ) 1e-6 )
+
+  nameParameter( area_dn_mm "area" )
+  nameParameter( perim_dn_mm "pj" )
+
+/* Mixed Mode P+/N-Well Diode */
+
+  extractDIODE( "DIOP_MM" diodep_mm psd("PLUS") wel("MINUS") flagMalformed 
+      cellView( "DIOP_MM ivpcell" ) )
+
+  area_dp_mm 	= measureParameter( area ( diodep_mm ) 1e-12 )
+  perim_dp_mm 	= measureParameter( perimeter ( diodep_mm ) 1e-6 )
+
+  nameParameter( area_dp_mm "area" )
+  nameParameter( perim_dp_mm "pj" )
+
+) ;; endif Skip_Mixed_Mode_Device_Extraction
+
+
+/******************* RF Device Extraction ******************/
+
+if( ( avSwitch "Skip_RF_Device_Extraction" ) then
+else
+
+;;-----  1.8V RF NMOS scalable with Finger Number ------
+
+ 
+  extractDevice( "N_L18W500_18_RF" ng_rf ply("G") rfns("S") rfnd("D") psub("B")
+       cellView( "N_L18W500_18_RF ivpcell" ) namePrefix( "X") bulkLayers( psub)
+       flagMalformed  ) 
+
+  w_mos19  = measureParameter( length ( ngate_rf coincident ply ) 0.5e-6 )
+  l_mos19  = measureParameter( length ( ngate_rf inside     ply ) 0.5e-6 )
+  m_mos19  = measureParameter( figCount ( bndiff enclosing ngate_rf ) )
+  length19 = calculateParameter( l_mos19 / m_mos19 )
+  width19  = calculateParameter( w_mos19 / m_mos19 )
+
+  attachParameter( m_mos19  "nf" ng_rf )
+  attachParameter( length19 "l"  ng_rf )
+  attachParameter( width19  "w"  ng_rf )
+  
+;;-----  1.8V RF NMOS scalable with Finger Length ------
+
+ extractDevice( "N_PO7W500_18_RF" ng_srf ply("G") rfns("S") rfnd("D") psub("B")
+      cellView( "N_PO7W500_18_RF ivpcell" ) bulkLayers( psub ) namePrefix( "X" )
+      flagMalformed  )
+ 
+  w_mos20  = measureParameter( length ( ngate_srf coincident ply ) 0.5e-6 )
+  l_mos20  = measureParameter( length ( ngate_srf inside     ply ) 0.5e-6 )
+  m_mos20  = measureParameter( figCount ( bndiff enclosing ngate_srf ) )
+  length20 = calculateParameter( l_mos20 / m_mos20 )
+  width20  = calculateParameter( w_mos20 / m_mos20 )
+
+  attachParameter( m_mos20  "nf" ng_srf )
+  attachParameter( length20 "l"  ng_srf )
+  attachParameter( width20  "w"  ng_srf )
+  
+;;-----  1.8V RF PMOS scalable with Finger Number ------
+
+  extractDevice( "P_L18W500_18_RF" pg_rf ply("G") rfps("S") rfpd("D") wel("B")
+       cellView( "P_L18W500_18_RF ivpcell" ) namePrefix( "X" ) bulkLayers( wel )
+       flagMalformed  )
+
+  w_mos21  = measureParameter( length ( pgate_rf coincident ply ) 0.5e-6 )
+  l_mos21  = measureParameter( length ( pgate_rf inside     ply ) 0.5e-6 )
+  m_mos21  = measureParameter( figCount ( bpdiff enclosing pgate_rf ) )
+  length21 = calculateParameter( l_mos21 / m_mos21 )
+  width21  = calculateParameter( w_mos21 / m_mos21 )
+
+  attachParameter( m_mos21  "nf" pg_rf )
+  attachParameter( length21 "l"  pg_rf )
+  attachParameter( width21  "w"  pg_rf )
+
+;;-----  1.8V RF PMOS scalable with Finger Length ------
+
+  extractDevice( "P_PO7W500_18_RF" pg_srf ply("G") rfps("S") rfpd("D") wel("B")
+       cellView( "P_PO7W500_18_RF ivpcell" ) namePrefix( "X" ) bulkLayers( wel )
+       flagMalformed  )
+ 
+  w_mos22  = measureParameter( length ( pgate_srf coincident ply ) 0.5e-6 )
+  l_mos22  = measureParameter( length ( pgate_srf inside     ply ) 0.5e-6 )
+  m_mos22  = measureParameter( figCount ( bpdiff enclosing pgate_srf ) )
+  length22 = calculateParameter( l_mos22 / m_mos22 )
+  width22  = calculateParameter( w_mos22 / m_mos22 )
+
+  attachParameter( m_mos22  "nf" pg_srf )
+  attachParameter( length22 "l"  pg_srf )
+  attachParameter( width22  "w"  pg_srf )
+
+;;-----  3.3V RF NMOS scalable with Finger Number ------
+
+ extractDevice( "N_L34W500_33_RF" hng_rf ply("G") rfns("S") rfnd("D") psub("B")
+      cellView( "N_L34W500_33_RF ivpcell" ) namePrefix( "X" ) bulkLayers( psub )
+      flagMalformed   )
+
+  w_mos23  = measureParameter( length ( hngate_rf coincident ply ) 0.5e-6 )
+  l_mos23  = measureParameter( length ( hngate_rf inside     ply ) 0.5e-6 )
+  m_mos23  = measureParameter( figCount ( bndiff enclosing hngate_rf ) )
+  length23 = calculateParameter( l_mos23 / m_mos23 )
+  width23  = calculateParameter( w_mos23 / m_mos23 )
+
+  attachParameter( m_mos23   "nf" hng_rf )
+  attachParameter( length23  "l"  hng_rf )
+  attachParameter( width23   "w"  hng_rf )
+ 
+;;-----  3.3V RF NMOS scalable with Finger Length ------
+
+ extractDevice("N_PO7W500_33_RF" hng_srf ply("G") rfns("S") rfnd("D") psub("B")
+     cellView( "N_PO7W500_33_RF ivpcell" ) namePrefix( "X" ) bulkLayers( psub ) 
+     flagMalformed  )
+
+  w_mos24  = measureParameter( length ( hngate_srf coincident ply ) 0.5e-6 )
+  l_mos24  = measureParameter( length ( hngate_srf inside     ply ) 0.5e-6 )
+  m_mos24  = measureParameter( figCount ( bndiff enclosing hngate_srf ) )
+  length24 = calculateParameter( l_mos24 / m_mos24 )
+  width24  = calculateParameter( w_mos24 / m_mos24 )
+
+  attachParameter( m_mos24  "nf" hng_srf )
+  attachParameter( length24 "l"  hng_srf )
+  attachParameter( width24  "w"  hng_srf )
+ 
+;;-----  3.3V RF PMOS scalable with Finger Number ------
+
+  extractDevice( "P_L34W500_33_RF" hpg_rf ply("G") rfps("S") rfpd("D") wel("B")
+       cellView( "P_L34W500_33_RF ivpcell" ) namePrefix( "X" ) bulkLayers( wel )
+       flagMalformed  )
+
+  w_mos25  = measureParameter( length ( hpgate_rf coincident ply ) 0.5e-6 )
+  l_mos25  = measureParameter( length ( hpgate_rf inside     ply ) 0.5e-6 )
+  m_mos25  = measureParameter( figCount ( bpdiff enclosing hpgate_rf ) )
+  width25  = calculateParameter( w_mos25 / m_mos25 )
+  length25 = calculateParameter( l_mos25 / m_mos25 )
+
+  attachParameter( m_mos25  "nf" hpg_rf )
+  attachParameter( length25 "l"  hpg_rf )
+  attachParameter( width25  "w"  hpg_rf )
+  
+;;-----  3.3V RF PMOS scalable with Finger Length ------
+
+ extractDevice( "P_PO7W500_33_RF" hpg_srf ply("G") rfps("S") rfpd("D") wel("B")
+      cellView( "P_PO7W500_33_RF ivpcell" ) namePrefix( "X" ) bulkLayers( wel ) 
+      flagMalformed  )
+
+  w_mos26 = measureParameter( length ( hpgate_srf coincident ply ) 0.5e-6 )
+  l_mos26 = measureParameter( length ( hpgate_srf inside     ply ) 0.5e-6 )
+  m_mos26 = measureParameter( figCount ( bpdiff enclosing hpgate_srf ) )
+  width26  = calculateParameter( w_mos26 / m_mos26 )
+  length26 = calculateParameter( l_mos26 / m_mos26 )
+
+  attachParameter( m_mos26  "nf" hpg_srf )
+  attachParameter( length26 "l"  hpg_srf )
+  attachParameter( width26  "w"  hpg_srf )
+ 
+/* RF Non-Salicide N+ poly resistor */
+
+  extractDevice( "RNNPO_RF" nsnpyr_rf ply("PLUS" "MINUS") psub("B") 
+        cellView("RNNPO_RF ivpcell") namePrefix("X") bulkLayers( psub )  
+        flagMalformed )
+  
+  width   	= measureParameter( length ( nsnpyr_rf inside     PO1 ) 0.5e-6 )
+  length    	= measureParameter( length ( nsnpyr_rf coincident PO1 ) 0.5e-6 )
+
+  Rs = 113
+  Rend = 17e-6
+  deltaW = -0.097e-6
+  res = calculateParameter(2*Rend/(width+deltaW) + Rs*(length/(width + deltaW)))
+    
+  attachParameter( res "r" nsnpyr_rf )
+  attachParameter( length "l" nsnpyr_rf )
+  attachParameter( width "w" nsnpyr_rf )
+ 
+/* RF Non-Salicide P+ poly resistor */
+
+  extractDevice( "RNPPO_RF" nsppyr_rf ply("PLUS" "MINUS") wel("B") 
+       cellView( "RNPPO_RF ivpcell" ) namePrefix("X") bulkLayers( wel ) 
+       flagMalformed )
+  
+  width   	= measureParameter( length ( nsppyr_rf inside     PO1 ) 0.5e-6 )
+  length    	= measureParameter( length ( nsppyr_rf coincident PO1 ) 0.5e-6 )
+
+  Rs = 352
+  Rend = 105e-6
+  deltaW = -0.046e-6
+  res = calculateParameter(2*Rend/(width+deltaW) + Rs*(length/(width + deltaW)))
+
+  attachParameter( res "r" nsppyr_rf )
+  attachParameter( length "l" nsppyr_rf )
+  attachParameter( width "w" nsppyr_rf )
+  
+/* RF HR poly resistor */
+
+  extractDevice( "RNHR_RF" hrpyres_rf ply("PLUS" "MINUS") wel("B") 
+       cellView( "RNHR_RF ivpcell" ) namePrefix("X") bulkLayers( wel ) 
+       flagMalformed )
+
+  width   	= measureParameter( length (hrpyres_rf inside     PO1 ) 0.5e-6 )
+  length    	= measureParameter( length (hrpyres_rf coincident PO1 ) 0.5e-6 )
+
+  Rs = 1039
+  Rend = 120e-6
+  deltaW = -0.043e-6
+  widthEff = calculateParameter( width + deltaW )
+  res = calculateParameter((2*Rend/widthEff) + Rs * ( length - 0.4e-6)/widthEff)
+
+  attachParameter( res "r" hrpyres_rf )
+  attachParameter( width "w" hrpyres_rf )
+  attachParameter( length "l" hrpyres_rf )
+  
+/* N+ / N-Well MIS Varactor */
+
+ extractDevice( "VARMIS_18_RF" varmis_rf slm_term("PLUS") wel("MINUS") psub("B")
+      cellView( "VARMIS_18_RF ivpcell" ) namePrefix("X") bulkLayers( psub ) 
+      flagMalformed )
+  
+  nf	= measureParameter( figCount ( wel enclosing vargate ) )
+  l_all	= measureParameter( length ( vargate coincident PO1 ) 0.5e-6)
+  w_all	= measureParameter( length ( vargate inside     PO1 ) 0.5e-6)
+  l	= calculateParameter( l_all / nf )
+  w	= calculateParameter( w_all / nf ) 
+
+  Ca = 822.2e-5
+  Cp = 15.34e-11
+  cap_mis  = calculateParameter( ( w * l * Ca + 2*( l + w ) * Cp ) * nf )
+  
+  attachParameter( nf "nf" varmis_rf )
+  attachParameter( cap_mis "c" varmis_rf )
+  attachParameter( w "w" varmis_rf )
+  attachParameter( l "l" varmis_rf )
+  
+/* P+/N-Well Diode Varactor */
+
+  extractDevice( "VARDIOP_RF" vard_rf psd("PLUS") wel("MINUS") 
+       cellView( "VARDIOP_RF ivpcell" ) namePrefix("X") flagMalformed )
+
+  nf		= measureParameter( figCount ( vard_rf enclosing pnvar ) )
+  A	 	= measureParameter( area ( pnvar ) 1e-12 )
+  P	 	= measureParameter( perimeter ( pnvar ) 1e-6 )
+  Ca    	= 1.136e-3
+  Cf    	= 1.56e-10
+  Cap_vard   	= calculateParameter( ( Ca * A ) + ( Cf * P ) )
+  width_vard 	= calculateParameter( (P/nf/2 - sqrt(P*P/nf/nf/4 - 4*A/nf))/2) 
+  length_vard	= calculateParameter( ( A / width_vard ) / nf )
+
+  attachParameter( nf "nf" vard_rf )
+  attachParameter( Cap_vard "c" vard_rf )
+  attachParameter( width_vard "w" vard_rf )
+  attachParameter( length_vard "l" vard_rf )
+
+/* RF MIM Capacitor */
+
+  extractDevice( "MIMCAPM_RF" cmmc_msq_rf MMC("PLUS") slm_c("MINUS") 
+       psub("B") bulkLayers( psub ) namePrefix("XC") flagMalformed 
+       cellView( "MIMCAPM_RF ivpcell" ) )
+
+  fingers	= measureParameter( figCount (cmmc_msq_rf enclosing cmmc_msq ) )
+  nx		= measureParameter( figCount (CSYMBOL enclosing cmmc_msq ) )
+  ny		= calculateParameter( fingers / nx )
+  area_mmc_rf 	= measureParameter( area ( cmmc_msq ) 1e-12 )
+  perim_mmc_rf 	= measureParameter( perimeter ( cmmc_msq ) 1e-6 )
+  Ca    	= 1e-3
+  Cf    	= 7.5e-11
+  Cap_mmc_rf   	= calculateParameter((Ca * area_mmc_rf) + (Cf * perim_mmc_rf ))
+  width_all 	= measureParameter( length (cmmc_msq coincident CSYMBOL) 0.5e-6)
+  width_mmc_rf	= calculateParameter( width_all / nx )
+  length_mmc_rf	= calculateParameter(  area_mmc_rf / width_mmc_rf /nx /ny )
+
+    attachParameter( nx "nx" cmmc_msq_rf )
+    attachParameter( ny "ny" cmmc_msq_rf )
+    attachParameter( Cap_mmc_rf "c" cmmc_msq_rf )
+    attachParameter( width_mmc_rf "w" cmmc_msq_rf )
+    attachParameter( length_mmc_rf "l" cmmc_msq_rf )
+
+/* RF Pad */
+  
+  extractDevice( "PAD_RF" rf_pad top_m_c("PLUS") M1("MINUS") namePrefix("X") 
+       cellView( "PAD_RF ivpcell" ) flagMalformed )
+       
+  index1	= measureParameter( figCount ( rf_pad enclosing type1 ) )
+  index2	= measureParameter( figCount ( rf_pad enclosing type2 ) )
+  index3	= measureParameter( figCount ( rf_pad enclosing type3 ) )
+
+if( (avSwitch "Top_Metal--ME4") then
+  index		= calculateParameter( index1 + index2 + index3 )
+else
+  if( (avSwitch "Top_Metal--ME5") then
+    index4	= measureParameter( figCount ( rf_pad enclosing type4 ) )
+    index	= calculateParameter( index1 + index2 + index3 +index4 )
+  else
+    index4	= measureParameter( figCount ( rf_pad enclosing type4 ) )
+    index5	= measureParameter( figCount ( rf_pad enclosing type5 ) )
+    index	= calculateParameter( index1 + index2 + index3 +index4 + index5)
+  )  ;; endif 1P5M
+)  ;; endif 1P4M
+  
+  attachParameter( index "index" rf_pad )
+
+/*  Inductor  */  
+
+ extractDevice( "L_SLCR20K_RF" ind_me ind_plus("PLUS") ind_minus("MINUS") psub("B")
+      cellView( "L_SLCR20K_RF ivpcell" ) namePrefix("X") bulkLayers( psub ) 
+      flagMalformed ) 
+
+  N1	= measureParameter( figCount ( ind_me enclosing slm_l2 ) )  
+  N	= calculateParameter( N1 + 0.5 )
+  W1 	= measureParameter( length ( slm_l2 inside top_m_ls ) 1e-6 )
+  W 	= calculateParameter( W1 / ( 2 * N1 ) + 0.2e-6 ) 
+  P	= measureParameter( perimeter ( ldimeter ) 0.5e-6 )
+  A	= measureParameter( area ( ldimeter ) 1e-12 )
+  OD	= calculateParameter( (P - sqrt( P*P - 4*A )) / 2 )
+  S1	= measureParameter( length ( slm_l1 outside top_m_lb ) 1e-6 )
+  N2	= measureParameter( figCount ( ldimeter enclosing slm_l1 ) )
+  S	= calculateParameter( S1 / ( 2*N2 ) + 0.2e-6 )
+  D	= calculateParameter( OD - 2*(N-1)*S - 2*N*W - (W + S)/2 )
+  du	= calculateParameter( ( D/2 ) * 1e6 )
+  wu	= calculateParameter( W * 1e6 )
+  su	= calculateParameter( S * 1e6 )
+  tu	= 2
+
+  L_spiral = calculateParameter( 0.5*(N*3.14159*(2*(2*du+wu)+(2*N-1) * (wu+su)))
+             + (N+0.5) * (wu+su) )
+  d_plus   = calculateParameter( (wu+su) * (3 * N - 2*(N - 0.5) - 1 ) * 
+             (N + 0.5)/(3*(2*N - N - 0.5 ) ) )
+  L	   = calculateParameter( (2*L_spiral*(log(2*L_spiral/(wu+tu))-0.2-
+            0.4418*N+0.97*(N-1)* (log(sqrt(1 +(L_spiral/(4*N*d_plus))*
+            (L_spiral/(4*N*d_plus)))+L_spiral/(4*N*d_plus))-
+            sqrt(1+(4*N*d_plus/L_spiral)*(4*N*d_plus/L_spiral))+
+            4*N*d_plus/L_spiral))+2923-3700*N+507*N*N)*1e-13 )
+ 
+  attachParameter( W "w" ind_me )
+  attachParameter( N "n" ind_me )
+  attachParameter( D "d" ind_me )
+  attachParameter( S "s" ind_me )
+  attachParameter( L "L" ind_me )      
+
+) ;; endif Skip_RF_Device_Extraction
+       
+) ;end drcExtractRules
+

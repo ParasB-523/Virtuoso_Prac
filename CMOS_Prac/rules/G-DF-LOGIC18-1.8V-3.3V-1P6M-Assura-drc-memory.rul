@@ -1,0 +1,611 @@
+mem8G_1 = geomButting( expol geomAnd( gate geomOr( geomOr( SRAM BLSP1 ) DP1 ) )
+                     keep == 1 )
+mem8G_2 = geomAndNot( mem8G_1 geomStraddle( mem8G_1 CONT ) )
+
+mmgate = geomSize( gate -0.02 downUp )
+mmgate_edge = geomGetEdge( mmgate inside DIFF )
+mgate_90 = drc( mmgate_edge sep < 0.05 only_perp )
+
+;mfortyFive = geomGetAngledEdge( mmgate keep == 45 fig )
+;mangledGate = geomOr( mnon45 mfortyFive )
+;morthGate = geomGetLength( geomAndNot( mmgate mangledGate ) keep > 0.02 contiguous fig )
+;;mgate_90 = geomCat( mnon45 geomGetVertex( morthGate keep > 4 ) )
+
+;
+;***** RULES TO CHECK THE BORDERED SP SRAM CORE REGIONS *****
+;
+    processWithin( bdsp_id drc( DIFF width < 0.14 ) )
+    processWithin( bdsp_id drc( DIFF width < 0.01 withCornerTouch fig ) )
+;    errorLayer( bdsp1AB "BDSP_4.1A.a/b, 4.1B: Minimum Diffusion width is 0.14um" )
+
+    processWithin( bdsp_id drc( DIFF sep < 0.26 ) )
+;    errorLayer( bdsp1C1 "BDSP_4.1C1: Minimum Diffusion spacing is 0.26um" )
+
+    processWithin( bdsp_id drc( DIFF notch < 0.11 ) )
+;    errorLayer( bdsp1C2 "BDSP_4.1C2: Minimum Diffusion notch spacing is 0.11um" )
+
+    processWithin( bdsp_id drc( NWEL ndiff1_ram sep < 0.38 ) )
+;    errorLayer( bdsp1Da "BDSP_4.1D.a: Minimum N-Well to N+ spacing (1.8V device) is 0.38um" )
+
+    processWithin( bdsp_id  drc( NWEL pdiff1_ram enc < 0.20 ) )
+;    errorLayer( bdsp1Ga "BDSP_4.1G.a: Minimum N-Well overlap P+ Diffusion (1.8V device) is 0.20um" )
+
+    processWithin( bdsp_id  drc( PO1 width < 0.08 ) )
+    processWithin( bdsp_id drc( PO1 width < 0.01 withCornerTouch fig ) )
+;    errorLayer( bdsp14AaBaC "BDSP_4.8A/B/C: Minimum Poly width is 0.08um" )
+
+    mgate_w = drc( PO1 mmgate enc == 0 edgea opposite )
+    mgate_wb = geomGetEdge( mgate_w butting co_allnpsd )
+    bdsp8DB1_1 = geomButting( geomOr( drc( mgate_wb sep < 0.34  ) ) gate keep >= 2 )
+    processWithin( bdsp_id errorLayer( bdsp8DB1_1 "BDSP4.8D.b" ) )
+;    errorLayer( bdsp14Db1 "BDSP_4.8D.b1, 4.8D.b2: Minimum Gate Poly spacing over diffusion w/contact is 0.34um" )
+
+    bdsp8Dc1_1 = geomAndNot( drc( expol sep < 0.20 shielded ) gate ) 
+    processWithin( bdsp_id errorLayer( bdsp8Dc1_1 "BDSP_4.8D.c1_1" ) )
+;    errorLayer( bdsp8Dc1_1 "BDSP_4.8D.c1_1: Minimum field Poly spacing is 0.20um" )
+
+    bdsp8Dc1_2 = geomAndNot( drc( expol notch < 0.03 shielded ) gate )   
+    processWithin( bdsp_id errorLayer( bdsp8Dc1_2 "BDSP_4.8D.c1_2" ) )
+;    errorLayer( bdsp8Dc1_2 "BDSP_4.8D.c1_2: Minimum field Poly notch spacing is 0.09um" )
+
+    processWithin( bdsp_id drc( blfpedg 0 < sep < 0.24 ) )
+    processWithin( bdsp_id drc( blfpedg smfpedg 0 < sep < 0.24 ) )
+;    errorLayer( bdsp8Dc2_1 "BDSP_4.8D.c22: Minimum wide long Field Poly (width > 0.24um, length > 1.00um) spacing is 0.24um" )
+
+    processWithin( bdsp_id  drc( PO1 DIFF enc < 0.01 ) )
+;    errorLayer( bdsp14E "BDSP_4.8E: Minimum Poly extension onto field region (end cap) is 0.01um" )
+
+    bdsp8F = drc( PO1 DIFF sep < 0.02 parallel )
+    processWithin( bdsp_id errorLayer( bdsp8F "BDSP4.8F" ) )
+;    errorLayer( bdsp14F "BDSP_4.8F: Minimum field Poly spacing to Diffusion is 0.02um" )
+
+    bdsp8G = geomAnd( acnrext geomGetVertex( mem8G_2 keep ==  4 ) ) 
+    processWithin( bdsp_id errorLayer( bdsp8G "BDSP_4.8G" ) )
+  ;  errorLayer( bdsp8G "BDSP_4.8G: Minimum end cap Poly spacing to Diffusion is 0.12um" )
+
+    bdsp8H = drc( DIFF mmgate 0 < enc < 0.09 ) 
+    processWithin( bdsp_id errorLayer( bdsp8H "BDSP_4.8H" ) )
+;    errorLayer( bdsp14H "BDSP_4.8H: Minimum Poly Gate to Field Edge spacing is 0.09um" )
+
+    processWithin( bdsp_id errorLayer( mgate_90 "BDSP_4.8J" ) )
+   ; errorLayer( bdsp14J "BDSP_4.8J: 90 degree bent gate is not allowed." )
+
+    processWithin( bdsp_id drc( bent_fpoly gate_diff_edge sep < 0.02 ) )
+    processWithin( bdsp_id drc( bent_fpoly gate_diff_edge enc < 0.02 ) )
+;    errorLayer( bdsp8N "BDSP_4.8N: Minimum bent field Poly to Diffusion spacing is 0.02um" )
+
+    bdsp17Db = geomButting( drc( PPLUS actnwel_ram sep < 0.08 ) nactnwel ) 
+    processWithin( bdsp_id errorLayer( bdsp17Db "BDSP_4.17D.b" ) )
+;    errorLayer( bdsp10Db "BDSP_4.10D.b: Minimum P+ implant to N+ Diffusion (inside N-Well) spacing is 0.08um" )
+
+    processWithin( bdsp_id drc( ctdiff1 PO1 sep < 0.08 ) )
+;    errorLayer( bdsp12Ca "BDSP_4.12C.a: Minimum Diffusion Contact to Poly spacing (1.8V device) is 0.08um" )
+
+    processWithin( bdsp_id drc( ctfpol DIFF sep < 0.17 ) )
+;    errorLayer( bdsp12D "BDSP_4.12D: Minimum Poly Contact to Diffusion edge spacing is 0.17um" )
+
+    processWithin( BDSP drc( pact ctpdiff enc < 0.03 ) )
+;    errorLayer( bdsp12F "BDSP_4.12F: P+ Diffusion overlap Contact >= 0.03um." )
+
+    processWithin( BDSP drc( nact ctndiff enc < 0.03 ) )
+;    errorLayer( bdsp12G "BDSP_4.12G: N+ Diffusion overlap Contact >= 0.03um." )
+
+    processWithin( BDSP drc( ME1 sepNotch < 0.23 ) )
+;   BDSP4.13B.a
+
+    bdsp13Dbc = geomAnd( drc( ME1 CONT venc( enc1<0 enc2<0.04 enc3<0 enc4<0.04 ) ) bdsp_id )
+    processWithin( BDSP errorLayer( bdsp13Dbc "BDSP_4.13D.bc" ) )
+
+    bdsp13Cc = drc( ME1 VI1 venc( enc1<0 enc2<0.04 enc3<0 enc4<0.04 ) ) 
+    processWithin( BDSP errorLayer( bdsp13Cc "BDSP_4.14C.c/d/e" ) )
+  ;  errorLayer( bdsp13Cc "BDSP_4.14C.c/d/e: Minimum Metal1 must enclose the Via1 on two entire non-adjacent edges is 0.04um" )
+;
+;***** RULES TO CHECK THE BORDERLESS SP SRAM CORE REGIONS *****
+;
+    processWithin( BLSP drc( DIFF width < 0.07 ) )
+    processWithin( BLSP drc( DIFF width < 0.01 withCornerTouch fig ) )
+;    errorLayer( blsp1AB "BLSP_4.1A.a/b, 4.1B: Minimum Diffusion width is 0.07um" )
+
+    processWithin( BLSP drc( DIFF sep < 0.26 ) )
+;    errorLayer( blsp1C1 "BLSP_4.1C1: Minimum Diffusion spacing is 0.26um" )
+
+    processWithin( BLSP drc( DIFF notch < 0.11 ) )
+;    errorLayer( blsp1C2 "BLSP_4.1C2: Minimum Diffusion notch spacing is 0.11um" )
+
+    processWithin( BLSP  drc( NWEL ndiff1_ram sep < 0.38 ) )
+;    errorLayer( blsp1Da "BLSP_4.1D.a: Minimum N-Well to N+ spacing (1.8V device) is 0.38um" )
+
+    blsp1E = geomOr( drc( NWEL ntap enc < 0.23 with_perp ) ) 
+    processWithin( BLSP errorLayer( blsp1E "BLSP_4.1E" ) )
+;    errorLayer( blsp1E "BLSP_4.1E: Minimum N-Well overlap N-tap >= 0.23um" )
+
+    processWithin( BLSP drc( NWEL pdiff1_ram enc < 0.20 ) )
+;    errorLayer( blsp1Ga "BLSP_4.1G.a: Minimum N-Well overlap P+ Diffusion (1.8V device) is 0.20um" )
+
+    processWithin( BLSP drc( PO1 width < 0.09 ) )
+    processWithin( BLSP drc( PO1 width < 0.01 withCornerTouch fig ) )
+;    errorLayer( blsp8AaBaC "BLSP_4.8A/B/C: Minimum Poly width is 0.09um" )
+
+    blsp8Da1 = geomButting( drc( tgate_wa sep < 0.23 ) gate keep >= 2 ) 
+    processWithin( BLSP errorLayer( blsp8Da1 "BLSP_4.8D.a1" ) )
+ ;   errorLayer( blsp8Da1 "BLSP_4.8D.a1: Minimum small Gate Poly (width <= 0.24um) spacing over diffusion w/o contact is 0.23um" )
+
+    blsp8Da2 = geomButting( geomOr( drc( wgate_wa gate_w sep < 0.23 ) ) gate keep >= 2 ) 
+    processWithin( BLSP errorLayer( blsp8Da2 "BLSP_4.8D.a2" ) )
+;    errorLayer( blsp14Da2 "BLSP_4.8D.a2: Minimum large Gate Poly (width > 0.24um) spacing over diffusion w/o contact is 0.23um" )
+    
+    blsp8DB1_1 = geomButting( geomOr( drc( tgate_wb sep < 0.22  ) ) gate keep >= 2 )
+    processWithin( BLSP errorLayer( blsp8DB1_1 "BLSP_4.8D.b1" ) )
+;    errorLayer( blsp14Db1 "BLSP_4.8D.b1, 4.14D.b2: Minimum gate Poly spacing over Diffusion w/contact is 0.22um" )
+
+;    sblsp8Db2 not implemented at this moment
+    blsp8Dc1_1 = geomOr( geomAndNot( drc( expol sep < 0.156 shielded ) gate ) ) 
+    processWithin( BLSP errorLayer( blsp8Dc1_1 "BLSP_4.8D.c1_1" ) )
+;    errorLayer( blsp8Dc1_1 "BLSP_4.8D.c1_1: Minimum field Poly spacing is 0.156um" )
+    
+    blsp8Dc1_2 = geomOr( geomAndNot( drc( expol notch < 0.1 shielded ) gate ) ) 
+    processWithin( BLSP errorLayer( blsp8Dc1_2 "BLSP_4.8D.c1_2" ) )
+;    errorLayer( blsp8Dc1_2 "BLSP_4.8D.c1_2: Minimum field Poly notch spacing is 0.1um" )
+
+    blsp8Dc2_1 = geomOr( geomOr( drc( blfpedg 0 < sep < 0.158 ) )
+                 geomOr( drc( blfpedg smfpedg 0 < sep < 0.158 ) ) ) 
+    processWithin( BLSP errorLayer( blsp8Dc2_1 "BLSP_4.8D.c22" ) )
+;    errorLayer( blsp8Dc2_1 "BLSP_4.8D.c22: Minimum wide long field Poly (width > 0.24um, length > 1.0um) spacing is 0.158um" )
+    
+    processWithin( BLSP drc( PO1 DIFF enc < 0.02 ) )
+;    errorLayer( blsp8E "BLSP_4.8E: Minimum Poly extension onto field region (end cap) is 0.02um" )
+
+    blsp8G = geomAnd( acnrext mem8G_2 )
+    processWithin( BLSP errorLayer( blsp8G "BLSP_4.8G" ) )
+   ; errorLayer( blsp8G "BLSP_4.8G: Minimum end cap Poly spacing to Diffusion is 0.12um" )
+
+    blsp8H = drc( DIFF gate 0 < enc < 0.02 ) 
+    processWithin( BLSP errorLayer( blsp8H "BLSP_4.8H" ) )
+;    errorLayer( blsp8H "BLSP_4.8H: Minimum Poly Gate to field edge spacing is 0.02um" )
+
+;     blsp8N = geomOr( drc( bent_fpoly gate_diff_edge sep < 0.05 )
+;                      drc( bent_fpoly gate_diff_edge enc < 0.05 ) ) 
+     blsp8N = geomAnd( geomOr( drc( bent_fpoly gate_diff_edge sep < 0.05 )
+                                drc( bent_fpoly gate_diff_edge enc < 0.05 ) ) BLSP )
+;     processWithin( BLSP errorLayer( blsp8N "BLSP_4.8N" ) )
+    errorLayer( blsp8N "BLSP_4.8N: Minimum bent field Poly to Diffusion spacing is 0.05um" )
+ 
+    processWithin( BLSP drc( NPLUS actpsub enc < 0.15 ) )   
+;    errorLayer( blsp9Ca "BLSP_4.9C.a: Minimum N+ implant overlap N+ Diffusion (inside P-Sub) is 0.15um" )
+
+    processWithin( BLSP drc( NPLUS actnwel sep < 0.19 ) )
+;    errorLayer( blsp10Da "BLSP_4.10D.a: Minimum P+ implant to N+ Diffusion (inside P-Sub) spacing is 0.19um" )
+
+    blsp10Db = geomButting( geomOr( drc( PPLUS actnwel_ram sep < 0.08 ) ) nactnwel ) 
+    processWithin( BLSP errorLayer( blsp10Db "BLSP_4.10D.b" ) ) 
+;    errorLayer( blsp10Db "BLSP_4.10D.b: Minimum P+ implant to N+ Diffusion (inside N-Well) spacing is 0.08um" )
+
+    processWithin( BLSP drc( CONT width < 0.05 ) )
+    processWithin( BLSP drc( CONT width < 0.01 withCornerTouch fig ) )
+;    errorLayer( blsp12A "BLSP_4.12A: Minimum Contact width is 0.05um" )
+
+    processWithin( BLSP drc( CONT sep < 0.22 ) )
+;    errorLayer( blsp12B "BLSP_4.12B: Minimum Contact spacing is 0.22um" )
+
+    processWithin( BLSP drc( CONT notch < 0.10 ) )
+;    errorLayer( blsp12B_2 "BLSP_4.12B.2: Contact notch spacing >= 0.22um." )
+
+    processWithin( BLSP drc( PO1 polcnt enc < 0.031 ) )
+;    errorLayer( blsp12E "BLSP_4.12E: Minimum Poly overlap Contact is 0.31um" )
+
+    processWithin( BLSP drc( ME1 width < 0.05 ) )
+;    errorLayer( blsp13A "BLSP_4.13A: Minimum Metal1 width is 0.05um" )
+
+    processWithin( BLSP drc( ME1 sepNotch < 0.16 ) )
+;    errorLayer( blsp13Ba "BLSP_4.13B.a: Minimum Metal1 to Metal1 spacing (absolute minimum) is 0.16um" )
+
+;
+;***** RULES TO CHECK THE Virage SP SRAM CORE REGIONS *****
+;
+    processWithin( BLSP1 drc( DIFF width < 0.07 ) )
+;    errorLayer( blsp1_1AB "BLSP1_4.1A.a/b, 4.1B: Minimum Diffusion width is 0.07um" )
+
+    processWithin( BLSP1 drc( DIFF sep < 0.26 ) )
+;    errorLayer( blsp1_1C1 "BLSP1_4.1C1: Minimum Diffusion spacing is 0.26um" )
+
+    processWithin( BLSP1 drc( DIFF notch < 0.11 ) )
+;    errorLayer( blsp1_1C2 "BLSP1_4.1C2: Minimum Diffusion notch spacing is 0.11um" )
+
+    processWithin( BLSP1 drc( NWEL ndiff1_ram sep < 0.38 ) )
+;    errorLayer( blsp1_1Da "BLSP1_4.1D.a: Minimum N-Well to N+ spacing (1.8V device) is 0.38um" )
+
+    processWithin( BLSP1 drc( NWEL pdiff1_ram enc < 0.20 ) )
+;    errorLayer( blsp1_1Ga "BLSP1_4.1G.a: Minimum N-Well overlap P+ Diffusion (1.8V device) is 0.20um" )
+
+    processWithin( BLSP1 drc( PO1 width < 0.09 ) )
+;    errorLayer( blsp1_8AaBaC "BLSP1_4.8A/B/C: Minimum Poly width is 0.09um" )
+
+
+    blsp1_8Da1 = geomButting( geomOr( drc( tgate_wa sep < 0.23 ) ) gate keep >= 2 ) 
+    processWithin( BLSP1 errorLayer( blsp1_8Da1 "BLSP1_4.8D.a1" ) )
+   ;"BLSP1_4.8D.a1: Minimum Poly to Poly spacing (on diffusion region without contact in the spacing, Poly width <= 0.24um) is 0.23um." )
+
+    blsp1_8Da2 = geomButting( geomOr( drc( wgate_wa gate_w sep < 0.23 ) ) gate keep >= 2 ) 
+    processWithin( BLSP1 errorLayer( blsp1_8Da2 "BLSP1_4.8D.a2" ) )
+    ;"BLSP1_4.8D.a2: Minimum Poly to Poly spacing (on difffusion region without contact in the spacing, Poly width > 0.24um(either side)) is 0.23um." )
+
+    blsp1_8Db1 = drc( tgate_wb 0 < sep < 0.22 shielded ) 
+    processWithin( BLSP1 errorLayer( blsp1_8Db1 "BLSP1_4.8D.b1" ) )
+    ;"BLSP1_4.8D.b1, 4.14D.b2: Minimum gate Poly spacing over Diffusion w/contact is 0.22um" )
+
+    blsp1_8Dc1_1 = geomAndNot( drc( expol sep < 0.156 shielded ) gate ) 
+    processWithin( BLSP1 errorLayer( blsp1_8Dc1_1 "BLSP1_4.8D.c1_1" ) )
+    ;"BLSP1_4.8D.c1_1: Minimum field Poly spacing is 0.156um" )
+
+    blsp1_8Dc1_2 = geomAndNot( drc( expol notch < 0.08 shielded ) gate ) 
+    processWithin( BLSP1 errorLayer( blsp1_8Dc1_2 "BLSP1_4.8D.c1_2" ) )
+    ;"BLSP1_4.8D.c1_2: Minimum field Poly notch spacing is 0.08um" )
+
+   blsp1_8Dc22_1 = geomOr( drc( blfpedg 0 < sep < 0.158 ) 
+                           drc( blfpedg smfpedg 0 < sep < 0.158 ) )  
+   processWithin( BLSP1 errorLayer( blsp1_8Dc22_1 "BLSP1_4.8D.c22" ) )
+   ;"BLSP1_4.8D.c22: Minimum wide long field Poly (width > 0.24um, length > 1.0um) spacing is 0.158um" )
+
+    blsp1_8Dc2_1 = geomOr( drc( blfpedg 0 < sep < 0.18 )
+                           drc( blfpedg smfpedg 0 < sep < 0.18 ) )
+    processWithin( BLSP1 errorLayer( blsp1_8Dc2_1 "BLSP1_4.8D.c22" ) )
+  ;  errorLayer( blsp1_8Dc2_1 "BLSP1_4.8D.c22: Minimum wide long field Poly (width > 0.24um, length > 1.00um) spacing is 0.18um" )
+
+    blsp1_8E = drc( PO1 DIFF enc < 0.02 ) 
+    processWithin( BLSP1 errorLayer( blsp1_8E "BLSP1_4.8E" ) )
+   ; errorLayer( blsp1_8E "BLSP1_4.8E: Minimum Poly extension onto field region (end cap) is 0.02um" )
+
+    blsp1_8F_1 = drc( PO1 DIFF sep < 0.01 ) 
+    blsp1_8F_2 = geomGetCorner( blsp1_8F_1 keep <= 45 ) 
+    blsp1_8F = geomAvoiding( blsp1_8F_1 blsp1_8F_2 )
+    processWithin( BLSP1 errorLayer( blsp1_8F "BLSP1_4.8F" ) )
+    ;"BLSP1_4.8F: Minimum field Poly spacing to Diffusion is 0.01um." )
+
+    blsp1_8G = geomAnd( acnrext mem8G_2 ) 
+    processWithin( BLSP1 errorLayer( blsp1_8G "BLSP1_4.8G" ) )
+    ;"BLSP1_4.8G: Minimum end cap Poly spacing to Diffusion is 0.12um" )
+
+    processWithin( BLSP1  drc( DIFF gate 0 < enc < 0.02 ) )
+;    errorLayer( blsp1_8H "BLSP1_4.8H: Minimum Poly gate to field edge spacing is 0.02um" )
+    
+    processWithin( BLSP1 drc( bent_fpoly gate_diff_edge sep < 0.05 ) )
+    processWithin( BLSP1 drc( bent_fpoly gate_diff_edge enc < 0.05 ) )
+;    errorLayer( blsp1_8N "BLSP1_4.8N: Minimum bent field Poly to Diffusion spacing is 0.05um" )
+
+    processWithin( BLSP1 drc( NPLUS actpsub enc < 0.19 ) )
+;    errorLayer( blsp1_9Ca "BLSP1_4.9C.a: Minimum N+ implant overlap N+ Diffusion (inside P-Sub) is 0.19um" )
+    
+    processWithin( BLSP1 drc( CONT width < 0.05 ) )
+;    errorLayer( blsp1_12A "BLSP1_4.12A: Minimum Contact width is 0.05um." )
+
+    processWithin( BLSP1 drc( CONT sep < 0.22 ) )
+;    errorLayer( blsp1_12B "BLSP1_4.12B: Minimum Contact spacing is 0.22um" )
+
+    processWithin( BLSP1 drc( CONT notch < 0.10 ) )
+;    errorLayer( blsp1_12B_2 "BLSP1_4.12B: Contact notch spacing >= 0.22um." )
+
+    processWithin( BLSP1 drc( PO1 ctfpol enc < 0.05 ) )
+;    errorLayer( blsp1_12E "BLSP1_4.12E: Minimum Poly overlap Contact is 0.05um" )
+
+    processWithin( BLSP1 drc( pact ctpdiff enc < 0.01 ) )
+;    errorLayer( blsp1_12F "BLSP1_4.12F: Minimum P+ Diffusion overlap Contact is 0.01um" )
+
+    processWithin( BLSP1 drc( nact ctndiff enc < 0.01 ) )
+;    errorLayer( blsp1_12G "BLSP1_4.12G: Minimum N+ Diffusion overlap Contact is 0.01um" )
+
+    processWithin( BLSP1 drc( ME1 width < 0.05 ) )
+;    errorLayer( blsp1_13A "BLSP1_4.13A: Minimum Metal1 width is 0.05um" )
+
+    processWithin( BLSP1 drc( ME1 sepNotch < 0.15 ) )
+;    errorLayer( blsp1_13Ba "BLSP1_4.13B.a: Minimum Metal1 to Metal1 spacing (absolute minimum) is 0.15um" )
+
+    blsp1_13D = drc( ME1 CONT venc( enc1<0 enc2<0.01 enc3<0 enc4<0.01 ) ) 
+    processWithin( BLSP1 errorLayer( blsp1_13D "BLSP1_4.13D" ) )
+    ;"BLSP1_4.13D: Metal1 must completely cover Contact/ Metal1 must enclose the contact on two entire non-adjacent edges >= 0.01um" )
+
+;
+;***** RULES TO CHECK THE DP SRAM CORE REGIONS *****
+;
+    processWithin( DP drc( NWEL ndiff1_ram sep < 0.43 ) )
+;    errorLayer( dp1Da "DP_4.1D.a: Minimum N-Well to N+ spacing (1.8V device) is 0.43um" )
+
+    processWithin( DP drc( NWEL pdiff1_ram enc < 0.32 ) )
+;    errorLayer( dp1Ga "DP_4.1G.a: Minimum N-Well overlap P+ Diffusion (1.8V device) is 0.32um" )
+
+    dp8F = drc( PO1 DIFF sep < 0.02 parallel )
+    processWithin( DP errorLayer( dp8F "DP_4.8F" ) )
+
+    dpacnrext = geomStretchCorner( actcnrs 0.08 )
+    dpacnrex1 = drc( dpacnrext DIFF sep == 0 edgea opposite )
+
+    dp8G = geomAnd( dpacnrex1 geomGetVertex( mem8G_2 keep ==  4 ) )
+    processWithin( DP errorLayer( dp8G "DP_4.8G" ) )
+    ;"DP_4.8G: Minimum end cap Poly spacing to Diffusion is 0.12um" )
+
+;    dp14G = geomAnd( geomAnd( acnrext e14G_3 ) 
+;                     geomOr( geomOr( SRAM BLSP1 ) DP1 ) )
+;    errorLayer( dp8G "DP_4.8G: Minimum end cap Poly spacing to diffusion is 0.08um" )
+
+    dp9Ca = drc( NPLUS actpsub 0 < enc < 0.22 ) 
+    processWithin( DP errorLayer( dp9Ca "DP_4.9C.a" ) )
+    ;"DP_4.9C.a: Minimum N+ implant overlap N+ Diffusion (inside P-Sub) is 0.22um" )
+
+     processWithin( DP drc( NPLUS actnwel 0 <  enc < 0.04 ) )
+;    errorLayer( dp9Cb "DP_4.9C.b: Minimum N+ implant overlap N+ Diffusion (inside N-Well) is 0.04um" )
+
+    dp16Db = geomButting( drc( NPLUS actpsub sep < 0.07 ) pactnwel ) 
+    processWithin( DP errorLayer( dp16Db "DP_4.9D.b" ) )
+    ;"DP_4.9D.b: Minimum N+ implant to P+ Diffusion (inside P-Sub) spacing is 0.07um" )
+
+    processWithin( DP drc( PPLUS actpsub 0 < enc < 0.07 ) )
+;    errorLayer( dp10Cb "DP_4.10C.b: Minimum P+ implant overlap P+ Diffusion (inside P-Sub) is 0.07um" )
+
+    processWithin( DP drc( PPLUS actpsub 0 < sep < 0.22 ) ) 
+    ;"DP_4.10D.a: Minimum P+ implant to N+ Diffusion (inside P-Sub) spacing is 0.22um" )
+
+    dp17Db = geomButting( geomOr( drc( PPLUS actnwel_ram sep < 0.04 ) ) nactnwel )
+    processWithin( DP errorLayer( dp17Db "DP_4.10D.b" ) )
+    ;"DP_4.10D.b: Minimum P+ implant to N+ Diffusion (inside N-Well) spacing is 0.04um" )
+
+    processWithin( DP drc( PO1 ctfpol enc < 0.08 ) )
+;    errorLayer( dp12E "DP_4.12E: Minimum Poly overlap Contact is 0.08um" )
+
+    processWithin( DP drc( pact ctpdiff enc < 0.07 ) )
+;    errorLayer( dp12F "DP_4.12F: Minimum P+ Diffusion overlap Contact is 0.07um" )
+
+    processWithin( DP drc( nact ctndiff enc < 0.07 ) )
+;    errorLayer( dp12G "DP_4.12G: Minimum N+ Diffusion overlap Contact is 0.07um" )
+
+    processWithin( DP drc( ME1 width < 0.07 ) )
+;    errorLayer( dp13A "DP_4.13A: Minimum Metal1 width is 0.07um" )
+
+    processWithin( DP drc( ME1 sep < 0.21 ) )
+;    errorLayer( dp13Ba "DP_4.13B.a: Minimum Metal1 to Metal1 spacing (absolute minimum) is 0.21um" )
+
+    processWithin( DP drc( ME1 notch < 0.2 ) )
+;    errorLayer( dp13Bb "DP_4.13B.b: Minimum Metal1 to Metal1 spacing ( notch ) is 0.2um" )
+
+    cont_dp = geomAnd( CONT DP )
+    dp_13d1 = geomGetLength( drc( ME1 cont_dp enc < 0.04 oppositeB edgeb) keep > 0.04 contiguous )
+    dp13D = drc( geomSize( dp_13d1 0.1 ) width < 0.005 withCornerTouch )
+;    dp13D = drc( ME1 CONT venc( enc1<0 enc2<0.04 enc3<0 enc4<0.04 ) )
+    processWithin( DP errorLayer( dp13D "DP_4.13D" ) ) 
+ ;   errorLayer( dp13D "DP_4.13D: Minimum Metal1 must enclose the contact on two entire non-adjacent edges is 0.04um" )
+
+;
+;***** RULES TO CHECK THE DP1 SRAM CORE REGIONS *****
+;
+    processWithin( DP1 drc( DIFF width < 0.14 ) ) 
+;    errorLayer( dp1_1AB "DP1_4.1A.a/b, 4.1B: Minimum Diffusion width is 0.14um" )
+
+    processWithin( DP1 drc( DIFF sep < 0.26 ) )
+;    errorLayer( dp1_1C1 "DP1_4.1C1: Minimum Diffusion spacing is 0.26um" )
+
+    processWithin( DP1 drc( DIFF notch < 0.11 ) )
+;    errorLayer( dp1_1C2 "DP1_4.1C2: Minimum Diffusion notch spacing is 0.11um" )
+
+    processWithin( DP1 drc( NWEL ndiff1_ram sep < 0.33 ) )
+;    errorLayer( dp1_1Da "DP1_4.1D.a: Minimum N-Well to N+ spacing (1.8V device) is 0.33um" )
+
+    processWithin( DP1 drc( NWEL pdiff1_ram enc < 0.36 ) )
+;    errorLayer( dp1_1Ga "DP1_4.1G.a: Minimum N-Well overlap P+ Diffusion (1.8V device) is 0.36um" )
+
+    processWithin( DP1 drc( PO1 width < 0.08 ) )
+;    errorLayer( dp1_8AaBaC "DP1_4.8A/B/C: Minimum Poly width is 0.08um" )
+
+    dp1_8Db1= geomButting( geomOr( drc( tgate_wb sep < 0.2  ) ) gate keep >= 2 )
+    processWithin( DP1 errorLayer( dp1_8Db1 "DP1_4.8D.b1" ) )
+    ;"DP1_4.8D.b1, 4.14D.b2: Minimum gate Poly spacing over Diffusion w/contact is 0.2um" )
+
+    dp1_8Dc1 = geomAndNot( drc( expol sep < 0.2 shielded ) gate ) 
+    processWithin( DP1 errorLayer( dp1_8Dc1 "DP1_4.8D.c1" ) )
+;    errorLayer( dp1_8Dc1 "DP1_4.8D.c1: Minimum field Poly spacing >= 0.2um" )
+
+    processWithin( DP1 drc( PO1 DIFF enc < 0.03 ) )
+;    errorLayer( dp1_8E "DP1_4.8E: Minimum Poly extension onto field region (end cap) is 0.03um" )
+
+    processWithin(  DP1 drc( PO1 DIFF sep < 0.07 ) )
+;    errorLayer( dp1_8F "DP1_4.8F: Minimum field Poly spacing to Diffusion is 0.07um" )
+
+    dp1_8G = geomAnd( acnrext geomGetVertex( mem8G_2 keep ==  4 ) )
+    processWithin( DP1 errorLayer( dp1_8G "DP1_4.8G" ) )
+    ;"DP1_4.8G: Minimum end cap Poly spacing to Diffusion is 0.12um" )
+
+    dp1_8H = drc( DIFF gate 0 < enc < 0.05 ) 
+    processWithin( DP1 errorLayer( dp1_8H "DP1_4.8H" ) )
+    ;"DP1_4.8H: Minimum Poly gate to field edge spacing is 0.05um" )
+
+    processWithin( DP1 errorLayer( mgate_90 "DP1_4.8J" ) )
+    ;"DP1_4.8J: 90 degree bent gate is not allowed." )
+
+    processWithin( DP1 drc( ctdiff1 PO1 sep < 0.06 ) )
+;    errorLayer( dp1_12Ca "DP1_4.12C.a: Minimum Diffusion Contact to Poly spacing (1.8V device) is 0.06um" )
+
+    processWithin( DP1 drc( pact ctpdiff enc < 0.03 ) )
+;    errorLayer( dp1_12F "DP1_4.12F: Minimum P+ Diffusion overlap Contact is 0.06um" )
+
+    processWithin( DP1 drc( nact ctndiff enc < 0.03 ) )
+;    errorLayer( dp1_12G "DP1_4.12G: Minimum N+ Diffusion overlap Contact is 0.06um" )
+
+;
+;***** RULES TO CHECK THE DP2 SRAM CORE REGIONS *****
+;
+    processWithin( DP2 drc( DIFF width < 0.14 ) )
+;    errorLayer( dp2_1AB "DP2_4.1A.a/b, 4.1B: Minimum Diffusion width is 0.14um" )
+
+    processWithin( DP2 drc( DIFF sep < 0.26 ) )
+;    errorLayer( dp2_1C1 "DP2_4.1C1: Minimum Diffusion spacing is 0.26um" )
+
+    processWithin( DP2 drc( DIFF notch < 0.11 ) )
+;    errorLayer( dp2_1C2 "DP2_4.1C2: Minimum Diffusion notch spacing is 0.11um" )
+
+    processWithin( DP2 drc( NWEL ndiff1_ram sep < 0.38 ) )
+;    errorLayer( dp2_1Da "DP2_4.1D.a: Minimum N-Well to N+ spacing (1.8V device) is 0.38um" )
+
+    processWithin( DP2 drc( NWEL pdiff1_ram enc < 0.2 ) )
+;    errorLayer( dp2_1Ga "DP2_4.1G.a: Minimum N-Well overlap P+ Diffusion (1.8V device) is 0.2um" )
+
+    processWithin( DP2 drc( PO1 width < 0.08 ) )
+;    errorLayer( dp2_8AaBaC "DP2_4.8A/B/C: Minimum Poly width is 0.08um" )
+
+    dp2_8DB1 = geomButting( geomOr( drc( tgate_wb sep < 0.02  ) ) gate keep >= 2 )
+    processWithin( DP2 errorLayer( dp2_8DB1 "DP2_4.8D.b1" ) )
+;    errorLayer( dp2_8Db1 "DP2_4.8D.b1, 4.8D.b2: Minimum gate Poly spacing over Diffusion w/contact is 0.02um" )
+
+    dp2_8Dc11 = geomAndNot( drc( expol sep < 0.20 shielded ) gate ) 
+    processWithin( DP2 errorLayer( dp2_8Dc11 "DP2_4.8D.c1.1" ) )
+    ;"DP2_4.8D.c1.1: Minimum field Poly spacing is 0.20um" )
+
+    dp2_8Dc12 = geomAndNot( drc( expol notch < 0.09 shielded ) gate ) 
+    processWithin( DP2 errorLayer( dp2_8Dc12 "DP2_4.8D.c1.2" ) )
+    ;"DP2_4.8D.c1.2: Minimum field Poly spacing - notch  is 0.09um" )
+
+    processWithin( DP2 drc( PO1 DIFF enc < 0.01 ) )
+;    errorLayer( dp2_8E "DP2_4.8E: Minimum Poly extension onto field region (end cap) is 0.01um" )
+
+    processWithin( DP2 drc( PO1 DIFF sep < 0.02 ) ) 
+;    errorLayer( dp2_8F "DP2_4.8F: Minimum field Poly spacing to Diffusion is 0.02um." )
+
+    dp2_8G = geomAnd( acnrext geomGetVertex( mem8G_2 keep ==  4 ) ) 
+    processWithin( DP2 errorLayer( dp2_8G "DP2_4.8G" ) )
+    ;"DP2_4.8G: Minimum end cap Poly spacing to Diffusion is 0.12um" )
+
+    dp2_8H = drc( DIFF geomWidth( gate keep > 0.02 ) 0 < enc < 0.09 ) 
+    processWithin( DP2 errorLayer( dp2_8H "DP2_4.8H" ) )
+    ;"DP2_4.8H: Minimum Poly gate to field edge spacing is 0.09um" )
+
+    processWithin( DP2 errorLayer( mgate_90 "DP2_4.8J" ) )
+    ;"DP2_4.8J: 90 degree bent gate is not allowed." )
+
+    processWithin( DP2 drc( bent_fpoly gate_diff_edge sep < 0.02 ) )
+    processWithin( DP2 drc( bent_fpoly gate_diff_edge enc < 0.02 ) )
+;  errorLayer( DP2_14N "DP2_4.14N: Minimum Poly bent gate on field region to Diffusion spacing is 0.02um." )
+
+    processWithin( DP2 drc( ctdiff1 PO1 sep < 0.08 ) ) 
+;    errorLayer( dp2_12Ca "DP2_4.12C.a: Minimum Diffusion Contact to Poly spacing (1.8V device) is 0.08um" )
+
+    processWithin( DP2  drc( ctfpol DIFF sep < 0.17 ) )
+;  errorLayer( dp2_12D "DP2_4.12D: Minimum Poly Contact to Diffusion edge spacing is 0.17um." )
+
+    processWithin( DP2 drc( pact ctpdiff enc < 0.03 ) )
+;    errorLayer( dp2_12F "DP2_4.12F: Minimum P+ Diffusion overlap Contact is 0.03um" )
+
+    processWithin( DP2 drc( nact ctndiff enc < 0.03 ) )
+;    errorLayer( dp2_12G "DP2_4.12G: Minimum N+ Diffusion overlap Contact is 0.03um" )
+
+    dp2_13D = drc( ME1 CONT venc( enc1<0 enc2<0.04 enc3<0 enc4<0.04 ) )
+    processWithin( DP2 errorLayer( dp2_13D "DP2_4.13D" ) )
+    ;"DP2_4.13D: Minimum Metal1 must enclose the contact on two entire non-adjacent edges is 0.04um" )
+
+    dp2_14Cc = drc( ME1 VI1 venc( enc1<0 enc2<0.04 enc3<0 enc4<0.04 ) ) 
+    processWithin( DP2 errorLayer( dp2_14Cc "DP2_4.14C.b" ) )
+    ;"DP2_4.14C.b: Minimum wide Metal1 (>= 10um) Overlap MVia1 is 0.04um" )
+
+;
+;***** RULES TO CHECK THE ROM CORE REGIONS *****
+;
+    processWithin( ROM drc( ctdiff1 PO1 sep < 0.14 ) )
+;    errorLayer( rom12Ca "ROM_4.12C.a: Minimum Diffusion Contact to Poly spacing (1.8V device) is 0.14um" )
+
+    processWithin( ROM drc( pact ctpdiff enc < 0.09 ) )
+;    errorLayer( rom12F "ROM_4.12F: Minimum P+ Diffusion overlap Contact is 0.09um" )
+    
+    processWithin( ROM drc( nact ctndiff enc < 0.09 ) )
+;    errorLayer( rom12G "ROM_4.12G: Minimum N+ Diffusion overlap Contact is 0.09um" )
+
+;
+;***** RULES TO CHECK THE BLSPLP SRAM CORE REGIONS *****
+;
+    processWithin( BLSPLP drc( DIFF width < 0.07 ) )
+;    errorLayer( blsplp1AB "BLSPLP_4.1A.a/b, 4.1B: Active width >= 0.07um." )
+ 
+    processWithin( BLSPLP drc( DIFF sep < 0.26 ) )
+;    errorLayer( blsplp1C1 "BLSPLP_4.1C1: Active spacing >= 0.26um." )
+ 
+    processWithin( BLSPLP drc( DIFF notch < 0.11 ) )
+;    errorLayer( blsplp1C2 "BLSPLP_4.1C2: Active notch spacing >= 0.11um." )
+ 
+    processWithin( BLSPLP drc( NWEL ndiff1_ram sep < 0.38 ) )
+;    errorLayer( blsplp1Da "BLSPLP_4.1D.a: Nwell to N+ spacing >= 0.38um (1.8V)." )
+ 
+    processWithin( BLSPLP drc( NWEL pdiff1_ram enc < 0.20 ) )
+ ;   errorLayer( blsplp1Ga "BLSPLP_4.1G.a: Nwell overlap P+ Diffusion >= 0.20um (1.8V)." )
+ 
+    processWithin( BLSPLP drc( PO1 width < 0.09 ) )
+;    errorLayer( blsplp8AaBaC "BLSPLP_4.8A/B/C: All Poly width >= 0.09um." )
+ 
+    blsplp_14Da1 = geomButting( drc( tgate_wa sep < 0.206 ) gate keep >= 2 ) 
+    processWithin( BLSPLP errorLayer( blsplp_14Da1 "BLSPLP_4.14D.a1" ) )
+    ;"BLSPLP_4.14D.a1: Minimum Poly to Poly spacing (on diffusion region without contact in the spacing, Poly width <= 0.24um) is 0.206um." )
+ 
+    blsplp_14Da2 = geomButting( drc( wgate_wa gate_w sep < 0.206 ) gate keep >= 2 )
+    processWithin( BLSPLP errorLayer( blsplp_14Da2 "BLSPLP_4.14D.a2" ) )
+    ;"BLSPLP_4.14D.a2: Minimum Poly to Poly spacing (on difffusion region without contact in the spacing, Poly width > 0.24um(either side)) is 0.206um." )
+
+    blsplp14Db1_1= drc( gate sdwct sep == 0 edgea opposite )
+    blsplp14Db1_2 = drc( blsplp14Db1_1 0 < sep < 0.22 shielded )
+    processWithin( BLSPLP errorLayer( blsplp14Db1_2 "BLSPLP_4.14D.b1" ) )
+    ;"BLSPLP_4.14D.b1, BLSPLP_4.14D.b2: Gate Poly spacing over diffusion w/contact is 0.22um" )
+
+    blsplp14Dc1_1 = geomAndNot( geomOr( drc( expol sep < 0.148 ) ) gate ) 
+    processWithin( BLSPLP errorLayer( blsplp14Dc1_1 "BLSPLP_4.14D.c1_1" ) )
+    ;"BLSPLP_4.14D.c1_1: Field Poly spacing >= 0.148um, exclude notch." )
+ 
+    blsplp14Dc1_2 = geomAndNot( drc( expol notch < 0.08 ) gate ) 
+    processWithin( BLSPLP errorLayer( blsplp14Dc1_2 "BLSPLP_4.14D.c1_2" ) )
+    ;"BLSPLP_4.14D.c1_2: Field Poly notch spacing >= 0.09um, notch only." )
+ 
+    bgfpedg = geomGetEdge( bgfply coincident expol )
+    smfpedg = geomAndNot( expol bgfpedg )
+    blfpedg = geomGetLength( bgfpedg ignore <= 1.0 )
+    blfpvio1 = drc( blfpedg 0 < sep < 0.198 )
+    blfpvio2 = drc( blfpedg smfpedg 0 < sep < 0.198 )
+ 
+    blsplp14Dc2_1a = geomGetLength( geomOr( blfpvio1 blfpvio2 ) keep < 1 ) 
+    processWithin( BLSPLP errorLayer( blsplp14Dc2_1a "BLSPLP_4.14D.c2.1a" ) )
+    ;"BLSPLP_4.14D.c2.1a: Wide Long Field Poly (width > 0.24um, length > 1.00um) spacing >= 0.198um." )
+ 
+    intpol = geomAvoiding( expol CONT )
+    end_cap1 = geomStraddle( intpol gate keep == 1 )
+    blsplpend_cap = geomGetVertex( end_cap1 keep ==  4 )
+    blsplp14G_1 = geomOr( drc( gate DIFF sep < 0.12 only_perp ) )
+    blsplp14G =  geomGetEdge( blsplp14G_1 over blsplpend_cap ) 
+    processWithin( BLSPLP errorLayer( blsplp14G "BLSPLP_4.14G" ) )
+    ;"BLSPLP_4.14G: End Cap Poly spacing to diffusion >= 0.12um." )
+
+    processWithin( BLSPLP drc( bent_fpoly gate_diff_edge sep < 0.05 ) ) 
+    ;"BLSPLP_4.14N: Bent field poly to diffusion spacing >= 0.05um." )
+
+    processWithin( BLSPLP drc( NPLUS width < 0.29 ) )
+;    errorLayer( blsplp16A "BLSPLP_4.16A: Minimum N+ implant width is 0.29um." )
+
+    processWithin( BLSPLP drc( NPLUS sepNotch < 0.234 ) )
+;    errorLayer( blsplp16B "BLSPLP_4.16B: Minimum N+ implant to N+ implant spacing is 0.234um." )
+
+    processWithin( BLSPLP drc( NPLUS actpsub enc < 0.20 ) )
+;    errorLayer( blsplp16Ca "BLSPLP_4.16C.a: Minimum N+ implant overlap N+ Diffusion (inside P-Well) is 0.20um." )
+
+    processWithin( BLSPLP drc( PPLUS sepNotch < 0.235 )  )
+;    errorLayer( blsplp17B "BLSPLP_4.17B: Minimum P+ implant to P+ implant spacing is 0.235um." )
+
+    processWithin( BLSPLP drc( CONT sep < 0.22 ) )
+;    errorLayer( blsplp19B1 "BLSPLP_4.19B: Contact spacing >= 0.22um." )
+
+    processWithin( BLSPLP drc( CONT notch < 0.10 ) )
+;    errorLayer( blsplp19B2 "BLSPLP_4.19B: Contact notch spacing >= 0.10um." )
+
+    processWithin( BLSPLP drc( pact ctpdiff enc < 0.01 ) )
+    ;"BLSPLP_4.19F: P+ Diffusion overlap Contact >= 0.01um." )
+
+    processWithin( BLSPLP drc( nact ctndiff enc < 0.01 ) ) 
+    ;"BLSPLP_4.19G: N+ Diffusion overlap Contact >= 0.01um." )
+
+    processWithin( BLSPLP drc( ME1 width < 0.05 ) )
+    ;"BLSPLP_4.20A: Metal1 width >= 0.05um." )
+
+    processWithin( BLSPLP drc( ME1 sep < 0.13 ) )
+;   "BLSPLP_4.20B.a.1: Metal1 to Metal1 spacing (absolute minimum) >= 0.13um." )
+
+    blsplp21Cc = drc( ME1 VI1 venc( enc1<0 enc2<0.04 enc3<0 enc4<0.04 ) ) 
+    processWithin( BLSPLP errorLayer( blsplp21Cc "BLSPLP_4.21C.c/d/e" ) )
+    ;"BLSPLP_4.21C.c/d/e: Metal1 must enclose the Via1 on two entire non-adjacent edges >= 0.04um." )

@@ -1,0 +1,451 @@
+;////////////////////////////////////////////////////////////////////
+;
+;  Parent Doc  : G-03LO-GENERATION25_BEYOND-TLR/LOGO Ver: 2.3-P1
+;
+;////////////////////////////////////////////////////////////////////
+; Notes: The DRC Command file is base on the TLR: G-03LO-GENERATION25_BEYOND-TLR/LOGO Ver: 2.3-P1
+;        And change some layer name to meet GENERATION18.
+;
+
+
+;  LOGO rule is follow G-03LO-GENERATION25_BEYOND-TLR/LOGO
+;==========================
+;===  LOGO  Rule 	 ===
+;==========================
+
+
+DIFF_LOGO  = geomAnd( DIFF  LOGOMK )
+NWEL_LOGO  = geomAnd( NWEL  LOGOMK )
+TG_LOGO    = geomAnd( TG    LOGOMK )
+PO1_LOGO   = geomAnd( PO1   LOGOMK )
+NPLUS_LOGO = geomAnd( NPLUS LOGOMK )
+PPLUS_LOGO = geomAnd( PPLUS LOGOMK )
+SAB_LOGO   = geomAnd( SAB   LOGOMK )
+CONT_LOGO  = geomAnd( CONT  LOGOMK )
+ME1_LOGO   = geomAnd( ME1   LOGOMK )
+ME2_LOGO   = geomAnd( ME2   LOGOMK )
+ME3_LOGO   = geomAnd( ME3   LOGOMK )
+ME4_LOGO   = geomAnd( ME4   LOGOMK )
+ME5_LOGO   = geomAnd( ME5   LOGOMK )
+ME6_LOGO   = geomAnd( ME6   LOGOMK )
+VI1_LOGO   = geomAnd( VI1   LOGOMK )
+VI2_LOGO   = geomAnd( VI2   LOGOMK )
+VI3_LOGO   = geomAnd( VI3   LOGOMK )
+VI4_LOGO   = geomAnd( VI4   LOGOMK )
+VI5_LOGO   = geomAnd( VI5   LOGOMK )
+MMC_LOGO   = geomAnd( MMC   LOGOMK )
+PAD_LOGO   = geomAnd( PAD   LOGOMK )
+TWEL_LOGO  = geomAnd( TWEL  LOGOMK )
+HR_LOGO    = geomAnd( HR    LOGOMK )
+PESD_LOGO  = geomAnd( PESD  LOGOMK )
+
+
+
+;============================
+;===  Diffusion Rule   ===
+;============================
+eLOGO_5_1A_LOGO_5_1C_suggested = geomOr( drc( DIFF_LOGO width < 0.3 ) geomSize( drc( DIFF_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_1A_LOGO_5_1C_suggested "LOGO_5.1A_LOGO_5.1C_suggested: Minimum width of DIFF region is 0.3um")
+
+
+eLOGO_5_1B = geomOr( drc( DIFF_LOGO sepNotch < 0.4 shielded withIntersection ) )
+errorLayer(eLOGO_5_1B "LOGO_5.1B: Minimum space between DIFF regions is 0.4um")
+
+
+;============================
+;===  NWEL Rule   ===
+;============================
+eLOGO_5_2A_LOGO_5_2C_suggested = geomOr( drc( NWEL_LOGO width < 1.2 ) geomSize( drc( NWEL_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_2A_LOGO_5_2C_suggested "LOGO_5.2A_LOGO_5.2C_suggested: Minimum width of NW region is 1.2um")
+
+
+eLOGO_5_2B = geomOr( drc( NWEL_LOGO sepNotch < 2 shielded withIntersection ) )
+errorLayer(eLOGO_5_2B "LOGO_5.2B: Minimum space between NW regions is 2um")
+
+
+;============================
+;===  TG Rule   ===
+;============================
+eLOGO_5_3A_LOGO_5_3C_suggested = geomOr( drc( TG_LOGO width < 0.6 ) geomSize( drc( TG_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_3A_LOGO_5_3C_suggested "LOGO_5.3A_LOGO_5.3C_suggested: Minimum width of TG region is 0.6um")
+
+
+eLOGO_5_3B = geomOr( drc( TG_LOGO sepNotch < 0.6 shielded withIntersection ) )
+errorLayer(eLOGO_5_3B "LOGO_5.3B: Minimum space between TG regions is 0.6um")
+
+
+;============================
+;===  PO1 Rule   ===
+;============================
+eLOGO_5_4A_LOGO_5_4C_suggested = geomOr( drc( PO1_LOGO width < 0.24 ) geomSize( drc( PO1_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_4A_LOGO_5_4C_suggested "LOGO_5.4A_LOGO_5.4C_suggested: Minimum width of PO1 region is 0.24um")
+
+
+eLOGO_5_4B = geomOr( drc( PO1_LOGO sepNotch < 0.32 shielded withIntersection ) )
+errorLayer(eLOGO_5_4B "LOGO_5.4B: Minimum space between PO1 regions is 0.32um")
+
+
+;============================
+;===  NPLUS Rule   ===
+;============================
+eLOGO_5_5A_LOGO_5_5C_suggested = geomOr( drc( NPLUS_LOGO width < 0.42 ) geomSize( drc( NPLUS_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_5A_LOGO_5_5C_suggested "LOGO_5.5A_LOGO_5.5C_suggested: Minimum width of NPLUS region is 0.42um")
+
+
+eLOGO_5_5B = geomOr( drc( NPLUS_LOGO sepNotch < 0.42 shielded withIntersection ) )
+errorLayer(eLOGO_5_5B "LOGO_5.5B: Minimum space between NPLUS regions is 0.42um")
+
+
+;============================
+;===  PPLUS Rule   ===
+;============================
+eLOGO_5_6A_LOGO_5_6C_suggested = geomOr( drc( PPLUS_LOGO width < 0.42 ) geomSize( drc( PPLUS_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_6A_LOGO_5_6C_suggested "LOGO_5.6A_LOGO_5.6C_suggested: Minimum width of PPLUS region is 0.42um")
+
+
+eLOGO_5_6B = geomOr( drc( PPLUS_LOGO sepNotch < 0.42 shielded withIntersection ) )
+errorLayer(eLOGO_5_6B "LOGO_5.6B: Minimum space between PPLUS regions is 0.42um")
+
+
+
+;============================
+;===  SAB Rule   ===
+;============================
+eLOGO_5_7A_LOGO_5_7C_suggested = geomOr( drc( SAB_LOGO width < 0.6 ) geomSize( drc( SAB_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_7A_LOGO_5_7C_suggested "LOGO_5.7A_LOGO_5.7C_suggested: Minimum width of SAB region is 0.6um")
+
+
+eLOGO_5_7B = geomOr( drc( SAB_LOGO sepNotch < 0.6 shielded withIntersection ) )
+errorLayer(eLOGO_5_7B "LOGO_5.7B: Minimum space between SAB regions is 0.6um")
+
+
+
+;============================
+;===  CONT Rule   ===
+;============================
+eLOGO_5_8A_LOGO_5_8C_suggested = geomOr( drc( CONT_LOGO width < 0.32 ) geomSize( drc( CONT_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_8A_LOGO_5_8C_suggested "LOGO_5.8A_LOGO_5.8C_suggested: Minimum width of CONT region is 0.32um")
+
+
+eLOGO_5_8B = geomOr( drc( CONT_LOGO sepNotch < 0.4 shielded withIntersection ) )
+errorLayer(eLOGO_5_8B "LOGO_5.8B: Minimum space between CONT regions is 0.4um")
+
+
+eLOGO_5_8Da_CONT_PO1_LOGO = geomButtOrOver( CONT_LOGO PO1_LOGO )
+eLOGO_5_8Da = geomOr( drc( PO1_LOGO eLOGO_5_8Da_CONT_PO1_LOGO 0 < enc < 0.14 shielded withIntersection with_perp ) geomSize( geomGetEdge( eLOGO_5_8Da_CONT_PO1_LOGO not_over PO1_LOGO ) -0.001 edges ) geomSize( drc( PO1_LOGO eLOGO_5_8Da_CONT_PO1_LOGO enc < 0.01 edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_8Da "LOGO_5.8Da: Minimum PO1 enclosure of CONT is 0.14,")
+
+eLOGO_5_8Db_CONT_PO1_LOGO = geomButtOrOver( CONT_LOGO PO1_LOGO )
+eLOGO_5_8Db_CONT_DIFF_LOGO = geomAndNot( CONT_LOGO eLOGO_5_8Db_CONT_PO1_LOGO )
+eLOGO_5_8Db = geomOr( drc( DIFF_LOGO eLOGO_5_8Db_CONT_DIFF_LOGO 0 < enc < 0.14 shielded withIntersection with_perp ) geomSize( geomGetEdge( eLOGO_5_8Db_CONT_DIFF_LOGO not_over DIFF_LOGO ) -0.001 edges ) geomSize( drc( DIFF_LOGO eLOGO_5_8Db_CONT_DIFF_LOGO enc < 0.01 edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_8Db "LOGO_5.8Db: Minimum DIFFUSION enclosure of CONT is 0.14,")
+
+;============================
+;===  Metal-1 Rule (P60)  ===
+;============================
+eLOGO_5_9A_LOGO_5_9C_suggested = geomOr( drc( ME1_LOGO width < 0.32 ) geomSize( drc( ME1_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_9A_LOGO_5_9C_suggested "LOGO_5.9A_LOGO_5.9C_suggested: Minimum width of ME1 region is 0.32um")
+
+
+eLOGO_5_9B = geomOr( drc( ME1_LOGO sepNotch < 0.32 shielded withIntersection ) )
+errorLayer(eLOGO_5_9B "LOGO_5.9B: Minimum space between ME1 regions is 0.32um")
+
+
+eLOGO_5_9D = geomOr( drc( ME1_LOGO CONT_LOGO enc < 0.3 shielded withIntersection ) geomSize( drc( ME1_LOGO CONT_LOGO enc < 0.01 edge ) -0.001 edges ) geomAndNot( CONT_LOGO ME1_LOGO ) )
+errorLayer(eLOGO_5_9D "LOGO_5.9D: Minimum ME1 overlap contac is 0.3um, no CONT outside ME1")
+
+
+;============================
+;===  Metal-2 Rule   ===
+;============================
+eLOGO_5_11A_M2_LOGO_5_11C_M2_suggested = geomOr( drc( ME2_LOGO width < 0.4 ) geomSize( drc( ME2_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_11A_M2_LOGO_5_11C_M2_suggested "LOGO_5.11A_M2_LOGO_5.11C_M2_suggested: Minimum width of ME2 region is 0.4um")
+
+
+eLOGO_5_11B_M2 = geomOr( drc( ME2_LOGO sepNotch < 0.4 shielded withIntersection ) )
+errorLayer(eLOGO_5_11B_M2 "LOGO_5.11B_M2: Minimum space between ME2 regions is 0.4um")
+
+
+
+;============================
+;===  Metal-3 Rule   ===
+;============================
+eLOGO_5_11A_M3_LOGO_5_11C_M3_suggested = geomOr( drc( ME3_LOGO width < 0.4 ) geomSize( drc( ME3_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_11A_M3_LOGO_5_11C_M3_suggested "LOGO_5.11A_M3_LOGO_5.11C_M3_suggested: Minimum width of ME3 region is 0.4um")
+
+
+eLOGO_5_11B_M3 = geomOr( drc( ME3_LOGO sepNotch < 0.4 shielded withIntersection ) )
+errorLayer(eLOGO_5_11B_M3 "LOGO_5.11B_M3: Minimum space between ME3 regions is 0.4um")
+
+
+
+;============================
+;===  Metal-4 Rule   ===
+;============================
+eLOGO_5_11A_M4_LOGO_5_11C_M4_suggested = geomOr( drc( ME4_LOGO width < 0.4 ) geomSize( drc( ME4_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_11A_M4_LOGO_5_11C_M4_suggested "LOGO_5.11A_M4_LOGO_5.11C_M4_suggested: Minimum width of ME4 region is 0.4um")
+
+
+eLOGO_5_11B_M4 = geomOr( drc( ME4_LOGO sepNotch < 0.4 shielded withIntersection ) )
+errorLayer(eLOGO_5_11B_M4 "LOGO_5.11B_M4: Minimum space between ME4 regions is 0.4um")
+
+
+;============================
+;===  Metal-5 Rule   ===
+;============================
+eLOGO_5_11A_M5_LOGO_5_11C_M5_suggested = geomOr( drc( ME5_LOGO width < 0.4 ) geomSize( drc( ME5_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_11A_M5_LOGO_5_11C_M5_suggested "LOGO_5.11A_M5_LOGO_5.11C_M5_suggested: Minimum width of ME5 region is 0.4um")
+
+
+eLOGO_5_11B_M5 = geomOr( drc( ME5_LOGO sepNotch < 0.4 shielded withIntersection ) )
+errorLayer(eLOGO_5_11B_M5 "LOGO_5.11B_M5: Minimum space between ME5 regions is 0.4um")
+
+
+
+;============================
+;===  Metal-6 Rule   ===
+;============================
+eLOGO_5_11A_M6_LOGO_5_11C_M6_suggested = geomOr( drc( ME6_LOGO width < 2.22 ) geomSize( drc( ME6_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_11A_M6_LOGO_5_11C_M6_suggested "LOGO_5.11A_M6_LOGO_5.11C_M6_suggested: Minimum width of TOP Metal region is 2.22um")
+
+
+eLOGO_5_11B_M6 = geomOr( drc( ME6_LOGO sepNotch < 2.22 shielded withIntersection ) )
+errorLayer(eLOGO_5_11B_M6 "LOGO_5.11B_M6: Minimum space between TOP Metal regions is 2.22um")
+
+
+
+;==========================
+;===  Top Metal Rule   ===
+;==========================
+
+  if( avSwitch( "metal2_is_top" )
+    then
+
+    eLOGO_5_12A_M2_LOGO_5_12C_M2_suggested = drc( ME2_LOGO width < 2.22 withCornerTouch )
+    errorLayer(eLOGO_5_12A_M2_LOGO_5_12C_M2_suggested "LOGO_5.12A_M2_LOGO_5.12C_M2_suggested: Minimum width of TOP Metal2 region is 2.22um")
+
+
+    eLOGO_5_12B_M2 = drc( ME2_LOGO sepNotch < 2.22 shielded withIntersection withSingularPoint )
+    errorLayer(eLOGO_5_12B_M2 "LOGO_5.12B_M2: Minimum space between TOP Metal2 regions is 2.22um")
+
+  ) ;end if "metal2_is_top"
+
+  if( avSwitch( "metal3_is_top" )
+    then
+
+    eLOGO_5_12A_M3_LOGO_5_12C_M3_suggested = drc( ME3_LOGO width < 2.22 withCornerTouch )
+    errorLayer(eLOGO_5_12A_M3_LOGO_5_12C_M3_suggested "LOGO_5.12A_M3_LOGO_5.12C_M3_suggested: Minimum width of TOP Metal3 region is 2.22um")
+
+
+    eLOGO_5_12B_M3 = drc( ME3_LOGO sepNotch < 2.22 shielded withIntersection withSingularPoint )
+    errorLayer(eLOGO_5_12B_M3 "LOGO_5.12B_M3: Minimum space between TOP Metal3 regions is 2.22um")
+
+  ) ;end if "metal3_is_top"
+
+
+  if( avSwitch( "metal4_is_top" )
+    then
+
+    eLOGO_5_12A_M4_LOGO_5_12C_M4_suggested = drc( ME4_LOGO width < 2.22 withCornerTouch )
+    errorLayer(eLOGO_5_12A_M4_LOGO_5_12C_M4_suggested "LOGO_5.12A_M4_LOGO_5.12C_M4_suggested: Minimum width of TOP Metal4 region is 2.22um")
+
+
+    eLOGO_5_12B_M4 = drc( ME4_LOGO sepNotch < 2.22 shielded withIntersection withSingularPoint )
+    errorLayer(eLOGO_5_12B_M4 "LOGO_5.12B_M4: Minimum space between TOP Metal4 regions is 2.22um")
+
+  ) ;end if "metal4_is_top"
+
+
+  if( avSwitch( "metal5_is_top" )
+    then
+
+    eLOGO_5_12A_M5_LOGO_5_12C_M5_suggested = drc( ME5_LOGO width < 2.22 withCornerTouch )
+    errorLayer(eLOGO_5_12A_M5_LOGO_5_12C_M5_suggested "LOGO_5.12A_M5_LOGO_5.12C_M5_suggested: Minimum width of TOP Metal5 region is 2.22um")
+
+
+    eLOGO_5_12B_M5 = drc( ME5_LOGO sepNotch < 2.22 shielded withIntersection withSingularPoint )
+    errorLayer(eLOGO_5_12B_M5 "LOGO_5.12B_M5: Minimum space between TOP Metal5 regions is 2.22um")
+
+  ) ;end if "metal5_is_top"
+
+
+
+;=========================
+;===  Via1 Rule (P66)  ===
+;=========================
+
+eLOGO_5_10A_V1_LOGO_5_10C_V1_suggested = drc( VI1_LOGO width < 0.4 withCornerTouch )
+errorLayer(eLOGO_5_10A_V1_LOGO_5_10C_V1_suggested "LOGO_5.10A_V1_LOGO_5.10C_V1_suggested: Minimum width of a VI1 region is 0.40um")
+
+eLOGO_5_10B_V1 = drc( VI1_LOGO sepNotch < 0.36 shielded withIntersection withSingularPoint )
+errorLayer(eLOGO_5_10B_V1 "LOGO_5.10B_V1: Minimum space between two VI1 regions  is 0.36um")
+
+
+eLOGO_5_10Da_V1 = geomOr(
+    drc( ME1_LOGO VI1_LOGO enc < 0.3 shielded withIntersection withSingularPoint )
+    geomAndNot( VI1_LOGO ME1_LOGO ) )
+errorLayer(eLOGO_5_10Da_V1 "LOGO_5.10Da_V1: Minimum ME1 overlap VIA1 is 0.3um, no VIA1 outside ME1")
+
+eLOGO_5_10Db_V1 = geomOr(
+    drc( ME2_LOGO VI1_LOGO enc < 0.4 shielded withIntersection withSingularPoint )
+    geomAndNot( VI1_LOGO ME2_LOGO ) )
+errorLayer(eLOGO_5_10Db_V1 "LOGO_5.10Db_V1: Minimum ME2 overlap VIA1 is 0.4um, no VIA1 outside ME2")
+
+
+
+;=========================
+;===  Via2 Rule (P66)  ===
+;=========================
+
+eLOGO_5_10A_V2_LOGO_5_10C_V2_suggested = drc( VI2_LOGO width < 0.4 withCornerTouch )
+errorLayer(eLOGO_5_10A_V2_LOGO_5_10C_V2_suggested "LOGO_5.10A_V2_LOGO_5.10C_V2_suggested: Minimum width of a VI2 region is 0.40um")
+
+eLOGO_5_10B_V2 = drc( VI2_LOGO sepNotch < 0.36 shielded withIntersection withSingularPoint )
+errorLayer(eLOGO_5_10B_V2 "LOGO_5.10B_V2: Minimum space between two VI2 regions  is 0.36um")
+
+
+eLOGO_5_10Da_V2 = geomOr(
+    drc( ME2_LOGO VI2_LOGO enc < 0.3 shielded withIntersection withSingularPoint )
+    geomAndNot( VI2_LOGO ME2_LOGO ) )
+errorLayer(eLOGO_5_10Da_V2 "LOGO_5.10Da_V2: Minimum ME2 overlap VIA2 is 0.3um, no VIA2 outside ME2")
+
+eLOGO_5_10Db_V2 = geomOr(
+    drc( ME3_LOGO VI2_LOGO enc < 0.4 shielded withIntersection withSingularPoint )
+    geomAndNot( VI2_LOGO ME3_LOGO ) )
+errorLayer(eLOGO_5_10Db_V2 "LOGO_5.10Db_V2: Minimum ME3 overlap VIA2 is 0.4um, no VIA2 outside ME3")
+
+
+
+;=========================
+;===  Via3 Rule (P66)  ===
+;=========================
+
+eLOGO_5_10A_V3_LOGO_5_10C_V3_suggested = drc( VI3_LOGO width < 0.4 withCornerTouch )
+errorLayer(eLOGO_5_10A_V3_LOGO_5_10C_V3_suggested "LOGO_5.10A_V3_LOGO_5.10C_V3_suggested: Minimum width of a VI3 region is 0.40um")
+
+eLOGO_5_10B_V3 = drc( VI3_LOGO sepNotch < 0.36 shielded withIntersection withSingularPoint )
+errorLayer(eLOGO_5_10B_V3 "LOGO_5.10B_V3: Minimum space between two VI3 regions  is 0.36um")
+
+
+eLOGO_5_10Da_V3 = geomOr(
+    drc( ME3_LOGO VI3_LOGO enc < 0.3 shielded withIntersection withSingularPoint )
+    geomAndNot( VI3_LOGO ME3_LOGO ) )
+errorLayer(eLOGO_5_10Da_V3 "LOGO_5.10Da_V3: Minimum ME3 overlap VIA3 is 0.3um, no VIA3 outside ME3")
+
+eLOGO_5_10Db_V3 = geomOr(
+    drc( ME4_LOGO VI3_LOGO enc < 0.4 shielded withIntersection withSingularPoint )
+    geomAndNot( VI3_LOGO ME4_LOGO ) )
+errorLayer(eLOGO_5_10Db_V3 "LOGO_5.10Db_V3: Minimum ME4 overlap VIA3 is 0.4um, no VIA3 outside ME4")
+
+
+
+;=========================
+;===  Via4 Rule (P66)  ===
+;=========================
+
+eLOGO_5_10A_V4_LOGO_5_10C_V4_suggested = drc( VI4_LOGO width < 0.4 withCornerTouch )
+errorLayer(eLOGO_5_10A_V4_LOGO_5_10C_V4_suggested "LOGO_5.10A_V4_LOGO_5.10C_V4_suggested: Minimum width of a VI4 region is 0.40um")
+
+eLOGO_5_10B_V4 = drc( VI4_LOGO sepNotch < 0.36 shielded withIntersection withSingularPoint )
+errorLayer(eLOGO_5_10B_V4 "LOGO_5.10B_V4: Minimum space between two VI4 regions  is 0.36um")
+
+
+eLOGO_5_10Da_V4 = geomOr(
+    drc( ME4_LOGO VI4_LOGO enc < 0.3 shielded withIntersection withSingularPoint )
+    geomAndNot( VI4_LOGO ME4_LOGO ) )
+errorLayer(eLOGO_5_10Da_V4 "LOGO_5.10Da_V4: Minimum ME4 overlap VIA4 is 0.3um, no VIA4 outside ME4")
+
+eLOGO_5_10Db_V4 = geomOr(
+    drc( ME5_LOGO VI4_LOGO enc < 0.4 shielded withIntersection withSingularPoint )
+    geomAndNot( VI4_LOGO ME5_LOGO ) )
+errorLayer(eLOGO_5_10Db_V4 "LOGO_5.10Db_V4: Minimum ME5 overlap VIA4 is 0.4um, no VIA4 outside ME5")
+
+
+
+;=========================
+;===  Via5 Rule (P66)  ===
+;=========================
+
+eLOGO_5_10A_V5_LOGO_5_10C_V5_suggested = drc( VI5_LOGO width < 0.4 withCornerTouch )
+errorLayer(eLOGO_5_10A_V5_LOGO_5_10C_V5_suggested "LOGO_5.10A_V5_LOGO_5.10C_V5_suggested: Minimum width of a TOP VIA region is 0.40um")
+
+eLOGO_5_10B_V5 = drc( VI5_LOGO sepNotch < 0.36 shielded withIntersection withSingularPoint )
+errorLayer(eLOGO_5_10B_V5 "LOGO_5.10B_V5: Minimum space between two TOP VIA regions  is 0.36um")
+
+eLOGO_5_10Da_V5 = geomOr(
+    drc( ME5_LOGO VI5_LOGO enc < 0.3 shielded withIntersection withSingularPoint )
+    geomAndNot( VI5_LOGO ME5_LOGO ) )
+errorLayer(eLOGO_5_10Da_V5 "LOGO_5.10Da_V5: Minimum ME5 overlap VIA5 is 0.3um, no VIA5 outside ME5")
+
+
+eLOGO_5_10Db_V5 = geomOr(
+    drc( ME6_LOGO VI5_LOGO enc < 0.4 shielded withIntersection withSingularPoint )
+    geomAndNot( VI5_LOGO ME6_LOGO ) )
+errorLayer(eLOGO_5_10Db_V5 "LOGO_5.10Db_V5: Minimum ME6 overlap VIA5 is 0.4um, no VIA5 outside ME6")
+
+
+;=========================
+;===  Metal_CAP Rule   ===
+;=========================
+
+eLOGO_5_14A_LOGO_5_14C_suggested = geomOr( drc( MMC_LOGO width < 3.9 ) geomSize( drc( MMC_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_14A_LOGO_5_14C_suggested "LOGO_5.14A_LOGO_5.14C_suggested: Minimum width of a MMC region is 3.9um")
+
+eLOGO_5_14B = geomOr( drc( MMC_LOGO sepNotch < 1 shielded withIntersection ) geomSize( drc( MMC_LOGO sepNotch < 0.01 edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_14B "LOGO_5.14B: Minimum space between two VI1 regions  is 1um")
+
+
+;=========================
+;===  PAD Rule   ===
+;=========================
+
+;LOGO_5.17A refer to related TLR
+;LOGO_5.17B {@ ME6 ENCLOSURE of PAD is 2um
+;   ENC PAD_LOGO ME6_LOGO <2 ABUT OUTSIDE ALSO REGION
+;}
+;For LOGO_5.17A and LOGO_5.17B, please refer to the DRC of rule: G-03P-GENERATION15_ABOVE-TLR/PAD
+eLOGO_5_17C_suggested = geomOr( drc( PAD_LOGO width < 0.5 ) geomSize( drc( PAD_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_17C_suggested "LOGO_5.17C_suggested: Acute angle is suggested to avoid in the drawing of logo layout.")
+
+
+;============================
+;===  T_WELL Rule   ===
+;============================
+
+eLOGO_5_18A_LOGO_5_18C_suggested = geomOr( drc( TWEL_LOGO width < 1.5 ) geomSize( drc( TWEL_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_18A_LOGO_5_18C_suggested "LOGO_5.18A_LOGO_5.18C_suggested: Minimum width of T_WELL region is 1.5um")
+
+
+eLOGO_5_18B = geomOr( drc( TWEL_LOGO sepNotch < 2.0 shielded withIntersection ) )
+errorLayer(eLOGO_5_18B "LOGO_5.18B: Minimum space between T_WELL regions is 2.0um")
+
+
+
+;============================
+;===  HR Rule   ===
+;============================
+
+eLOGO_5_19A_LOGO_5_19C_suggested = geomOr( drc( HR_LOGO width < 0.8 ) geomSize( drc( HR_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_19A_LOGO_5_19C_suggested "LOGO_5.19A_LOGO_5.19C_suggested: Minimum width of HR region is 0.8um")
+
+
+eLOGO_5_19B = geomOr( drc( HR_LOGO sepNotch < 0.8 shielded withIntersection ) )
+errorLayer(eLOGO_5_19B "LOGO_5.19B: Minimum space between HR regions is 0.8um")
+
+
+
+;============================
+;===  PESD Rule   ===
+;============================
+
+eLOGO_5_20A_LOGO_5_20C_suggested = geomOr( drc( PESD_LOGO width < 0.8 ) geomSize( drc( PESD_LOGO width < 0.01 withCornerTouch edge ) -0.001 edges ) )
+errorLayer(eLOGO_5_20A_LOGO_5_20C_suggested "LOGO_5.20A_LOGO_5.20C_suggested: Minimum width of PESD region is 0.8um")
+
+
+eLOGO_5_20B = geomOr( drc( PESD_LOGO sepNotch < 0.8 shielded withIntersection ) )
+errorLayer(eLOGO_5_20B "LOGO_5.20B: Minimum space between PESD regions is 0.8um")
+
+
+
+
+
