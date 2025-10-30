@@ -1,0 +1,4 @@
+artistResMgrCalcExprSetup("true" "plot" "E0" "rms(pv("M0" "vds" ?result "dcOpInfo"))")
+artistResMgrCalcExprSetup("true" "plot" "E1" "rms(pv("M0" "vds" ?result "dcOpInfo"))")
+artistResMgrCalcExprSetup("true" "plot" "E2" "rms(pv("M0" "vds" ?result "dcOpInfo"))")
+artistResMgrCalcExprSetup("true" "plot" "E3" "rms(pv("M0" "vds" ?result "dcOpInfo"))")
