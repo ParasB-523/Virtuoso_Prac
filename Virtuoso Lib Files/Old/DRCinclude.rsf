@@ -1,0 +1,400 @@
+;Assura DRC Rule Specified File(RSF) 
+;////////////////////////////////////////////////////////////////////// 
+;//                                                                  //
+;//     Title     : DRC(ASSURA) of 0.18um MMRF 1.8V/3.3V 1P6M        //
+;//                 Process Topological Layout Rule (With Metal/     //
+;//                 Metal Capacitor Module)                          //
+;//     Parent Doc: G-03-MIXEDMODE/RFCMOS18-1.8V/3.3V-1P6M-MMC-TLR   //
+;//     Revision  : 2.5                                              //
+;//                                                                  //
+;//     LIMITATION OF LIABILITY:                                     //
+;//        United Microelectronics Corp. is not  liable  for  any    //
+;//        property damage, personal  injury,  loss  of  profits,    //
+;//        interruption of business,  or  for  any other special,    //
+;//        consequential or incidental  damages, however  caused,    //
+;//        whether for breach of warranty,contract tort(including    //
+;//        negligence),strict liability or otherwise.                //
+;//                                                                  //
+;//     assura version av3.1.3:Production:dfII4.4.6                  //
+;//                                                                  //
+;//////////////////////////////////////////////////////////////////////
+;//revision    date       who               changes                  //
+;//======== ========== ========= =================================== //
+;// 1.2-p1  05/06/2002 Kevin Tso  Create from G-03-MIXEDMODE/        //
+;//                               RFCMOS18-1.8V/3.3V-1P6M-MMC-TLR    //
+;//                               Ver:1.2                            //
+;// 2.1-p1  06/10/2002 Kevin Tso  Modify based on TLR revision to    //
+;//                               v2.1-p1                            //
+;// 2.1-p2  06/21/2002 Kevin Tso  Solve 4.18M false violation problem//
+;//                               and redefine sab poly              //
+;// 2.1-p3  09/11/2002 Kevin Tso  Solve 4.31H false violation problem//
+;// 2.2-p1  12/13/2002 Kevin Tso  Add 4.29G                          //
+;//                               Modify 4.29H  P-Well block layer   //
+;//                               -> MCAP (block P-Well implant)     //
+;//                               Modify 4.31H  P-Well block layer   //
+;//                               -> IND                             //
+;// 2.2-p2  01/02/2003 Kevin Tso  Correct DFII layer naming          //
+;// 2.2-p3  03/07/2003 Kevin Tso  Make Cadence DFII layer definition //
+;//                               consist to technology file and add //
+;//                               DIOBLK layer to filter false error //
+;//                               4.16N and 4.17N                    //
+;// 2.2-p4  03/31/2003 S M Lee    Update the "Max metal space" rules //
+;// 2.2-p5  04/11/2003 S M Lee    Update the "Max metal space" rules //
+;// 2.2-p6  04/22/2003 S M Lee    Add BLSPLP memory cell             //
+;// 2.2-p7  09/09/2003 S M Lee    To unify Assura and Diva coding,   //
+;//                               and revise some coding errors.     //
+;// 2.2-p8  12/29/2003 S M Lee    Update the 4.14D.b1/b2 rules       //
+;// 2.3-p1  12/29/2003 S M Lee    According the TLR version 2.3      //
+;// 2.3-p2  02/19/2004 S M Lee    Update the 4.15O rule              //
+;// 2.3-p3  04/06/2004 S M Lee    Update the 4.15O rule              //
+;//                               Change the "resdummy" to "NWR"     //
+;// 2.4-p1  10/12/2004 S M Lee    Modify based on TLR version 2.4    //
+;// 2.5-p1  01/06/2005 S M Lee    Modify based on TLR version 2.5    //
+;//////////////////////////////////////////////////////////////////////
+;// Notice (Important, Read Me First)				
+;// =================================
+;// (1) Reference Document:
+;//		    G-03-MIXEDMODE/RFCMOS18-1.8V/3.3V-1P6M-MMC-TLR   
+;//       	      "0.18um Mixed Mode/RFCMOS Technology 1.8V/3.3V 
+;//		      1P6M Process Topological Layout Rule	     
+;//	  	      (With Metal/Metal Capacitor Module)"	     
+;//       	      - Rev. 2.4				     
+;//     	    G-1B-014					     
+;//       	      "Bonding Pad Layout Guidelines"  (Ver. 6_P1)   
+;//     	    G-1B-029					     
+;//       	      "0.18um ESD Design Rules"  (Ver. 8_P1)	     
+;//
+;// (2) Please modify the argument of ?inputLayout and ?cellName
+;//	in avParameters() according to your database.
+;//
+;// (3) Memory rules have not been implemented inside.
+;//
+;// (4) Please check the notes written in the rule file showing 
+;//	which other rules are not implemented.
+;//
+;// (5) The following switches are present in this file:
+;//
+;//     Technology Switches
+;//       - "metal2_is_top"         Specifies 2-Metal Technology
+;//       - "metal3_is_top"         Specifies 3-Metal Technology
+;//       - "metal4_is_top"         Specifies 4-Metal Technology
+;//       - "metal5_is_top"         Specifies 5-Metal Technology
+;//     Chip-Level Switches
+;//       - "SR"                    Seal ring rules are checked
+;//	  - "Die_Corner_Rules"	    Die Corner check for Metal
+;//     Run-Time Intensive Switches
+;//       - "check_max_metal_space" Maximum metal spacing check
+;//       - "check_density"         Metal coverage rules are checked
+;//       - "check_slots"           Slot rules are checked
+;//
+;//     By default, if none of the switches are set, the file will
+;//     assume the following:
+;//       - The design incorporates 6-metal technology
+;//       - The chip-level checks will NOT be performed
+;//       - The run-time intensive checks will NOT be performed.
+;//
+;//     Multiple switches are allowed but the technology switches
+;//     are mutually exclusive.
+;//     If multiple "metalX_is_top" switches are set, there is no
+;//     way of knowing how the check will be performed.
+;//
+;//  (6) Performance tuning, off the "?saveByRule" and "?OutputErrorLib" options
+;//////////////////////////////////////////////////////////////////////
+ 
+avParameters(
+;   ?inputLayout ( "df2" "libraryName" )
+;   ?inputLayout ( "gds2" "gdsFile.db" )
+;   ?cellName "topCellName"
+;   ?runName "topCellName"
+;   ?viewName "layout"
+;   ?rulesFile "drc.rul"
+;   ?workingDirectory "assura_drc"
+   ?avrpt t
+;   ?multiCPU 4
+   ?textPriOnly nil
+   ?joinPins top
+   ?userUnits "micron"
+   ?resolution 0.001
+;  Default was 0.005; I changed it to 0.001 catch 0.001um grid errors 
+;   ?resolution 0.005
+;   ?saveByRule t
+;   ?outputErrorLib t
+    ?ignoreMissingOutLayer t
+;
+;
+; ****** Technology Options ******
+;
+;?set "metal2_is_top"        ; Specifies 2-Metal Technology
+;?set "metal3_is_top"        ; Specifies 3-Metal Technology
+;?set "metal4_is_top"        ; Specifies 4-Metal Technology
+;?set "metal5_is_top"        ; Specifies 5-Metal Technology
+;
+; ****** Chip-Level Checking Options ******
+;
+;?set "SR"                   ; Seal ring rules are checked
+;?set "check_die_corner"	    ; Die Corner check for Metal
+;
+; ****** Run-Time Intensive Switches ******
+;?set "check_max_metal_space"  ;Maximum metal spacing check
+;?set "check_density"           ; Metal coverage rules are checked
+;?set "check_slots"             ; Slot rules are checked
+) ; avParameters completed
+
+outFile( "GDSII" "cellName_Error.sb" "cellName_Error.gds "
+        outLayer( e1AB 1 type(1) ) ; ACTIVE 
+        outLayer( e1C 1 type(2) )
+        outLayer( e1Da 1 type(3) )
+        outLayer( e1Db 1 type(4) )
+        outLayer( e1E 1  type(5) )
+        outLayer( e1F 1 type(6) )
+        outLayer( e1Ga 1 type(7) )
+        outLayer( e1Gb 1 type(8) )
+        outLayer( e1Ha 1 type(9) )
+        outLayer( e1Hb 1 type(10) )
+        outLayer( e1I 1 type(11) )
+        outLayer( e1J 1 type(12) )
+        outLayer( e1Ka 1 type(13) )
+        outLayer( e1Kb 1 type(14) )
+        outLayer( e2Aa 3 type(1) ) ; N-WELL 
+        outLayer( e2Ab 3 type(2) )
+        outLayer( e2Ac 3 type(3) )
+        outLayer( e2Ba 3 type(4) )
+        outLayer( e2Bb 3 type(5) )
+        outLayer( e2Bc 3 type(7) )
+        outLayer( e2C 3 type(11) )
+        outLayer( e2D 3 type(12) )
+        outLayer( e2CD 3 type(13) )
+        outLayer( e3A 6 type(1) ) ; T-WELL
+        outLayer( e3Ba 6 type(2) )
+        outLayer( e3Bb1 6 type(3) )
+        outLayer( e3Bb2 6 type(4) )
+        outLayer( e3C1 6 type(5) )
+        outLayer( e3C2 6 type(6) )
+        outLayer( e4A 20 type(1) ) ; VTPL
+        outLayer( e4B 20 type(2) )
+        outLayer( e4C 20 type(3) )
+        outLayer( e4D 20 type(4) )
+        outLayer( e4E 20 type(5) )
+        outLayer( e4F 20 type(6) )
+        outLayer( e4G 20 type(7) )
+        outLayer( e5A 21 type(1) ); VTPHL
+        outLayer( e5B 21 type(2) )
+        outLayer( e5C 21 type(3) )
+        outLayer( e5D 21 type(4) )
+        outLayer( e5E 21 type(5) )
+        outLayer( e5F 21 type(6) )
+        outLayer( e5G 21 type(7) )
+        outLayer( e7Aa 22 type(1) ); VTNL  
+        outLayer( e7Ab 22 type(2) )
+        outLayer( e7B  22 type(3) )
+        outLayer( e7C 22 type(4) )
+        outLayer( e7D 22 type(5) )
+        outLayer( e7E 22 type(6) )
+        outLayer( e7F 22 type(7) )
+        outLayer( e7G 22 type(8) )
+        outLayer( e8A 23 type(1) ); VTNI 
+        outLayer( e8B 23 type(2) ) 
+        outLayer( e8C 23 type(3) )
+        outLayer( e8D 23 type(4) )
+        outLayer( e8E 23 type(5) )
+        outLayer( e8F 23 type(6) )
+        outLayer( e8G 23 type(7) )
+        outLayer( e9A 24 type(1) ); VTNHL
+        outLayer( e9B 24 type(2) ) 
+        outLayer( e9C 24 type(3) )
+        outLayer( e9D 24 type(4) )
+        outLayer( e9E 24 type(5) )
+        outLayer( e9F 24 type(6) )
+        outLayer( e9G 24 type(7) )
+        outLayer( e13A 37 type(1) ); TG 
+        outLayer( e13B 37 type(2) )
+        outLayer( e13C 37 type(3) )
+        outLayer( e13D 37 type(4) )
+        outLayer( e13E 37 type(5) )
+        outLayer( e13F 37 type(6) )
+        outLayer( e14ABC 41 type(1) ); Poly 
+        outLayer( e14Ab 41 type(2) )
+        outLayer( e14Bb 41 type(3) )
+        outLayer( e14Da1 41 type(4) )
+        outLayer( e14Da2 41 type(5) )
+        outLayer( e14Db1 41 type(6) )
+        outLayer( e14Dc 41 type(7) )
+        outLayer( e14Dc22 41 type(8) )
+        outLayer( e14E 41 type(9) )
+        outLayer( e14F 41 type(10) )
+        outLayer( e14G 41 type(11) )
+        outLayer( e14H 41 type(12) )
+        outLayer( e14Ia 41 type(13) )
+        outLayer( e14Ib 41 type(14) )
+        outLayer( e14J 41 type(15) )
+        outLayer( e14K 41 type(16) )
+;        outLayer( e14L 41 type(17) )
+;        outLayer( e14M 41 type(18) )
+        outLayer( e14N 41 type(19) )
+        outLayer( e15A 38 type(1) ); HR 
+        outLayer( e15B 38 type(2) )
+        outLayer( e15C 38 type(3) )
+        outLayer( e15D 38 type(4) )
+        outLayer( e15E 38 type(5) )
+        outLayer( e15F 38 type(6) )
+        outLayer( e15G 38 type(7) )
+        outLayer( e15H 38 type(8) )
+        outLayer( e15I 38 type(9) )
+        outLayer( e15J 38 type(10) )
+        outLayer( e15K 38 type(11) )
+        outLayer( e15L 38 type(12) )
+        outLayer( e15M 38 type(13) )
+        outLayer( e15N 38 type(14) )
+        outLayer( e15O 38 type(15) )
+        outLayer( e15P 38 type(16) )
+        outLayer( e16A 12 type(1) ); NPLUS
+        outLayer( e16B 12 type(2) )
+        outLayer( e16Ca 12 type(3) )
+        outLayer( e16Cb 12 type(4) )
+        outLayer( e16Da 12 type(5) )
+        outLayer( e16Db 12 type(6) )
+        outLayer( badgate 12 type(7) )
+        outLayer( badact2 12 type(8) )
+        outLayer( e16F 12 type( 9 ) )
+        outLayer( e16G 12 type( 10 ) )
+        outLayer( e16H 12 type( 11 ) )
+        outLayer( e16I 12 type( 12 ) )
+        outLayer( e16J 12 type( 13 ) )
+        outLayer( e16K 12 type( 14 ) )
+        outLayer( e16N 12 type( 15 ) )
+        outLayer( e17A 11 type( 1 ) ); PPLUS  
+        outLayer( e17B 11 type( 2 ) )
+        outLayer( e17Ca 11 type( 3 ) )
+        outLayer( e17Cb 11 type( 4 ) ) 
+        outLayer( e17Da 11 type( 5 ) )
+        outLayer( e17Db 11 type( 6 ) )
+        outLayer( e17K 11 type( 7 ) )
+        outLayer( e17M 11 type( 8 ) )
+        outLayer( e17N 11 type( 9 ) )
+        outLayer( e18A 36 type( 1 ) ) ; SAB
+        outLayer( e18B 36 type( 2 ) )
+        outLayer( e18C 36 type( 3 ) )
+        outLayer( e18D 36 type( 4 ) )
+        outLayer( e18E 36 type( 5 ) )
+        outLayer( e18Fa 36 type( 6 ) )
+        outLayer( e18Fb 36 type( 7 ) )
+        outLayer( e18G 36 type( 8 ) )
+        outLayer( e18H 36 type( 9 ) )
+        outLayer( e18I 36 type( 10 ) )
+        outLayer( e18J 36 type( 11 ) )
+        outLayer( e18K 36 type( 12 ) )
+        outLayer( e18L 36 type( 13 ) )
+        outLayer( e18M 36 type( 14 ) )
+        outLayer( e18N 36 type( 15 ) )
+        outLayer( e18O 36 type( 16 ) )
+        outLayer( e18P 36 type( 17 ) )
+        outLayer( e19A 39 type( 1 ) ); CONT 
+        outLayer( e19B 39 type( 2 ) )
+        outLayer( e19Ca 39 type( 3 ) )
+        outLayer( e19Cb 39 type( 4 ) )
+        outLayer( e19D 39 type( 5 ) )
+        outLayer( e19E 39 type( 6 ) )
+        outLayer( e19F 39 type( 7 ) )
+        outLayer( e19G 39 type( 8 ) )
+        outLayer( e19I 39 type( 10 ) )
+        outLayer( e20A 46 type( 1 ) ); MET1
+        outLayer( e20B 46 type( 2 ) )
+        outLayer( e20Bb 46 type( 3 ) )
+	;outLayer( m1_max_space_vio 46 type( 8 ) ); for Metal1 max spacing.
+        outLayer( e20D1 46 type( 4 ) )
+        outLayer( e20D3 46 type( 5 ) )
+        outLayer( e20E 46 type( 6 ) )
+        outLayer( e20F 46 type( 7 ) )
+        outLayer( e20G 46 type( 8 ) )
+        outLayer( e21A 47 type( 1 ) ) ; VIA1
+        outLayer( e21B 47 type( 2 ) )
+        outLayer( e21Ca 47 type( 3 ) )
+        outLayer( e21Cb 47 type( 4 ) )
+        outLayer( e21Cc 47 type( 5 ) )
+        outLayer( e22A 48 type( 1 ) ); MET2
+        outLayer( e22B 48 type( 2 ) )
+        outLayer( e22Bb 48 type( 3 ) )
+        ;outLayer( m2_max_space_vio 48 type( 8 ) ); for Metal2 max spacing.
+        outLayer( e22D1 48 type( 4 ) )
+        outLayer( e22D2 48 type( 5 ) )
+        outLayer( e22E 48 type( 6 ) )
+        outLayer( e22F 48 type( 7 ) )
+        outLayer( e22G 48 type( 8 ) )
+        outLayer( e23A 49 type( 1 ) ) ; VIA2
+        outLayer( e23B 49 type( 2 ) )
+        outLayer( e23Ca 49 type( 3 ) )
+        outLayer( e23Cb 49 type( 4 ) )
+        outLayer( e23Cc 49 type( 5 ) )
+        outLayer( e24A 50 type( 1 ) ); MET3
+        outLayer( e24B 50 type( 2 ) )
+        outLayer( e24Bb 50 type( 3 ) )
+        ;outLayer( m3_max_space_vio 50 type( 8 ) ); for Metal3 max spacing.
+        outLayer( e24D1 50 type( 4 ) )
+        outLayer( e24D2 50 type( 5 ) )
+        outLayer( e24E 50 type( 6 ) )
+        outLayer( e24F 50 type( 7 ) )
+        outLayer( e24G 50 type( 8 ) )
+        outLayer( e25A 51 type( 1 ) ) ; VIA3
+        outLayer( e25B 51 type( 2 ) )
+        outLayer( e25Ca 51 type( 3 ) )
+        outLayer( e25Cb 51 type( 4 ) )
+        outLayer( e25Cc 51 type( 5 ) )
+        outLayer( e26A 52 type( 1 ) ); MET4
+        outLayer( e26B 52 type( 2 ) )
+        outLayer( e26Bb 52 type( 3 ) )
+        ;outLayer( m4_max_space_vio 52 type( 8 ) ); for Metal4 max spacing.
+        outLayer( e26D1 52 type( 4 ) )
+        outLayer( e26D2 52 type( 5 ) )
+        outLayer( e26E 52 type( 6 ) )
+        outLayer( e26F 52 type( 7 ) )
+        outLayer( e26G 52 type( 8 ) )
+        outLayer( e27A 53 type( 1 ) ) ; VIA4
+        outLayer( e27B 53 type( 2 ) )
+        outLayer( e27Ca 53 type( 3 ) )
+        outLayer( e27Cb 53 type( 4 ) )
+        outLayer( e27Cc 53 type( 5 ) )
+        outLayer( e28A 54 type( 1 ) ); MET5
+        outLayer( e28B 54 type( 2 ) )
+        outLayer( e28Bb 54 type( 3 ) )
+        ;outLayer( m5_max_space_vio 54 type( 8 ) ); for Metal5 max spacing.
+        outLayer( e28D1 54 type( 4 ) )
+        outLayer( e28D2 54 type( 5 ) )
+        outLayer( e28E 54 type( 6 ) )
+        outLayer( e28F 54 type( 7 ) )
+        outLayer( e28G 54 type( 8 ) )
+        outLayer( e30A 55 type( 1 ) ) ; VIA5
+        outLayer( e30B 55 type( 2 ) )
+        outLayer( e30Ca 55 type( 3 ) )
+        outLayer( e30Cb 55 type( 4 ) )
+        outLayer( e30Cc 55 type( 5 ) )
+        outLayer( e29A 65 type( 1 ) ) ; MMC
+        outLayer( e29B 65 type( 2 ) ) 
+        outLayer( e29C 65 type( 3 ) ) 
+        outLayer( mmc_nolsm 65 type( 4 ) )
+        outLayer( e29D 65 type( 5 ) ) 
+        outLayer( lmvia_straddlemmc 65 type( 6 ) )
+        outLayer( e29E 65 type( 7 ) ) 
+        outLayer( e29F 65 type( 8 ) ) 
+        outLayer( e29G 65 type( 9 ) )
+        outLayer( e29H 65 type( 10 ) )
+        outLayer( e29I_a 65 type( 11 ) )
+        outLayer( e29I_b 65 type( 12 ) )
+        outLayer( e29I_c 65 type( 13 ) )
+        outLayer( e29J 65 type( 14 ) )
+        outLayer( e29K 65 type( 15 ) )
+        outLayer( e29L 65 type( 16 ) )
+        outLayer( e31A 56 type( 1 ) ); MET6
+        outLayer( e31B 56 type( 2 ) )
+        outLayer( e31Bb 56 type( 3 ) )
+;        outLayer( e31C 56 type( 4 ) )
+        outLayer( e31C1 56 type( 5 ) )
+        outLayer( e31C2 56 type( 6 ) )
+        outLayer( e31D 56 type( 7 ) )
+        outLayer( e31E 56 type( 8 ) )
+        outLayer( e31G 56 type( 9 ) )
+        outLayer( e31H_2 56 type( 10 ) )
+        outLayer( e31H_3 56 type( 11 ) )
+        outLayer( e33A 32 type( 1 ) )
+        outLayer( e33B 32 type( 2 ) )
+
+) ; end of outFile
