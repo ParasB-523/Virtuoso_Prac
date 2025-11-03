@@ -1,13 +1,12 @@
 @(#)$CDS: nvn_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:36 (sjfhw885) $
 sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
-run on CICS9.kletech.ac.in at Tue Nov  4 00:57:57 2025
+run on CICS9.kletech.ac.in at Tue Nov  4 01:52:18 2025
 
 Schematic                       | Layout                       | Status
 -------------------------------------------------------------------------------
-CMOS_Inverter schematic CMOS    | CMOS_Inverter layout CMOS    | errors      *
+CMOS_Inverter schematic CMOS    | CMOS_Inverter layout CMOS    | matched    
 
-Mismatch between Schematic and Layout
-   1 cell with errors
+Schematic and Layout Match
 
 Schematic:
   Library:CMOS
@@ -29,8 +28,8 @@ Extraction  Information
 
 Mismatch  Information
 --------------------
-     1 cells have 3 Net mismatches
-     1 cells have 2 Device mismatches
-     1 cells have 1 Pin mismatches
+     0 cells have 0 Net mismatches
+     0 cells have 0 Device mismatches
+     0 cells have 0 Pin mismatches
      0 cells have 0 Parameter mismatches
 

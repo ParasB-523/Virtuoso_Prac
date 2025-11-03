@@ -1,7 +1,0 @@
-; Assura generated file -- DO NOT EDIT --
-; Do NOT rely on the content of this file, it may change.
-;
-2 bind match unmatched shorts opens
-1 0 ((L "Vdd")((1 "P_18_MM" ( "D" "S")))(S "Vdd")((1 "P_18_MM" ( "D" "S"))(1 "P_18_MM" ( "B"))))
-1 0 ((L "Vss")((1 "N_18_MM" ( "D" "S")))(S "Vss")((1 "N_18_MM" ( "D" "S"))(1 "N_18_MM" ( "B"))))
-1 2 ((L "avS18")(L "avS19"))

@@ -6,14 +6,14 @@ Copyright (c) Cadence Design Systems. All rights reserved.
 @(#)$CDS: assura_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:28 (sjfhw885) $
 sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
 
-run on CICS9.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/assura on Tue Nov  4 00:57:50 2025
+run on CICS9.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/assura on Tue Nov  4 01:52:15 2025
 
 
 Starting /cad_area/install/ASSURA41//tools.lnx86/assura/bin/aveng /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/CMOS_Inverter.rsf -exec1 -LVS -cdslib /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
 @(#)$CDS: aveng_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:29 (sjfhw885) $
 sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
 
-run on CICS9.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/aveng on Tue Nov  4 00:57:51 2025
+run on CICS9.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/aveng on Tue Nov  4 01:52:15 2025
 
  Summary Report: CMOS_Inverter.sum
  RSF           : /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/CMOS_Inverter.rsf
@@ -26,15 +26,15 @@ run on CICS9.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bi
  Work Directory: .
  Operating Mode: Legacy Mode is Off
 
+2025/11/04 01:52:15 WARNING This OS does not appear to be a Cadence supported Linux configuration.
+2025/11/04 01:52:15 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
 
 Starting dfIIToVdb...
-2025/11/04 00:57:51 WARNING This OS does not appear to be a Cadence supported Linux configuration.
-2025/11/04 00:57:51 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
-Virtuoso Framework License (111) was checked out successfully. Total checkout time was 0.12s.
+Virtuoso Framework License (111) was checked out successfully. Total checkout time was 0.02s.
 @(#)$CDS: dfIIToVdb_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:36 (sjfhw885) $
 sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
 
-run on CICS9.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/dfIIToVdb on Tue Nov  4 00:57:52 2025
+run on CICS9.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/dfIIToVdb on Tue Nov  4 01:52:15 2025
 
 *WARNING* '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib', Line 6: Cannot find file '$GF_PDK_HOME/DesignEnv/VirtuosoOA/setup/superstack.cds.lib'.
 *WARNING* '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib', Line 6: Skipping: '$GF_PDK_HOME/DesignEnv/VirtuosoOA/setup/superstack.cds.lib'
@@ -200,8 +200,8 @@ begin(funcall((GFdeviceSetManager->config) GF22FDXdsmConfig) funcall((GFipxServi
 *WARNING* (TECH-2000010): techGetTechFile: nil is an invalid ID. The valid ID is dbCellViewId or ddId for a cell or library. Specify the valid ID and rerun the function.
 WARNING LVS Run detected.
 Non-legacy mode has been disabled for this LVS run
-2025/11/04 00:57:53 WARNING This OS does not appear to be a Cadence supported Linux configuration.
-2025/11/04 00:57:53 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
+2025/11/04 01:52:16 WARNING This OS does not appear to be a Cadence supported Linux configuration.
+2025/11/04 01:52:16 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
 Checking out license for Assura_LVS
 *WARNING* Failed to obtain license for Assura_LVS
 No Assura license available.
@@ -220,8 +220,8 @@ Reading the design data...
 Finished dfIIToVdb.
 
 Building the VDB part 2 in background mode.
-2025/11/04 00:57:53 WARNING This OS does not appear to be a Cadence supported Linux configuration.
-2025/11/04 00:57:53 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
+2025/11/04 01:52:16 WARNING This OS does not appear to be a Cadence supported Linux configuration.
+2025/11/04 01:52:16 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
 
 Building tables for LVS Preprocessing in background mode.
 
@@ -240,14 +240,14 @@ Checking out license for Pegasus_LVS_SP
 Checking out license for Pegasus_LVS
 @(#)$CDS: nvn_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:36 (sjfhw885) $
 sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
-run on CICS9.kletech.ac.in at Tue Nov  4 00:57:54 2025
+run on CICS9.kletech.ac.in at Tue Nov  4 01:52:16 2025
 Reading schematic network
  running dfIIToVldb -cdslib /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/CMOS_Inverter.vlr /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/CMOS_Inverter.rsf
-Virtuoso Framework License (111) was checked out successfully. Total checkout time was 0.03s.
+Virtuoso Framework License (111) was checked out successfully. Total checkout time was 0.01s.
 @(#)$CDS: dfIIToVldb_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:35 (sjfhw885) $
 sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
 
-run on CICS9.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/dfIIToVldb on Tue Nov  4 00:57:55 2025
+run on CICS9.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/dfIIToVldb on Tue Nov  4 01:52:16 2025
 
 *WARNING* No tech lib map file 'assura_tech.lib' or 'pvtech.lib' found
 Top Cell Library: "CMOS"
@@ -255,12 +255,12 @@ Top Cell Name: "CMOS_Inverter"
 Top Cell View: "schematic"
 Output Data Base Name: "/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/CMOS_Inverter.sdb"
 Simulator Name: "auLvs"
-Failed to obtain license for "Assura_LVS". 
-Checking out license for Phys_Ver_Sys_LVS_XL
 ERROR (LMF-02005): License call failed for feature Assura_LVS, version 4.100 and quantity 1. The license server search path is defined as 5280@10.3.0.68. The FLEXnet error message is as follows,
     FLEXnet ERROR(-5, 0, 0): No such feature exists.
 
 Run 'lic_error LMF-02005' for more information.
+Failed to obtain license for "Assura_LVS". 
+Checking out license for Phys_Ver_Sys_LVS_XL
 Failed to obtain license for Phys_Ver_Sys_LVS_XL
 Checking out license for Phys_Ver_Sys_LVS_XL
 Failed to obtain license for Phys_Ver_Sys_LVS_XL
@@ -350,16 +350,16 @@ Preprocessing schematic network phase 1
 Preprocessing layout network phase 1
 Preprocessing schematic network phase 2
 Preprocessing layout network phase 2
-cpu=0.00m  wall=0.02m  mem=102.74mb
+cpu=0.00m  wall=0.00m  mem=102.74mb
 
 Finished /cad_area/install/ASSURA41/tools.lnx86/assura/bin/nvn
 
 Building the VDB part 3 in background mode.
-2025/11/04 00:57:55 WARNING This OS does not appear to be a Cadence supported Linux configuration.
-2025/11/04 00:57:55 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
+2025/11/04 01:52:17 WARNING This OS does not appear to be a Cadence supported Linux configuration.
+2025/11/04 01:52:17 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
 
 Finished building the VDB. VDB build times for main process:
-cpu: 0.03  elap: 4  pf: 5  in: 784  out: 80  virt: 101M  phys: 609M
+cpu: 0.03  elap: 2  pf: 0  in: 32  out: 80  virt: 101M  phys: 600M
 
 Running the Task Processor, 1 cells, 2958 steps...
 
@@ -1650,12 +1650,12 @@ Executing: attachParameter(S "s" ind_me)
 Executing: attachParameter(L "L" ind_me)
 
 Finished running rules. Task processor time in main process:
-cpu: 0.10  elap: 0  pf: 21  in: 3944  out: 672  virt: 145M  phys: 762M
+cpu: 0.10  elap: 0  pf: 0  in: 0  out: 664  virt: 147M  phys: 768M
 
 No output post-processing: This is not a DRC run
 
 Finished building the persistent database.
-cpu: 0.00  elap: 0  pf: 0  in: 0  out: 6456  virt: 150M  phys: 775M
+cpu: 0.00  elap: 0  pf: 0  in: 0  out: 6448  virt: 152M  phys: 783M
 
 
 *****  aveng terminated normally  *****
@@ -1667,22 +1667,22 @@ Starting /cad_area/install/ASSURA41//tools.lnx86/assura/bin/avrpt /home/01fe21be
 @(#)$CDS: avrpt_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:29 (sjfhw885) $
 sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
 
-run on CICS9.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/avrpt on Tue Nov  4 00:57:55 2025
+run on CICS9.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/avrpt on Tue Nov  4 01:52:17 2025
 
 
    Creating Error Database 'CMOS_Inverter'...
 
    Reading VDB ...
-2025/11/04 00:57:55 WARNING This OS does not appear to be a Cadence supported Linux configuration.
-2025/11/04 00:57:55 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
+2025/11/04 01:52:17 WARNING This OS does not appear to be a Cadence supported Linux configuration.
+2025/11/04 01:52:17 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
 --------------------------------------------------------------------------------
 Rule      Message                                    FlatCount     RealCount
 --------------------------------------------------------------------------------
 (    1)  dataAuditErrors                                     0            0
-(    2)  psub_StampErrorFloat                                1            1
+(    2)  psub_StampErrorFloat                                0            0
 (    3)  psub_StampErrorMult                                 0            0
 (    4)  psub_StampErrorConnect                              0            0
-(    5)  wel_StampErrorFloat                                 1            1
+(    5)  wel_StampErrorFloat                                 0            0
 (    6)  wel_StampErrorMult                                  0            0
 (    7)  wel_StampErrorConnect                               0            0
 (    8)  TWEL_StampErrorFloat                                0            0
@@ -1829,16 +1829,14 @@ Rule      Message                                    FlatCount     RealCount
 (  217)  unstable device for pgate_sp_MOS_2                  0            0
 (  219)  unstable device for ngate_sp_MOS_1                  0            0
 --------------------------------------------------------------------------------
-Total  errors:                                               2            2
+Total  errors:                                               0            0
 --------------------------------------------------------------------------------
 
    Finished creating Error Database ...
 
    Writing Report into ./CMOS_Inverter.err ...
-   Rule 2 done.
-   Rule 5 done.
 
-avrpt cpu sec:    0.03  elapsed:     1  virtual:    93M
+avrpt cpu sec:    0.04  elapsed:     0  virtual:    93M
 
 Finished /cad_area/install/ASSURA41//tools.lnx86/assura/bin/avrpt
 
@@ -1847,7 +1845,7 @@ Starting /cad_area/install/ASSURA41//tools.lnx86/assura/bin/avcallproc /home/01f
 Finished /cad_area/install/ASSURA41//tools.lnx86/assura/bin/avcallproc
 
 Starting /cad_area/install/ASSURA41//tools.lnx86/assura/bin/avnx /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/CMOS_Inverter.rsf -exec1 -LVS -cdslib /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
-Virtuoso Framework License (111) was checked out successfully. Total checkout time was 0.02s.
+Virtuoso Framework License (111) was checked out successfully. Total checkout time was 0.01s.
 Checking out license for Assura_LVS
 Checking out license for Phys_Ver_Sys_LVS_XL
 *WARNING* Failed to obtain license for Assura_LVS
@@ -1860,12 +1858,12 @@ Checking out license for Pegasus_LVS
 @(#)$CDS: avnx_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:29 (sjfhw885) $
 sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
 
-run on CICS9.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/avnx on Tue Nov  4 00:57:56 2025
+run on CICS9.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/avnx on Tue Nov  4 01:52:17 2025
 
 avnx started...
-2025/11/04 00:57:56 WARNING This OS does not appear to be a Cadence supported Linux configuration.
-2025/11/04 00:57:56 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
-cpu: 0.06  elap: 1  pf: 14  in: 3072  out: 16  virt: 584M  phys: 997M
+2025/11/04 01:52:17 WARNING This OS does not appear to be a Cadence supported Linux configuration.
+2025/11/04 01:52:17 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
+cpu: 0.06  elap: 0  pf: 0  in: 0  out: 16  virt: 584M  phys: 1001M
 
 Run time =  1.00 seconds
 CPU time =  0.06 seconds
@@ -1873,7 +1871,7 @@ CPU time =  0.06 seconds
                   End of Summary Report
 
 ************************************************************************
-cpu: 0.00  elap: 0  pf: 0  in: 0  out: 12968  virt: 516M  phys: 998M
+cpu: 0.00  elap: 1  pf: 0  in: 0  out: 12960  virt: 516M  phys: 1002M
 ***** avnx terminated normally ***** 
 
 
@@ -1887,7 +1885,7 @@ Checking out license for Pegasus_LVS_SP
 Checking out license for Pegasus_LVS
 @(#)$CDS: nvn_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:36 (sjfhw885) $
 sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
-run on CICS9.kletech.ac.in at Tue Nov  4 00:57:57 2025
+run on CICS9.kletech.ac.in at Tue Nov  4 01:52:18 2025
 Reading schematic network
 Reading layout network
  inputting network CMOS_Inverter.ldb
@@ -1928,7 +1926,7 @@ Preprocessing layout network phase 1
 Preprocessing schematic network phase 2
 Preprocessing layout network phase 2
 Top cell  CMOS_Inverter schematic CMOS vs CMOS_Inverter layout CMOS
-Compare errors, please see CMOS_Inverter.csm and CMOS_Inverter.cls files.
+Schematic and Layout Match
 cpu=0.00m  wall=0.00m  mem=102.94mb
 
 Finished /cad_area/install/ASSURA41//tools.lnx86/assura/bin/nvn
@@ -1942,7 +1940,7 @@ Starting /cad_area/install/ASSURA41//tools.lnx86/assura/bin/vldbToRpa CMOS_Inver
 Finished /cad_area/install/ASSURA41//tools.lnx86/assura/bin/vldbToRpa
 
 Starting /cad_area/install/ASSURA41//tools.lnx86/assura/bin/ercChk /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/CMOS_Inverter.rsf
-Virtuoso Framework License (111) was checked out successfully. Total checkout time was 0.02s.
+Virtuoso Framework License (111) was checked out successfully. Total checkout time was 0.01s.
 *WARNING* '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib', Line 6: Cannot find file '$GF_PDK_HOME/DesignEnv/VirtuosoOA/setup/superstack.cds.lib'.
 *WARNING* '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib', Line 6: Skipping: '$GF_PDK_HOME/DesignEnv/VirtuosoOA/setup/superstack.cds.lib'
 *WARNING* LIB basic from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 10 redefines
@@ -2033,7 +2031,7 @@ Assura LVS terminated normally.
 
 
 
-Run ended: Tue Nov  4 00:57:58 2025
+Run ended: Tue Nov  4 01:52:18 2025
 
 *****  Assura terminated normally  *****
 

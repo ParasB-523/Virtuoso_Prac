@@ -1,5 +1,0 @@
-; Assura generated file -- DO NOT EDIT --
-; Do NOT rely on the content of this file, it may change.
-;
-2 device net parameter pin rewire total
-1  5 (( ( S "CMOS_Inverter layout CMOS" )( L "CMOS_Inverter schematic CMOS" ) )(( 1 6 4 )( 4 2 0 )( 3 0 1 )))
