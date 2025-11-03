@@ -1,0 +1,6 @@
+Schematic                       | Layout                       | Status
+-------------------------------------------------------------------------------
+CMOS_Inverter schematic CMOS    | CMOS_Inverter layout CMOS    | errors      *
+
+Mismatch between Schematic and Layout
+   1 cell with errors

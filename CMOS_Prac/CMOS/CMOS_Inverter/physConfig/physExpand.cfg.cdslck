@@ -1,0 +1,16 @@
+#
+# Edit Lock-Stake file. CAUTION: Please do not change.
+#
+# Information about current Edit Lock Owner.
+#
+LockStakeVersion               1.1
+LoginName                      01fe21bec256
+HostName                       CICS4.kletech.ac.in
+ProcessIdentifier              8067
+ProcessCreationTime_UTC        1761902573
+ProcessCreationTime_Readable   Fri Oct 31 14:52:53 2025 IST
+AppIdentifier                  /cad_area/install/IC618/tools.lnx86/dfII/bin/64bit/virtuoso
+OSType                         lnx86
+ReasonForPlacingEditLock       
+FilePathUsedToEditLock         /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/CMOS/CMOS_Inverter/physConfig/physExpand.cfg
+TimeEditLocked                 Fri Oct 31 15:28:53 2025 IST

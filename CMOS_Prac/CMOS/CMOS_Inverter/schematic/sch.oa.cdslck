@@ -1,0 +1,16 @@
+#
+# Edit Lock-Stake file. CAUTION: Please do not change.
+#
+# Information about current Edit Lock Owner.
+#
+LockStakeVersion               1.1
+LoginName                      01fe21bec256
+HostName                       CICS4.kletech.ac.in
+ProcessIdentifier              8067
+ProcessCreationTime_UTC        1761902609
+ProcessCreationTime_Readable   Fri Oct 31 14:53:29 2025 IST
+AppIdentifier                  OA File System Design Manager
+OSType                         unix
+ReasonForPlacingEditLock       OpenAccess edit lock
+FilePathUsedToEditLock         /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/CMOS/CMOS_Inverter/schematic/sch.oa.cdslck
+TimeEditLocked                 Fri Oct 31 15:28:26 2025 IST

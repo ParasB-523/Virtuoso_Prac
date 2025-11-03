@@ -1,0 +1,6 @@
+; Assura generated file -- DO NOT EDIT --
+; Do NOT rely on the content of this file, it may change.
+;
+2 unmatched connect pin
+1 1 ((S "M0" "P_18_MM")(L "avD21_1" "P_18_MM")(("B" "Vdd" "avS19")))
+1 1 ((S "M1" "N_18_MM")(L "avD20_1" "N_18_MM")(("B" "Vss" "avS18")))
