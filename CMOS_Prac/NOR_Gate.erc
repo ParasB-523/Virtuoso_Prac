@@ -1,0 +1,12 @@
+
+***** Begin Label Report *****
+
+ Label in cell 'NOR_Gate layout CMOS':
+  info: Assign pin label "Vss" at (0.360, -9.240) to layer `M1'.
+  info: Assign pin label "A" at (1.780, -5.240) to layer `M1'.
+  info: Assign pin label "Vout" at (3.380, -6.170) to layer `M1'.
+  info: Assign pin label "B" at (2.640, -5.240) to layer `M1'.
+  info: Assign pin label "Vdd" at (0.360, -1.840) to layer `M1'.
+
+***** End of Label Report *****
+
