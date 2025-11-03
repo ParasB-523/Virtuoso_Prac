@@ -1,0 +1,12 @@
+
+***** Begin Label Report *****
+
+ Label in cell 'NAND_Gate layout CMOS':
+  info: Assign pin label "Vss" at (1.320, -11.950) to layer `M1'.
+  info: Assign pin label "Vout" at (1.890, -6.740) to layer `M1'.
+  info: Assign pin label "B" at (3.400, -7.710) to layer `M1'.
+  info: Assign pin label "Vdd" at (1.320, -3.500) to layer `M1'.
+  info: Floating label discarded:  "A" at (2.300, -7.850).
+
+***** End of Label Report *****
+

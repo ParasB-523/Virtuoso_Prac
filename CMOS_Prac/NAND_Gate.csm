@@ -1,0 +1,6 @@
+Schematic                  | Layout                  | Status
+-------------------------------------------------------------------------------
+NAND_Gate schematic CMOS   | NAND_Gate layout CMOS   | matched, pin errs     *
+
+Mismatch between Schematic and Layout
+   1 cell matched with pin errors

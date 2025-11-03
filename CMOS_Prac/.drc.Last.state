@@ -30,7 +30,7 @@ vuiDRCFormTable = '(
 	additionalFunctionsButton  nil
 	limitDRCswitcher  nil
 	library  "CMOS"
-	cell  "CMOS_Inverter"
+	cell  "NAND_Gate"
 	view  "layout"
 	saveExtracted  nil
 	extractedView  "drc_extracted"
