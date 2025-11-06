@@ -1,0 +1,2038 @@
+
+            Assura (R) Physical Verification Version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25
+            Release 4.1_USR6_EHF13
+
+Copyright (c) Cadence Design Systems. All rights reserved.
+@(#)$CDS: assura_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:28 (sjfhw885) $
+sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
+
+run on CICS4.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/assura on Thu Nov  6 16:23:09 2025
+
+
+Starting /cad_area/install/ASSURA41//tools.lnx86/assura/bin/aveng /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/TG.rsf -exec1 -LVS -cdslib /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
+@(#)$CDS: aveng_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:29 (sjfhw885) $
+sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
+
+run on CICS4.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/aveng on Thu Nov  6 16:23:15 2025
+
+ Summary Report: TG.sum
+ RSF           : /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/TG.rsf
+ Library Name  : CMOS
+ CDSLIB Path   : "/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib"
+ Cell Name     : TG
+ View Name     : layout
+ Rules File    : ./Assura_UMC180/extract.rul
+ Options       : -exec1 -LVS -cdslib /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib 
+ Work Directory: .
+ Operating Mode: Legacy Mode is Off
+
+
+Starting dfIIToVdb...
+2025/11/06 16:23:15 WARNING This OS does not appear to be a Cadence supported Linux configuration.
+2025/11/06 16:23:15 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
+Virtuoso Framework License (111) was checked out successfully. Total checkout time was 1.15s.
+@(#)$CDS: dfIIToVdb_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:36 (sjfhw885) $
+sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
+
+run on CICS4.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/dfIIToVdb on Thu Nov  6 16:23:27 2025
+
+*WARNING* '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib', Line 6: Cannot find file '$GF_PDK_HOME/DesignEnv/VirtuosoOA/setup/superstack.cds.lib'.
+*WARNING* '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib', Line 6: Skipping: '$GF_PDK_HOME/DesignEnv/VirtuosoOA/setup/superstack.cds.lib'
+*WARNING* LIB basic from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 10 redefines
+LIB basic from File /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib
+Insert UNDEFINE basic
+before DEFINE basic
+    in /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
+Or remove or comment out DEFINE basic
+    in /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib
+to suppress this warning message.
+*WARNING* LIB analogLib from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 11 redefines
+LIB analogLib from File /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib
+Insert UNDEFINE analogLib
+before DEFINE analogLib
+    in /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
+Or remove or comment out DEFINE analogLib
+    in /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib
+to suppress this warning message.
+*WARNING* LIB UMC_18_CMOS from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 28 redefines
+LIB UMC_18_CMOS from the same file (defined earlier.)
+*WARNING* LIB UMC180Faraday from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 35 redefines
+LIB UMC180Faraday from the same file (defined earlier.)
+*WARNING* The directory: '/cad_area/install/Virtuoso_files/sai' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'sai'.
+*WARNING* The directory: '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/$PDK_DIR/asap7ssc7p5t_05' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'asap7ssc7p5t'.
+*WARNING* The directory: '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/$PDK_DIR/cdslib/asap7_TechLib' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'asap7_TechLib'.
+*WARNING* The directory: '/cad_area/install/pdk/UMC/UMC180Faraday/fsa0m_a/2008Q3v1.2/50VT_GENERIC_IO/FrontEnd/composer/FSA0M_A_50VT_GENERIC_IO' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'FSA0M_A_50VT_GENERIC_IO'.
+*WARNING* The directory: '/cad_area/install/pdk/UMC/UMC180Faraday/fsa0m_a/2008Q3v1.2/50VT_GENERIC_IO/BackEnd/lef' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'UMC180Faraday'.
+*WARNING* '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib', Line 6: Cannot find file '$GF_PDK_HOME/DesignEnv/VirtuosoOA/setup/superstack.cds.lib'.
+*WARNING* '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib', Line 6: Skipping: '$GF_PDK_HOME/DesignEnv/VirtuosoOA/setup/superstack.cds.lib'
+*WARNING* LIB basic from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 10 redefines
+LIB basic from File /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib
+Insert UNDEFINE basic
+before DEFINE basic
+    in /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
+Or remove or comment out DEFINE basic
+    in /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib
+to suppress this warning message.
+*WARNING* LIB analogLib from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 11 redefines
+LIB analogLib from File /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib
+Insert UNDEFINE analogLib
+before DEFINE analogLib
+    in /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
+Or remove or comment out DEFINE analogLib
+    in /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib
+to suppress this warning message.
+*WARNING* LIB UMC_18_CMOS from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 28 redefines
+LIB UMC_18_CMOS from the same file (defined earlier.)
+*WARNING* LIB UMC180Faraday from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 35 redefines
+LIB UMC180Faraday from the same file (defined earlier.)
+*WARNING* The directory: '/cad_area/install/Virtuoso_files/sai' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'sai'.
+*WARNING* The directory: '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/$PDK_DIR/asap7ssc7p5t_05' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'asap7ssc7p5t'.
+*WARNING* The directory: '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/$PDK_DIR/cdslib/asap7_TechLib' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'asap7_TechLib'.
+*WARNING* The directory: '/cad_area/install/pdk/UMC/UMC180Faraday/fsa0m_a/2008Q3v1.2/50VT_GENERIC_IO/FrontEnd/composer/FSA0M_A_50VT_GENERIC_IO' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'FSA0M_A_50VT_GENERIC_IO'.
+*WARNING* The directory: '/cad_area/install/pdk/UMC/UMC180Faraday/fsa0m_a/2008Q3v1.2/50VT_GENERIC_IO/BackEnd/lef' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'UMC180Faraday'.
+	Loading UMC_18_CMOS/loadCxt.ile ... done!
+	Loading context 'UMC_18_CMOS' from library 'UMC_18_CMOS' ... done!
+	Loading context 'Util' from library 'UMC_18_CMOS' ... done!
+ Loading  /cad_area/install/pdk/Cadence_PDK/UMC180FDK/Cadence_IC6/G-9FD-MIXED_MODE_RFCMOS18-1.8V_3.3V-1P6M-MMC_UM180FDKMFC00000OA-FDK-Ver.A02_PB.zip_FILES/UM180FDKMFC00000OA_A02_DESIGNKIT.tar.gz_FILES/UM180FDKMFC00000OA_A02_PB.tar.gz_FILES/UMC_18_CMOS//libInitCustomExit.il
+Compiling rules...
+
+
+************************************************************* 
+
+ Assura LVS of UMC 0.18um 1.8V/3.3V 1P6M MM/RF Process  
+ Version 1.3 P1 
+ June 6, 2005 
+ 
+
+************************************************************* 
+
+WARNING Undefined layer in dfII.
+	Layer name 'VSTRES' doesn't exist, treating as an empty layer.
+	VSTRES = layer("VSTRES" type("drawing"))
+
+WARNING Undefined layer in dfII.
+	Layer name 'IRAM' doesn't exist, treating as an empty layer.
+	IRAM = layer("IRAM" type("drawing"))
+
+Initializing from libInit.il for library tsmc18...
+   --  pcellCode.cdn
+   --  pcellCode1.cdn
+   --  mom.cdn
+   --  pcellCode2.cdn
+   --  tsmc18.cxt
+Loading Working place Display File '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/display.drf'
+Loading ts018_scl_prim/libInit.il ...
+	Loading context 'ts018_scl_prim' from library 'ts018_scl_prim' ... done!
+	Loading context 'pdkUtils' from library 'ts018_scl_prim' ... done!
+	Loading ts018_scl_prim/libInitCustomExit.il ... *WARNING* Cannot find /cad_area/install/ASSURA41/tools.lnx86/dfII/etc/tools/hspiceD directory to load environment variables
+*WARNING* envSetVal: could not find tool[.partition] 'hspiceD.opts'
+*WARNING* Cannot find /cad_area/install/ASSURA41/tools.lnx86/dfII/etc/tools/hspiceS directory to load environment variables
+*WARNING* envSetVal: could not find tool[.partition] 'hspiceS.opts'
+*WARNING* Cannot find /cad_area/install/ASSURA41/tools.lnx86/dfII/etc/tools/eldo directory to load environment variables
+*WARNING* envSetVal: could not find tool[.partition] 'eldo.opts'
+*WARNING* Cannot find /cad_area/install/ASSURA41/tools.lnx86/dfII/etc/tools/eldoD directory to load environment variables
+*WARNING* envSetVal: could not find tool[.partition] 'eldoD.opts'
+*WARNING* Master env file /cad_area/install/ASSURA41/tools.lnx86/dfII/etc/tools/spectre/.cdsenv is not readable
+function vuiUserDefinedSetupCB redefined
+**
+Attach user init procedure to Virtuoso CDL Out form**
+done!
+Loaded ts018_scl_prim/libInit.il successfully!
+*WARNING* envSetVal: could not find tool[.partition] 'spectre.opts'
+>>>>>>>> Library initialization: cmos22fdsoi/libInit.il         >>>>>>>>
+	set GF_PDK_HOME=/cad_area/install/pdk/GF/22FDX-EXT/V1.0_0.0a/
+	Loading PDK Initialization: //DesignEnv/VirtuosoOA/setup/pdk.cdsinit
+		GF_PDK_HOME                  : /cad_area/install/pdk/GF/22FDX-EXT/V1.0_0.0a/
+		TECHDIR_DRC                  : ${GF_PDK_HOME}/DRC/Calibre
+		TECHDIR_LVS                  : ${GF_PDK_HOME}/LVS/Calibre
+		TECHDIR_FILLGEN              : ${GF_PDK_HOME}/FILLGEN/Calibre
+		MGC_CALIBRE_VIEWER_MENU_CMDS : ${GF_PDK_HOME}/FILLGEN/Calibre/runset/fillgen_menu.il
+		TECHDIR_PERC                 : ${GF_PDK_HOME}/ESD/PERC
+		TECHDIR_LDL                  : ${GF_PDK_HOME}/ESD/PERC_LDL
+		TECHDIR_XACT                 : ${GF_PDK_HOME}/PEX/xACT
+		TECHDIR_DRC_PVS              : ${GF_PDK_HOME}/DRC/PVS
+		PVSUI_DRC_PRESETS_FILE       : ${GF_PDK_HOME}/DRC/PVS/runset/virtuoso6.drc_preset
+		TECHDIR_LVS_PVS              : ${GF_PDK_HOME}/LVS/PVS
+		PVSUI_LVS_PRESETS_FILE       : ${GF_PDK_HOME}/LVS/PVS/runset/virtuoso6.lvs_preset
+		TECHDIR_FILLGEN_PVS          : ${GF_PDK_HOME}/FILLGEN/PVS
+		SPECTRE_MODEL_PATH           : ${GF_PDK_HOME}/Models/Spectre/models
+		HSPICE_MODEL_PATH            : ${GF_PDK_HOME}/Models/HSPICE/models
+	Loading SKILL files from //DesignEnv/VirtuosoOA/libs/cmos22fdsoi/.resources/continuum
+		callbacks.ils                                 ... done
+		continuum.ils                                 ... done
+		continuumgui.ils                              ... done
+		license.ils                                   ... done
+	Loading system SKILL context:
+		rod.cxt                                       ... already loaded!
+		mpt.cxt                                       ... done
+		cdf.cxt                                       ... done
+	Loading SKILL context files from //DesignEnv/VirtuosoOA/libs/cmos22fdsoi/.resources/context
+		gfUtils.cxt                                   ... done
+		gf22fdx.cxt                                   ... done
+		gf22fdxEmx.cxt                                ... done
+>>>>>>>> Library initialization: cmos22fdsoi_rf/libInit.il      >>>>>>>>
+<<<<<<<< Library initialization done: cmos22fdsoi_rf            <<<<<<<<
+>>>>>>>> Library initialization: cmos22fdsoi_mmw/libInit.il     >>>>>>>>
+<<<<<<<< Library initialization done: cmos22fdsoi_mmw           <<<<<<<<
+>>>>>>>> Library initialization: cmos22fdsoi_esd/libInit.il     >>>>>>>>
+<<<<<<<< Library initialization done: cmos22fdsoi_esd           <<<<<<<<
+		pdkUtils.cxt                                  ... already loaded!
+*Error* GF22fdxGetStackName: argument #1 should be a database object (type template = "dt") - nil
+<<< Stack Trace >>>
+(... in GF22fdxGetStackName ...)
+(... in unknown ...)
+(... in dsmConfig ...)
+(... in config ...)
+funcall((GFdeviceSetManager->config) GF22FDXdsmConfig)
+begin(funcall((GFdeviceSetManager->config) GF22FDXdsmConfig) funcall((GFipxService->config) GF22FDXipxConfig) funcall((GFinstStatus->config) GFdsmGetInstStatus GFipxGetInstStatus) funcall((GFfinder->add) "Instance of a Restricted Component" GFdsmGetRestrictedInstances t) funcall((GFfinder->add) "Instance with a Parameter Exception" GFipxGetInstancesWithParamException t) ... )
+...
+<<<<<<<< Library initialization done: cmos22fdsoi               <<<<<<<<
+*WARNING* (TECH-2000010): techGetTechFile: nil is an invalid ID. The valid ID is dbCellViewId or ddId for a cell or library. Specify the valid ID and rerun the function.
+WARNING LVS Run detected.
+Non-legacy mode has been disabled for this LVS run
+2025/11/06 16:23:33 WARNING This OS does not appear to be a Cadence supported Linux configuration.
+2025/11/06 16:23:33 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
+Checking out license for Assura_LVS
+*WARNING* Failed to obtain license for Assura_LVS
+No Assura license available.
+Checking out license for Phys_Ver_Sys_LVS_XL
+*WARNING* Failed to obtain license for Phys_Ver_Sys_LVS_XL
+Checking out license for Phys_Ver_Sys_DRC_XL
+*WARNING* Failed to obtain license for Phys_Ver_Sys_DRC_XL
+Checking out license for Pegasus_LVS_SP
+*WARNING* Failed to obtain license for Pegasus_LVS_SP
+Checking out license for Pegasus_LVS
+
+Reading the design data...
+
+
+
+Finished dfIIToVdb.
+
+Building the VDB part 2 in background mode.
+
+Building tables for LVS Preprocessing in background mode.
+
+
+Starting /cad_area/install/ASSURA41/tools.lnx86/assura/bin/vdbToCells . TG
+2025/11/06 16:23:44 WARNING This OS does not appear to be a Cadence supported Linux configuration.
+2025/11/06 16:23:44 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
+
+Finished /cad_area/install/ASSURA41/tools.lnx86/assura/bin/vdbToCells
+
+Starting Nvn PreExtraction...
+
+Starting /cad_area/install/ASSURA41/tools.lnx86/assura/bin/nvn /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/TG.rsf -preExtract -exec1 -cdslib /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
+Checking out license for Assura_LVS
+Checking out license for Phys_Ver_Sys_LVS_XL
+Checking out license for Phys_Ver_Sys_DRC_XL
+Checking out license for Pegasus_LVS_SP
+Checking out license for Pegasus_LVS
+@(#)$CDS: nvn_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:36 (sjfhw885) $
+sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
+run on CICS4.kletech.ac.in at Thu Nov  6 16:23:56 2025
+Reading schematic network
+ running dfIIToVldb -cdslib /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/TG.vlr /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/TG.rsf
+Virtuoso Framework License (111) was checked out successfully. Total checkout time was 1.20s.
+@(#)$CDS: dfIIToVldb_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:35 (sjfhw885) $
+sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
+
+run on CICS4.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/dfIIToVldb on Thu Nov  6 16:24:04 2025
+
+*WARNING* No tech lib map file 'assura_tech.lib' or 'pvtech.lib' found
+Top Cell Library: "CMOS"
+Top Cell Name: "TG"
+Top Cell View: "schematic"
+Output Data Base Name: "/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/TG.sdb"
+Simulator Name: "auLvs"
+Failed to obtain license for "Assura_LVS". 
+Checking out license for Phys_Ver_Sys_LVS_XL
+ERROR (LMF-02005): License call failed for feature Assura_LVS, version 4.100 and quantity 1. The license server search path is defined as 5280@10.3.0.68. The FLEXnet error message is as follows,
+    FLEXnet ERROR(-5, 0, 0): No such feature exists.
+
+Run 'lic_error LMF-02005' for more information.
+Failed to obtain license for Phys_Ver_Sys_LVS_XL
+Checking out license for Phys_Ver_Sys_LVS_XL
+Failed to obtain license for Phys_Ver_Sys_LVS_XL
+Checking out license for Phys_Ver_Sys_DRC_XL
+Failed to obtain license for Phys_Ver_Sys_DRC_XL
+Checking out license for Pegasus_LVS_SP
+Failed to obtain license for Pegasus_LVS_SP
+Checking out license for Pegasus_LVS
+*WARNING* '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib', Line 6: Cannot find file '$GF_PDK_HOME/DesignEnv/VirtuosoOA/setup/superstack.cds.lib'.
+*WARNING* '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib', Line 6: Skipping: '$GF_PDK_HOME/DesignEnv/VirtuosoOA/setup/superstack.cds.lib'
+*WARNING* LIB basic from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 10 redefines
+LIB basic from File /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib
+Insert UNDEFINE basic
+before DEFINE basic
+    in /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
+Or remove or comment out DEFINE basic
+    in /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib
+to suppress this warning message.
+*WARNING* LIB analogLib from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 11 redefines
+LIB analogLib from File /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib
+Insert UNDEFINE analogLib
+before DEFINE analogLib
+    in /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
+Or remove or comment out DEFINE analogLib
+    in /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib
+to suppress this warning message.
+*WARNING* LIB UMC_18_CMOS from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 28 redefines
+LIB UMC_18_CMOS from the same file (defined earlier.)
+*WARNING* LIB UMC180Faraday from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 35 redefines
+LIB UMC180Faraday from the same file (defined earlier.)
+*WARNING* The directory: '/cad_area/install/Virtuoso_files/sai' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'sai'.
+*WARNING* The directory: '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/$PDK_DIR/asap7ssc7p5t_05' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'asap7ssc7p5t'.
+*WARNING* The directory: '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/$PDK_DIR/cdslib/asap7_TechLib' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'asap7_TechLib'.
+*WARNING* The directory: '/cad_area/install/pdk/UMC/UMC180Faraday/fsa0m_a/2008Q3v1.2/50VT_GENERIC_IO/FrontEnd/composer/FSA0M_A_50VT_GENERIC_IO' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'FSA0M_A_50VT_GENERIC_IO'.
+View List: "auLvs schematic symbol"
+Stop List: "auLvs"
+*WARNING* The directory: '/cad_area/install/pdk/UMC/UMC180Faraday/fsa0m_a/2008Q3v1.2/50VT_GENERIC_IO/BackEnd/lef' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'UMC180Faraday'.
+*WARNING* '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib', Line 6: Cannot find file '$GF_PDK_HOME/DesignEnv/VirtuosoOA/setup/superstack.cds.lib'.
+*WARNING* '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib', Line 6: Skipping: '$GF_PDK_HOME/DesignEnv/VirtuosoOA/setup/superstack.cds.lib'
+*WARNING* LIB basic from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 10 redefines
+LIB basic from File /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib
+Insert UNDEFINE basic
+before DEFINE basic
+    in /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
+Or remove or comment out DEFINE basic
+    in /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib
+to suppress this warning message.
+*WARNING* LIB analogLib from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 11 redefines
+LIB analogLib from File /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib
+Insert UNDEFINE analogLib
+before DEFINE analogLib
+    in /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
+Or remove or comment out DEFINE analogLib
+    in /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib
+to suppress this warning message.
+*WARNING* LIB UMC_18_CMOS from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 28 redefines
+LIB UMC_18_CMOS from the same file (defined earlier.)
+*WARNING* LIB UMC180Faraday from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 35 redefines
+LIB UMC180Faraday from the same file (defined earlier.)
+*WARNING* The directory: '/cad_area/install/Virtuoso_files/sai' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'sai'.
+*WARNING* The directory: '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/$PDK_DIR/asap7ssc7p5t_05' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'asap7ssc7p5t'.
+*WARNING* The directory: '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/$PDK_DIR/cdslib/asap7_TechLib' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'asap7_TechLib'.
+*WARNING* The directory: '/cad_area/install/pdk/UMC/UMC180Faraday/fsa0m_a/2008Q3v1.2/50VT_GENERIC_IO/FrontEnd/composer/FSA0M_A_50VT_GENERIC_IO' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'FSA0M_A_50VT_GENERIC_IO'.
+*WARNING* The directory: '/cad_area/install/pdk/UMC/UMC180Faraday/fsa0m_a/2008Q3v1.2/50VT_GENERIC_IO/BackEnd/lef' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'UMC180Faraday'.
+	Loading UMC_18_CMOS/loadCxt.ile ... done!
+	Loading context 'UMC_18_CMOS' from library 'UMC_18_CMOS' ... done!
+	Loading context 'Util' from library 'UMC_18_CMOS' ... done!
+ Loading  /cad_area/install/pdk/Cadence_PDK/UMC180FDK/Cadence_IC6/G-9FD-MIXED_MODE_RFCMOS18-1.8V_3.3V-1P6M-MMC_UM180FDKMFC00000OA-FDK-Ver.A02_PB.zip_FILES/UM180FDKMFC00000OA_A02_DESIGNKIT.tar.gz_FILES/UM180FDKMFC00000OA_A02_PB.tar.gz_FILES/UMC_18_CMOS//libInitCustomExit.il
+Net Listing Mode is Analog
+*WARNING* Ignoring deviceTerminals property on cell P_18_MM in UMC_18_CMOS (value is empty string)
+*WARNING* Ignoring deviceTerminals property on cell N_18_MM in UMC_18_CMOS (value is empty string)
+writing /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/TG.sdb
+ inputting /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/TG.sdb
+Reading layout network
+ inputting network TG.ldb
+Preprocessing schematic network phase 1
+Preprocessing layout network phase 1
+Preprocessing schematic network phase 2
+Preprocessing layout network phase 2
+cpu=0.00m  wall=0.58m  mem=109.71mb
+
+Finished /cad_area/install/ASSURA41/tools.lnx86/assura/bin/nvn
+
+Building the VDB part 3 in background mode.
+2025/11/06 16:24:20 WARNING This OS does not appear to be a Cadence supported Linux configuration.
+2025/11/06 16:24:20 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
+
+Finished building the VDB. VDB build times for main process:
+cpu: 0.03  elap: 65  pf: 0  in: 48  out: 80  virt: 101M  phys: 611M
+
+Running the Task Processor, 1 cells, 2958 steps...
+
+Top Cell is 'TG layout CMOS'
+
+Executing: sepgnd_1 = geomSize(SEPGND 0.01)
+
+Executing: sepgnd_2 = geomAndNot(sepgnd_1 SEPGND)
+
+Executing: psub_all = geomAndNot(geomBkgnd() NWEL)
+
+Executing: psub = geomAndNot(psub_all sepgnd_2)
+
+Executing: nwell = geomAndNot(NWEL TWEL)
+
+Executing: bpdiff = geomAnd(DIFF PPLUS)
+
+Executing: bndiff = geomAnd(DIFF NPLUS)
+
+Executing: welres1 = geomAvoiding(geomAnd(nwell geomCat(NWR VSTRES)) PPLUS)
+
+Executing: welres = geomAvoiding(welres1 MMSYMBOL)
+
+Executing: welres_mm = geomOverlap(welres1 MMSYMBOL)
+
+Executing: wel = geomAndNot(nwell welres1)
+
+Executing: pdres = geomInside(geomAnd(bpdiff geomCat(RSYMBOL VSTRES)) wel)
+
+Executing: nspdres1 = geomAnd(pdres SAB)
+
+Executing: nspdres = geomAvoiding(nspdres1 MMSYMBOL)
+
+Executing: nspdres_mm = geomOverlap(nspdres1 MMSYMBOL)
+
+Executing: spdres1 = geomAvoiding(pdres SAB)
+
+Executing: spdres = geomAvoiding(spdres1 MMSYMBOL)
+
+Executing: spdres_mm1 = geomOverlap(spdres1 MMSYMBOL)
+
+Executing: spdres_mma1 = geomGetVertex(geomOverlap(bpdiff spdres_mm1) (keep == 12))
+
+Executing: spdres_mma = geomOverlap(spdres_mm1 spdres_mma1)
+
+Executing: spdres_mm = geomAndNot(spdres_mm1 spdres_mma)
+
+Executing: psd = geomAndNot(geomAndNot(bpdiff pdres) PO1)
+
+Executing: rfpsd = geomOverlap(psd RFSYMBOL)
+
+Executing: rfpd = geomAvoiding(rfpsd RFMOS_S)
+
+Executing: rfps = geomOverlap(rfpsd RFMOS_S)
+
+Executing: ndres = geomAvoiding(geomAnd(bndiff geomCat(RSYMBOL VSTRES)) wel)
+
+Executing: nsndres1 = geomAnd(ndres SAB)
+
+Executing: nsndres = geomAvoiding(nsndres1 MMSYMBOL)
+
+Executing: nsndres_mm = geomOverlap(nsndres1 MMSYMBOL)
+
+Executing: sndres1 = geomAvoiding(ndres SAB)
+
+Executing: sndres = geomAvoiding(sndres1 MMSYMBOL)
+
+Executing: sndres_mm1 = geomOverlap(sndres1 MMSYMBOL)
+
+Executing: sndres_mma1 = geomGetVertex(geomOverlap(bndiff sndres_mm1) (keep == 12))
+
+Executing: sndres_mma = geomOverlap(sndres_mm1 sndres_mma1)
+
+Executing: sndres_mm = geomAndNot(sndres_mm1 sndres_mma)
+
+Executing: nsd = geomAndNot(geomAndNot(bndiff ndres) PO1)
+
+Executing: rfnsd = geomOverlap(nsd RFSYMBOL)
+
+Executing: rfnd = geomAvoiding(rfnsd RFMOS_S)
+
+Executing: rfns = geomOverlap(rfnsd RFMOS_S)
+
+Executing: ntap = geomAnd(nsd nwell)
+
+Executing: ptap = geomAndNot(psd nwell)
+
+Executing: hrpyres1 = geomOverlap(geomAnd(geomAnd(PO1 HR) SAB) PPLUS)
+
+Executing: hrpyres = geomAvoiding(hrpyres1 RFSYMBOL)
+
+Executing: hrpyres_rf = geomOverlap(hrpyres1 RFSYMBOL)
+
+Executing: ply1 = geomAndNot(PO1 hrpyres1)
+
+Executing: pyres = geomAnd(ply1 geomCat(PSYMBOL VSTRES))
+
+Executing: ppyres = geomAnd(pyres PPLUS)
+
+Executing: nsppyr1 = geomAnd(geomAnd(ppyres SAB) wel)
+
+Executing: nsppyr = geomAvoiding(geomAvoiding(nsppyr1 MMSYMBOL) RFSYMBOL)
+
+Executing: nsppyr_mm = geomOverlap(nsppyr1 MMSYMBOL)
+
+Executing: nsppyr_rf = geomOverlap(nsppyr1 RFSYMBOL)
+
+Executing: sppyr1 = geomAvoiding(ppyres SAB)
+
+Executing: sppyr = geomAvoiding(sppyr1 MMSYMBOL)
+
+Executing: npyres = geomAnd(pyres NPLUS)
+
+Executing: nsnpyr1 = geomAndNot(geomAnd(npyres SAB) nwell)
+
+Executing: nsnpyr = geomAvoiding(geomAvoiding(nsnpyr1 MMSYMBOL) RFSYMBOL)
+
+Executing: nsnpyr_mm = geomOverlap(nsnpyr1 MMSYMBOL)
+
+Executing: nsnpyr_rf = geomOverlap(nsnpyr1 RFSYMBOL)
+
+Executing: snpyr1 = geomAvoiding(npyres SAB)
+
+Executing: snpyr = geomAvoiding(snpyr1 MMSYMBOL)
+
+Executing: ply = geomAndNot(ply1 pyres)
+
+Executing: m1res = geomAnd(ME1 MRSYMBOL)
+
+Executing: M1 = M1 = geomAndNot(ME1 m1res)
+
+Executing: m2res = geomAnd(ME2 MRSYMBOL)
+
+Executing: M2 = M2 = geomAndNot(ME2 m2res)
+
+Executing: m3res = geomAnd(ME3 MRSYMBOL)
+
+Executing: M3 = M3 = geomAndNot(ME3 m3res)
+
+Executing: m4res = geomAnd(ME4 MRSYMBOL)
+
+Executing: M4 = M4 = geomAndNot(ME4 m4res)
+
+Executing: m5res = geomAnd(ME5 MRSYMBOL)
+
+Executing: M5 = M5 = geomAndNot(ME5 m5res)
+
+Executing: m6res = geomAnd(ME6 MRSYMBOL)
+
+Executing: M6 = M6 = geomAndNot(ME6 m6res)
+
+Executing: ngate1 = geomSize(geomAnd(bndiff ply) -0.05 downUp)
+
+Executing: pgate1 = geomSize(geomAnd(bpdiff ply) -0.05 downUp)
+
+Executing: pgate = geomAnd(pgate1 wel)
+
+Executing: ngate = geomAnd(ngate1 psub)
+
+Executing: ngate_lv = geomAndNot(ngate TG)
+
+Executing: ngate_hv = geomAnd(ngate TG)
+
+Executing: pgate_lv = geomAndNot(pgate TG)
+
+Executing: pgate_hv = geomAnd(pgate TG)
+
+Executing: spgate = geomAndNot(geomAndNot(pgate VTPL) VTPHL)
+
+Executing: spgate1_lv = geomAndNot(spgate TG)
+
+Executing: spgate_lv = geomAvoiding(spgate1_lv IRAM)
+
+Executing: spgate_hv = geomAnd(spgate TG)
+
+Executing: sngate1 = geomAndNot(geomAndNot(geomAndNot(ngate1 VTNL) VTNI) VTNHL)
+
+Executing: sngate = geomAnd(sngate1 psub)
+
+Executing: sngate1_lv = geomAndNot(sngate TG)
+
+Executing: sngate_lv = geomAvoiding(sngate1_lv IRAM)
+
+Executing: sngate_hv = geomAnd(sngate TG)
+
+Executing: mmrf = geomCat(MMSYMBOL RFSYMBOL)
+
+Executing: ngate_sp = geomAvoiding(sngate_lv mmrf)
+
+Executing: pgate_sp = geomAvoiding(spgate_lv mmrf)
+
+Executing: hngate_sp = geomAvoiding(sngate_hv mmrf)
+
+Executing: hpgate_sp = geomAvoiding(spgate_hv mmrf)
+
+Executing: pg_sram = geomSize(geomAnd(spgate1_lv IRAM) -0.02 downUp)
+
+Executing: ng_sram = geomSize(geomAnd(sngate1_lv IRAM) -0.02 downUp)
+
+Executing: ngate_mm1 = geomAvoiding(geomOverlap(sngate_lv MMSYMBOL) RFSYMBOL)
+
+Executing: pgate_mm1 = geomAvoiding(geomOverlap(spgate_lv MMSYMBOL) RFSYMBOL)
+
+Executing: hngate_mm = geomAvoiding(geomOverlap(sngate_hv MMSYMBOL) RFSYMBOL)
+
+Executing: hpgate_mm = geomAvoiding(geomOverlap(spgate_hv MMSYMBOL) RFSYMBOL)
+
+Executing: ngate_mm = geomAvoiding(ngate_mm1 CSYMBOL)
+
+Executing: nmos_cap = geomAnd(ngate_mm1 CSYMBOL)
+
+Executing: pgate_mm = geomAvoiding(pgate_mm1 CSYMBOL)
+
+Executing: pmos_cap = geomAnd(pgate_mm1 CSYMBOL)
+
+Executing: ngate_lvt = geomAndNot(geomAnd(ngate_lv VTNL) VTNI)
+
+Executing: pgate_lvt = geomAnd(pgate_lv VTPL)
+
+Executing: hngate_lvt = geomAndNot(geomAnd(ngate_hv VTNHL) VTNL)
+
+Executing: hpgate_lvt = geomAnd(pgate_hv VTPHL)
+
+Executing: ngate_zt = geomAndNot(geomAnd(ngate_lv VTNI) VTNL)
+
+Executing: hngate_zt = geomAndNot(geomAnd(ngate_hv VTNL) VTNHL)
+
+Executing: ngate_bpw = geomAndNot(geomAnd(sngate1 TWEL) TG)
+
+Executing: hngate_bpw = geomAnd(geomAnd(sngate1 TWEL) TG)
+
+Executing: ngate_rf = geomOverlap(geomOverlap(sngate_lv RFSYMBOL) SIZE2)
+
+Executing: ngate_srf = geomOverlap(geomOverlap(sngate_lv RFSYMBOL) SIZE1)
+
+Executing: pgate_rf = geomOverlap(geomOverlap(spgate_lv RFSYMBOL) SIZE2)
+
+Executing: pgate_srf = geomOverlap(geomOverlap(spgate_lv RFSYMBOL) SIZE1)
+
+Executing: hngate_rf = geomOverlap(geomOverlap(sngate_hv RFSYMBOL) SIZE2)
+
+Executing: hngate_srf = geomOverlap(geomOverlap(sngate_hv RFSYMBOL) SIZE1)
+
+Executing: hpgate_rf = geomOverlap(geomOverlap(spgate_hv RFSYMBOL) SIZE2)
+
+Executing: hpgate_srf = geomOverlap(geomOverlap(spgate_hv RFSYMBOL) SIZE1)
+
+Executing: rfdiff = geomOverlap(DIFF RFSYMBOL)
+
+Executing: ng_rf = geomOverlap(rfdiff ngate_rf)
+
+Executing: ng_srf = geomOverlap(rfdiff ngate_srf)
+
+Executing: pg_rf = geomOverlap(rfdiff pgate_rf)
+
+Executing: pg_srf = geomOverlap(rfdiff pgate_srf)
+
+Executing: hng_rf = geomOverlap(rfdiff hngate_rf)
+
+Executing: hng_srf = geomOverlap(rfdiff hngate_srf)
+
+Executing: hpg_rf = geomOverlap(rfdiff hpgate_rf)
+
+Executing: hpg_srf = geomOverlap(rfdiff hpgate_srf)
+
+Executing: bjtpod = geomAnd(psd BJTSYMBOL)
+
+Executing: bjtnod = geomAnd(nsd BJTSYMBOL)
+
+Executing: qte = geomInside(bjtpod wel)
+
+Executing: qtb = geomInside(bjtnod wel)
+
+Executing: qtc = geomOutside(bjtpod NWEL)
+
+Executing: geomHoles(qtc)
+
+Executing: qte5 = geomContactCheck(qte (length <= 5.5) (width <= 5.5))
+
+Executing: qte10 = geomAndNot(qte qte5)
+
+Executing: bjt5 = geomEnclose(bjt_all qte5)
+
+Executing: bjt10 = geomEnclose(bjt_all qte10)
+
+Executing: bjt_v5 = geomAvoiding(bjt5 MMSYMBOL)
+
+Executing: bjt_v10 = geomAvoiding(bjt10 MMSYMBOL)
+
+Executing: bjt_v5_mm = geomOverlap(bjt5 MMSYMBOL)
+
+Executing: bjt_v10_mm = geomOverlap(bjt10 MMSYMBOL)
+
+Executing: dioden_1 = geomAnd(nsd psub)
+
+Executing: dioden_2 = geomAvoiding(dioden_1 PO1)
+
+Executing: dioden_3 = geomAvoiding(dioden_2 ptap)
+
+Executing: dioden_4 = geomAvoiding(dioden_3 RSYMBOL)
+
+Executing: dioden_5 = geomAvoiding(dioden_4 BJTSYMBOL)
+
+Executing: dioden_6 = geomAndNot(dioden_5 XDIODE)
+
+Executing: dioden = geomAvoiding(dioden_6 MMSYMBOL)
+
+Executing: dioden_mm = geomOverlap(dioden_6 MMSYMBOL)
+
+Executing: diodep_1 = geomAnd(psd wel)
+
+Executing: diodep_2 = geomAvoiding(diodep_1 PO1)
+
+Executing: diodep_3 = geomAvoiding(diodep_2 ntap)
+
+Executing: diodep_4 = geomAvoiding(diodep_3 RSYMBOL)
+
+Executing: diodep_5 = geomAvoiding(diodep_4 BJTSYMBOL)
+
+Executing: diodep_6 = geomAndNot(diodep_5 XDIODE)
+
+Executing: diodep_7 = geomAvoiding(diodep_6 CSYMBOL)
+
+Executing: diodep = geomAvoiding(diodep_7 MMSYMBOL)
+
+Executing: diodep_mm = geomOverlap(diodep_7 MMSYMBOL)
+
+Executing: pnvar = geomOverlap(diodep_6 CSYMBOL)
+
+Executing: vard_rf = geomButtOrOver(wel pnvar)
+
+Executing: top_m_l = geomAnd(top_m LSYMBOL)
+
+Executing: slm_ll = geomAnd(sec_last_met LSYMBOL)
+
+Executing: ind_me = geomAnd(geomOr(top_m_l slm_ll) IND)
+
+Executing: top_m_c = top_m_c = geomAndNot(top_m ind_me)
+
+Executing: slm_c = slm_c = geomAndNot(sec_last_met ind_me)
+
+Executing: top_m_lb = geomSize(top_m_l 0.1)
+
+Executing: top_m_ls = geomSize(top_m_l -0.1)
+
+Executing: slm_lt = geomOverlap(geomAnd(sec_last_met top_m_l) top_via)
+
+Executing: slm_l = geomOverlap(sec_last_met top_m_l)
+
+Executing: ldimeter = geomGetBBox(ind_me (width >= 1))
+
+Executing: slm_l1a = geomAndNot(geomAndNot(slm_l slm_lt) top_m_l)
+
+Executing: slm_l1 = geomAvoiding(slm_l1a top_via)
+
+Executing: slm_l2 = geomAvoiding(geomAnd(slm_l top_m_l) slm_lt)
+
+Executing: ind_pin = geomAnd(top_m_c top_m_lb)
+
+Executing: ind_minus1 = geomGetVertex(top_m_l (keep < 16))
+
+Executing: ind_minus = geomButtOrOver(ind_pin ind_minus1)
+
+Executing: ind_plus = geomAndNot(ind_pin ind_minus)
+
+Executing: rf_pad = geomOverlap(geomAnd(geomAnd(top_m_c PAD) M1) RFSYMBOL)
+
+Executing: type1 = geomAnd(rf_pad PAD)
+
+Executing: type2 = geomOverlap(type1 geomOverlap(M5 geomOverlap(VI5 type1)))
+
+Executing: type3 = geomOverlap(type2 geomOverlap(M4 geomOverlap(VI4 type2)))
+
+Executing: type4 = geomOverlap(type3 geomOverlap(M3 geomOverlap(VI3 type3)))
+
+Executing: type5 = geomOverlap(type4 geomOverlap(M2 geomOverlap(VI2 type4)))
+
+Executing: vargate = geomOverlap(geomAnd(sngate1 wel) RFSYMBOL)
+
+Executing: varmis_rf = geomOverlap(RFSYMBOL vargate)
+
+Executing: slm_term = geomInside(geomOverlap(slm_c ply) RFSYMBOL)
+
+Executing: cmmc = geomAnd(MMC slm_c)
+
+Executing: cmmc_msq = geomInside(geomOverlap(cmmc RFSYMBOL) geomCat(M1 MCAP))
+
+Executing: cmmc_mm = geomOverlap(cmmc MMSYMBOL)
+
+Executing: cmmc_msq_rf = geomOverlap(slm_c cmmc_msq)
+
+Executing: polycon = geomAnd(ply CONT)
+
+Executing: nsdcon = geomAnd(nsd CONT)
+
+Executing: psdcon = geomAnd(psd CONT)
+
+Executing: geomConnect((svia VI5 top_m_c MMC slm_c) (via VI4 slm_c M4) (via VI3 M4 M3) (...
+ See the label report in "TG.erc" file for details.
+
+
+Executing: geomStamp(psub ptap error)
+
+Executing: geomStamp(wel ntap error)
+
+Executing: geomStamp(TWEL ptap error)
+
+Executing: geomStamp(rfpd psd)
+
+Executing: geomStamp(rfps psd)
+
+Executing: geomStamp(rfnd nsd)
+
+Executing: geomStamp(rfns nsd)
+
+Executing: geomStamp(qte psd)
+
+Executing: geomStamp(qtb nsd)
+
+Executing: geomStamp(qtc psd)
+
+Executing: geomStamp(ind_plus top_m_c)
+
+Executing: geomStamp(ind_minus top_m_c)
+
+Executing: geomStamp(slm_term top_m_c)
+
+Executing: (saveInterconnect (ply "PO1"))
+
+Executing: (saveInterconnect (M1 "ME1"))
+
+Executing: (saveInterconnect (M2 "ME2"))
+
+Executing: (saveInterconnect (M3 "ME3"))
+
+Executing: (saveInterconnect (M4 "ME4"))
+
+Executing: (saveInterconnect (slm_c "ME5"))
+
+Executing: (saveInterconnect (top_m_c "ME6"))
+
+Executing: extractMOS("N" ngate_sp (ply "G") (nsd "S" "D") (psub "B") flagMalformed (cel...
+
+Executing: w_mos1 = measureParameter(length (ngate_sp coincident ply) 5e-07)
+
+Executing: l_mos1 = measureParameter(length (ngate_sp inside ply) 5e-07)
+
+Executing: nameParameter(l_mos1 "l")
+
+Executing: nameParameter(w_mos1 "w")
+
+Executing: extractMOS("P" pgate_sp (ply "G") (psd "S" "D") (wel "B") flagMalformed (cell...
+
+Executing: w_mos2 = measureParameter(length (pgate_sp coincident ply) 5e-07)
+
+Executing: l_mos2 = measureParameter(length (pgate_sp inside ply) 5e-07)
+
+Executing: nameParameter(l_mos2 "l")
+
+Executing: nameParameter(w_mos2 "w")
+
+Executing: extractMOS("NT" hngate_sp (ply "G") (nsd "S" "D") (psub "B") flagMalformed (c...
+
+Executing: w_mos3 = measureParameter(length (hngate_sp coincident ply) 5e-07)
+
+Executing: l_mos3 = measureParameter(length (hngate_sp inside ply) 5e-07)
+
+Executing: nameParameter(l_mos3 "l")
+
+Executing: nameParameter(w_mos3 "w")
+
+Executing: extractMOS("PT" hpgate_sp (ply "G") (psd "S" "D") (wel "B") flagMalformed (ce...
+
+Executing: w_mos4 = measureParameter(length (hpgate_sp coincident ply) 5e-07)
+
+Executing: l_mos4 = measureParameter(length (hpgate_sp inside ply) 5e-07)
+
+Executing: nameParameter(l_mos4 "l")
+
+Executing: nameParameter(w_mos4 "w")
+
+Executing: extractMOS("NB" ng_sram (ply "G") (nsd "S" "D") (psub "B") flagMalformed (cel...
+
+Executing: w_mos5 = measureParameter(length (ng_sram coincident ply) 5e-07)
+
+Executing: l_mos5 = measureParameter(length (ng_sram inside ply) 5e-07)
+
+Executing: nameParameter(l_mos5 "l")
+
+Executing: nameParameter(w_mos5 "w")
+
+Executing: extractMOS("PB" pg_sram (ply "G") (psd "S" "D") (wel "B") flagMalformed (cell...
+
+Executing: w_mos6 = measureParameter(length (pg_sram coincident ply) 5e-07)
+
+Executing: l_mos6 = measureParameter(length (pg_sram inside ply) 5e-07)
+
+Executing: nameParameter(l_mos6 "l")
+
+Executing: nameParameter(w_mos6 "w")
+
+Executing: extractRES("RSNWELL" welres (wel "PLUS" "MINUS") flagMalformed (cellView "RSN...
+
+Executing: l_r1 = measureParameter(length (welres coincident nwell) 5e-07)
+
+Executing: w_r1 = measureParameter(length (welres inside nwell) 5e-07)
+
+Executing: res = calculateParameter((Rs * (l_r1 / w_r1)))
+
+Executing: nameParameter(l_r1 "l")
+
+Executing: nameParameter(w_r1 "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractRES("RSND" sndres (nsd "PLUS" "MINUS") flagMalformed (cellView "RSND i...
+
+Executing: width = measureParameter(length (sndres inside bndiff) 5e-07)
+
+Executing: length = measureParameter(length (sndres coincident bndiff) 5e-07)
+
+Executing: res = calculateParameter(((RhoD * length) / width))
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractRES("RSPD" spdres (psd "PLUS" "MINUS") flagMalformed (cellView "RSPD i...
+
+Executing: width = measureParameter(length (spdres inside bpdiff) 5e-07)
+
+Executing: length = measureParameter(length (spdres coincident bpdiff) 5e-07)
+
+Executing: res = calculateParameter(((RhoD * length) / width))
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractRES("RSNPO" snpyr (ply "PLUS" "MINUS") flagMalformed (cellView "RSNPO ...
+
+Executing: width = measureParameter(length (snpyr inside PO1) 5e-07)
+
+Executing: length = measureParameter(length (snpyr coincident PO1) 5e-07)
+
+Executing: res = calculateParameter(((RhoD * length) / width))
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractRES("RSPPO" sppyr (ply "PLUS" "MINUS") flagMalformed (cellView "RSPPO ...
+
+Executing: width = measureParameter(length (sppyr inside PO1) 5e-07)
+
+Executing: length = measureParameter(length (sppyr coincident PO1) 5e-07)
+
+Executing: res = calculateParameter(((RhoD * length) / width))
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractRES("RNND" nsndres (nsd "PLUS" "MINUS") flagMalformed (cellView "RNND ...
+
+Executing: width = measureParameter(length (nsndres inside bndiff) 5e-07)
+
+Executing: length = measureParameter(length (nsndres coincident bndiff) 5e-07)
+
+Executing: res = calculateParameter((Rs * (length / width)))
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractRES("RNPD" nspdres (psd "PLUS" "MINUS") flagMalformed (cellView "RNPD ...
+
+Executing: width = measureParameter(length (nspdres inside bpdiff) 5e-07)
+
+Executing: length = measureParameter(length (nspdres coincident bpdiff) 5e-07)
+
+Executing: res = calculateParameter((Rs * (length / width)))
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractRES("RNNPO" nsnpyr (ply "PLUS" "MINUS") flagMalformed (cellView "RNNPO...
+
+Executing: width = measureParameter(length (nsnpyr inside PO1) 5e-07)
+
+Executing: length = measureParameter(length (nsnpyr coincident PO1) 5e-07)
+
+Executing: res = calculateParameter((Rs * (length / width)))
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractRES("RNPPO" nsppyr (ply "PLUS" "MINUS") flagMalformed (cellView "RNPPO...
+
+Executing: width = measureParameter(length (nsppyr inside PO1) 5e-07)
+
+Executing: length = measureParameter(length (nsppyr coincident PO1) 5e-07)
+
+Executing: res = calculateParameter((Rs * (length / width)))
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractBJT("PNP_V50X50" bjt_v5 (qtc "C") (qtb "B") (qte "E") flagMalformed (c...
+
+Executing: emitArea = measureParameter(area (bjt_v5 over qte))
+
+Executing: normalizedEmitArea = calculateParameter((emitArea * 1e-12))
+
+Executing: nameParameter(normalizedEmitArea "ea")
+
+Executing: extractBJT("PNP_V100X100" bjt_v10 (qtc "C") (qtb "B") (qte "E") flagMalformed...
+
+Executing: emitArea = measureParameter(area (bjt_v10 over qte))
+
+Executing: normalizedEmitArea = calculateParameter((emitArea * 1e-12))
+
+Executing: nameParameter(normalizedEmitArea "ea")
+
+Executing: extractDIODE("DN" dioden (psub "PLUS") (nsd "MINUS") flagMalformed (cellView ...
+
+Executing: area_dn = measureParameter(area (dioden) 1e-12)
+
+Executing: perim_dn = measureParameter(perimeter (dioden) 1e-06)
+
+Executing: nameParameter(area_dn "area")
+
+Executing: nameParameter(perim_dn "pj")
+
+Executing: extractDIODE("DP" diodep (psd "PLUS") (wel "MINUS") flagMalformed (cellView "...
+
+Executing: area_dp = measureParameter(area (diodep) 1e-12)
+
+Executing: perim_dp = measureParameter(perimeter (diodep) 1e-06)
+
+Executing: nameParameter(area_dp "area")
+
+Executing: nameParameter(perim_dp "pj")
+
+Executing: extractMOS("N_18_MM" ngate_mm (ply "G") (nsd "S" "D") (psub "B") flagMalforme...
+         1 'N_18_MM' created in cell 'TG layout CMOS'.
+
+Executing: w_mos7 = measureParameter(length (ngate_mm coincident ply) 5e-07)
+
+Executing: l_mos7 = measureParameter(length (ngate_mm inside ply) 5e-07)
+
+Executing: nameParameter(l_mos7 "l")
+
+Executing: nameParameter(w_mos7 "w")
+
+Executing: nameParameter(w_mos7 "effW")
+
+Executing: extractMOS("P_18_MM" pgate_mm (ply "G") (psd "S" "D") (wel "B") flagMalformed...
+         1 'P_18_MM' created in cell 'TG layout CMOS'.
+
+Executing: w_mos8 = measureParameter(length (pgate_mm coincident ply) 5e-07)
+
+Executing: l_mos8 = measureParameter(length (pgate_mm inside ply) 5e-07)
+
+Executing: nameParameter(l_mos8 "l")
+
+Executing: nameParameter(w_mos8 "w")
+
+Executing: nameParameter(w_mos8 "effW")
+
+Executing: extractMOS("N_18_MM" nmos_cap (ply "G") (nsd "S" "D") (psub "B") flagMalforme...
+
+Executing: w_cap = measureParameter(length (nmos_cap coincident ply) 5e-07)
+
+Executing: l_cap = measureParameter(length (nmos_cap inside ply) 5e-07)
+
+Executing: nameParameter(l_cap "l")
+
+Executing: nameParameter(w_cap "w")
+
+Executing: nameParameter(w_cap "effW")
+
+Executing: extractMOS("P_18_MM" pmos_cap (ply "G") (psd "S" "D") (wel "B") flagMalformed...
+
+Executing: w_cap = measureParameter(length (pmos_cap coincident ply) 5e-07)
+
+Executing: l_cap = measureParameter(length (pmos_cap inside ply) 5e-07)
+
+Executing: nameParameter(l_cap "l")
+
+Executing: nameParameter(w_cap "w")
+
+Executing: nameParameter(w_cap "effW")
+
+Executing: extractMOS("N_33_MM" hngate_mm (ply "G") (nsd "S" "D") (psub "B") flagMalform...
+
+Executing: w_mos9 = measureParameter(length (hngate_mm coincident ply) 5e-07)
+
+Executing: l_mos9 = measureParameter(length (hngate_mm inside ply) 5e-07)
+
+Executing: nameParameter(l_mos9 "l")
+
+Executing: nameParameter(w_mos9 "w")
+
+Executing: nameParameter(w_mos9 "effW")
+
+Executing: extractMOS("P_33_MM" hpgate_mm (ply "G") (psd "S" "D") (wel "B") flagMalforme...
+
+Executing: w_mos10 = measureParameter(length (hpgate_mm coincident ply) 5e-07)
+
+Executing: l_mos10 = measureParameter(length (hpgate_mm inside ply) 5e-07)
+
+Executing: nameParameter(l_mos10 "l")
+
+Executing: nameParameter(w_mos10 "w")
+
+Executing: nameParameter(w_mos10 "effW")
+
+Executing: extractMOS("N_LV_18_MM" ngate_lvt (ply "G") (nsd "S" "D") (psub "B") (cellVie...
+
+Executing: w_mos11 = measureParameter(length (ngate_lvt coincident ply) 5e-07)
+
+Executing: l_mos11 = measureParameter(length (ngate_lvt inside ply) 5e-07)
+
+Executing: nameParameter(l_mos11 "l")
+
+Executing: nameParameter(w_mos11 "w")
+
+Executing: nameParameter(w_mos11 "effW")
+
+Executing: extractMOS("P_LV_18_MM" pgate_lvt (ply "G") (psd "S" "D") (wel "B") (cellView...
+
+Executing: w_mos12 = measureParameter(length (pgate_lvt coincident ply) 5e-07)
+
+Executing: l_mos12 = measureParameter(length (pgate_lvt inside ply) 5e-07)
+
+Executing: nameParameter(l_mos12 "l")
+
+Executing: nameParameter(w_mos12 "w")
+
+Executing: nameParameter(w_mos12 "effW")
+
+Executing: extractMOS("N_LV_33_MM" hngate_lvt (ply "G") (nsd "S" "D") (psub "B") (cellVi...
+
+Executing: w_mos13 = measureParameter(length (hngate_lvt coincident ply) 5e-07)
+
+Executing: l_mos13 = measureParameter(length (hngate_lvt inside ply) 5e-07)
+
+Executing: nameParameter(l_mos13 "l")
+
+Executing: nameParameter(w_mos13 "w")
+
+Executing: nameParameter(w_mos13 "effW")
+
+Executing: extractMOS("P_LV_33_MM" hpgate_lvt (ply "G") (psd "S" "D") (wel "B") (cellVie...
+
+Executing: w_mos14 = measureParameter(length (hpgate_lvt coincident ply) 5e-07)
+
+Executing: l_mos14 = measureParameter(length (hpgate_lvt inside ply) 5e-07)
+
+Executing: nameParameter(l_mos14 "l")
+
+Executing: nameParameter(w_mos14 "w")
+
+Executing: nameParameter(w_mos14 "effW")
+
+Executing: extractMOS("N_ZERO_18_MM" ngate_zt (ply "G") (nsd "S" "D") (psub "B") (cellVi...
+
+Executing: w_mos15 = measureParameter(length (ngate_zt coincident ply) 5e-07)
+
+Executing: l_mos15 = measureParameter(length (ngate_zt inside ply) 5e-07)
+
+Executing: nameParameter(l_mos15 "l")
+
+Executing: nameParameter(w_mos15 "w")
+
+Executing: nameParameter(w_mos15 "effW")
+
+Executing: extractMOS("N_ZERO_33_MM" hngate_zt (ply "G") (nsd "S" "D") (psub "B") (cellV...
+
+Executing: w_mos16 = measureParameter(length (hngate_zt coincident ply) 5e-07)
+
+Executing: l_mos16 = measureParameter(length (hngate_zt inside ply) 5e-07)
+
+Executing: nameParameter(l_mos16 "l")
+
+Executing: nameParameter(w_mos16 "w")
+
+Executing: nameParameter(w_mos16 "effW")
+
+Executing: extractMOS("N_BPW_18_MM" ngate_bpw (ply "G") (nsd "S" "D") (TWEL "B") (cellVi...
+
+Executing: w_mos17 = measureParameter(length (ngate_bpw coincident ply) 5e-07)
+
+Executing: l_mos17 = measureParameter(length (ngate_bpw inside ply) 5e-07)
+
+Executing: nameParameter(l_mos17 "l")
+
+Executing: nameParameter(w_mos17 "w")
+
+Executing: nameParameter(w_mos17 "effW")
+
+Executing: extractMOS("N_BPW_33_MM" hngate_bpw (ply "G") (nsd "S" "D") (TWEL "B") (cellV...
+
+Executing: w_mos18 = measureParameter(length (hngate_bpw coincident ply) 5e-07)
+
+Executing: l_mos18 = measureParameter(length (hngate_bpw inside ply) 5e-07)
+
+Executing: nameParameter(l_mos18 "l")
+
+Executing: nameParameter(w_mos18 "w")
+
+Executing: nameParameter(w_mos18 "effW")
+
+Executing: extractDevice("RSNWELL_MM" welres_mm (wel "PLUS" "MINUS") (psub "B") (cellVie...
+
+Executing: l_r1 = measureParameter(length (welres_mm coincident nwell) 5e-07)
+
+Executing: w_r1 = measureParameter(length (welres_mm inside nwell) 5e-07)
+
+Executing: res = calculateParameter(((l_r1 / w_r1) * ((408 * w_r1) / (w_r1 - 3.2e-07))))
+
+Executing: nameParameter(l_r1 "lr")
+
+Executing: nameParameter(w_r1 "wr")
+
+Executing: nameParameter(l_r1 "l")
+
+Executing: nameParameter(w_r1 "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractDevice("RSND_MM" sndres_mm (nsd "PLUS" "MINUS") (psub "B") (cellView "...
+
+Executing: attachParameter(length "lr" sndres_mm)
+
+Executing: attachParameter(width "wr" sndres_mm)
+
+Executing: attachParameter(length "l" sndres_mm)
+
+Executing: attachParameter(width "w" sndres_mm)
+
+Executing: attachParameter(res "r" sndres_mm)
+
+Executing: extractDevice("RSND_MM" sndres_mma (nsd "PLUS" "MINUS") (psub "B") (cellView ...
+
+Executing: attachParameter(length "lr" sndres_mma)
+
+Executing: attachParameter(width "wr" sndres_mma)
+
+Executing: attachParameter(length "l" sndres_mma)
+
+Executing: attachParameter(width "w" sndres_mma)
+
+Executing: attachParameter(res "r" sndres_mma)
+
+Executing: extractDevice("RSPD_MM" spdres_mm (psd "PLUS" "MINUS") (wel "B") (cellView "R...
+
+Executing: attachParameter(length "lr" spdres_mm)
+
+Executing: attachParameter(width "wr" spdres_mm)
+
+Executing: attachParameter(length "l" spdres_mm)
+
+Executing: attachParameter(width "w" spdres_mm)
+
+Executing: attachParameter(res "r" spdres_mm)
+
+Executing: extractDevice("RSPD_MM" spdres_mma (psd "PLUS" "MINUS") (wel "B") (cellView "...
+
+Executing: attachParameter(length "lr" spdres_mma)
+
+Executing: attachParameter(width "wr" spdres_mma)
+
+Executing: attachParameter(length "l" spdres_mma)
+
+Executing: attachParameter(width "w" spdres_mma)
+
+Executing: attachParameter(res "r" spdres_mma)
+
+Executing: extractDevice("RNND_MM" nsndres_mm (nsd "PLUS" "MINUS") (psub "B") (cellView ...
+
+Executing: width = measureParameter(length (nsndres_mm inside bndiff) 5e-07)
+
+Executing: length = measureParameter(length (nsndres_mm coincident bndiff) 5e-07)
+
+Executing: res = calculateParameter(((RhoD * length) / (width + 6.75e-08)))
+
+Executing: nameParameter(length "lr")
+
+Executing: nameParameter(width "wr")
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractDevice("RNPD_MM" nspdres_mm (psd "PLUS" "MINUS") (wel "B") (cellView "...
+
+Executing: width = measureParameter(length (nspdres_mm inside bpdiff) 5e-07)
+
+Executing: length = measureParameter(length (nspdres_mm coincident bpdiff) 5e-07)
+
+Executing: res = calculateParameter(((RhoD * length) / (width + 8.7e-08)))
+
+Executing: nameParameter(length "lr")
+
+Executing: nameParameter(width "wr")
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractDevice("RNNPO_MM" nsnpyr_mm (ply "PLUS" "MINUS") (psub "B") (cellView ...
+
+Executing: width = measureParameter(length (nsnpyr_mm inside PO1) 5e-07)
+
+Executing: length = measureParameter(length (nsnpyr_mm coincident PO1) 5e-07)
+
+Executing: res = calculateParameter((((2 * Rend) / (width + deltaW)) + (Rs * (length / (...
+
+Executing: nameParameter(length "lr")
+
+Executing: nameParameter(width "wr")
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractDevice("RNPPO_MM" nsppyr_mm (ply "PLUS" "MINUS") (wel "B") (cellView "...
+
+Executing: width = measureParameter(length (nsppyr_mm inside PO1) 5e-07)
+
+Executing: length = measureParameter(length (nsppyr_mm coincident PO1) 5e-07)
+
+Executing: res = calculateParameter((((2 * Rend) / (width + deltaW)) + (Rs * (length / (...
+
+Executing: nameParameter(length "lr")
+
+Executing: nameParameter(width "wr")
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractDevice("RNHR1000_MM" hrpyres (ply "PLUS" "MINUS") (wel "B") (cellView ...
+
+Executing: width = measureParameter(length (hrpyres inside PO1) 5e-07)
+
+Executing: length = measureParameter(length (hrpyres coincident PO1) 5e-07)
+
+Executing: lx = calculateParameter((length - 4e-07))
+
+Executing: res = calculateParameter((((2 * Rend) / (width + deltaW)) + (Rs * (lx / (widt...
+
+Executing: nameParameter(length "lr")
+
+Executing: nameParameter(width "wr")
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractDevice("RM1_MM" m1res (M1 "PLUS") (M1 "MINUS") (namePrefix "X") (cellV...
+
+Executing: width = measureParameter(length (m1res inside ME1) 5e-07)
+
+Executing: length = measureParameter(length (m1res coincident ME1) 5e-07)
+
+Executing: res = calculateParameter(((Rs * length) / width))
+
+Executing: nameParameter(length "lr")
+
+Executing: nameParameter(width "wr")
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractDevice("RM2_MM" m2res (M2 "PLUS" "MINUS") (namePrefix "X") (cellView "...
+
+Executing: width = measureParameter(length (m2res inside ME2) 5e-07)
+
+Executing: length = measureParameter(length (m2res coincident ME2) 5e-07)
+
+Executing: res = calculateParameter(((Rs * length) / width))
+
+Executing: nameParameter(length "lr")
+
+Executing: nameParameter(width "wr")
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractDevice("RM3_MM" m3res (me3c "PLUS" "MINUS") (namePrefix "X") (cellView...
+
+Executing: width = measureParameter(length (m3res inside ME3) 5e-07)
+
+Executing: length = measureParameter(length (m3res coincident ME3) 5e-07)
+
+Executing: res = calculateParameter(((Rs * length) / width))
+
+Executing: nameParameter(length "lr")
+
+Executing: nameParameter(width "wr")
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractDevice("RM4_MM" m4res (me4c "PLUS" "MINUS") (namePrefix "X") (cellView...
+
+Executing: width = measureParameter(length (m4res inside ME4) 5e-07)
+
+Executing: length = measureParameter(length (m4res coincident ME4) 5e-07)
+
+Executing: res = calculateParameter(((Rs * length) / width))
+
+Executing: nameParameter(length "lr")
+
+Executing: nameParameter(width "wr")
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractDevice("RM5_MM" m5res (me5c "PLUS" "MINUS") (namePrefix "X") (cellView...
+
+Executing: width = measureParameter(length (m5res inside ME5) 5e-07)
+
+Executing: length = measureParameter(length (m5res coincident ME5) 5e-07)
+
+Executing: res = calculateParameter(((Rs * length) / width))
+
+Executing: nameParameter(length "lr")
+
+Executing: nameParameter(width "wr")
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractDevice("RM6_MM" m6res (me6c "PLUS" "MINUS") (namePrefix "X") (cellView...
+
+Executing: width = measureParameter(length (m6res inside ME6) 5e-07)
+
+Executing: length = measureParameter(length (m6res coincident ME6) 5e-07)
+
+Executing: res = calculateParameter(((Rs * length) / width))
+
+Executing: nameParameter(length "lr")
+
+Executing: nameParameter(width "wr")
+
+Executing: nameParameter(length "l")
+
+Executing: nameParameter(width "w")
+
+Executing: nameParameter(res "r")
+
+Executing: extractBJT("PNP_V50X50_MM" bjt_v5_mm (qtc "C") (qtb "B") (qte "E") (cellView ...
+
+Executing: emitArea = measureParameter(area (bjt_v5_mm over qte))
+
+Executing: normalizedEmitArea = calculateParameter((emitArea * 1e-12))
+
+Executing: nameParameter(normalizedEmitArea "ea")
+
+Executing: extractBJT("PNP_V100X100_MM" bjt_v10_mm (qtc "C") (qtb "B") (qte "E") (cellVi...
+
+Executing: emitArea = measureParameter(area (bjt_v10_mm over qte))
+
+Executing: normalizedEmitArea = calculateParameter((emitArea * 1e-12))
+
+Executing: nameParameter(normalizedEmitArea "ea")
+
+Executing: extractDevice("MIMCAPS_MM" cmmc_mm (MMC "PLUS") (slm_c "MINUS") (namePrefix "...
+
+Executing: A = measureParameter(area (cmmc_mm) 1e-12)
+
+Executing: P = measureParameter(perimeter (cmmc_mm) 1e-06)
+
+Executing: Cap_mmc = calculateParameter(((Ca * A) + (Cf * P)))
+
+Executing: width_mmc = calculateParameter((((P / 2) - sqrt((((P * P) / 4) - (4 * A)))) /...
+
+Executing: length_mmc = calculateParameter((A / width_mmc))
+
+Executing: nameParameter(Cap_mmc "c")
+
+Executing: nameParameter(width_mmc "w")
+
+Executing: nameParameter(length_mmc "l")
+
+Executing: extractDIODE("DION_MM" dioden_mm (psub "PLUS") (nsd "MINUS") flagMalformed (c...
+
+Executing: area_dn_mm = measureParameter(area (dioden_mm) 1e-12)
+
+Executing: perim_dn_mm = measureParameter(perimeter (dioden_mm) 1e-06)
+
+Executing: nameParameter(area_dn_mm "area")
+
+Executing: nameParameter(perim_dn_mm "pj")
+
+Executing: extractDIODE("DIOP_MM" diodep_mm (psd "PLUS") (wel "MINUS") flagMalformed (ce...
+
+Executing: area_dp_mm = measureParameter(area (diodep_mm) 1e-12)
+
+Executing: perim_dp_mm = measureParameter(perimeter (diodep_mm) 1e-06)
+
+Executing: nameParameter(area_dp_mm "area")
+
+Executing: nameParameter(perim_dp_mm "pj")
+
+Executing: extractDevice("N_L18W500_18_RF" ng_rf (ply "G") (rfns "S") (rfnd "D") (psub "...
+
+Executing: attachParameter(m_mos19 "nf" ng_rf)
+
+Executing: attachParameter(length19 "l" ng_rf)
+
+Executing: attachParameter(width19 "w" ng_rf)
+
+Executing: extractDevice("N_PO7W500_18_RF" ng_srf (ply "G") (rfns "S") (rfnd "D") (psub ...
+
+Executing: attachParameter(m_mos20 "nf" ng_srf)
+
+Executing: attachParameter(length20 "l" ng_srf)
+
+Executing: attachParameter(width20 "w" ng_srf)
+
+Executing: extractDevice("P_L18W500_18_RF" pg_rf (ply "G") (rfps "S") (rfpd "D") (wel "B...
+
+Executing: attachParameter(m_mos21 "nf" pg_rf)
+
+Executing: attachParameter(length21 "l" pg_rf)
+
+Executing: attachParameter(width21 "w" pg_rf)
+
+Executing: extractDevice("P_PO7W500_18_RF" pg_srf (ply "G") (rfps "S") (rfpd "D") (wel "...
+
+Executing: attachParameter(m_mos22 "nf" pg_srf)
+
+Executing: attachParameter(length22 "l" pg_srf)
+
+Executing: attachParameter(width22 "w" pg_srf)
+
+Executing: extractDevice("N_L34W500_33_RF" hng_rf (ply "G") (rfns "S") (rfnd "D") (psub ...
+
+Executing: attachParameter(m_mos23 "nf" hng_rf)
+
+Executing: attachParameter(length23 "l" hng_rf)
+
+Executing: attachParameter(width23 "w" hng_rf)
+
+Executing: extractDevice("N_PO7W500_33_RF" hng_srf (ply "G") (rfns "S") (rfnd "D") (psub...
+
+Executing: attachParameter(m_mos24 "nf" hng_srf)
+
+Executing: attachParameter(length24 "l" hng_srf)
+
+Executing: attachParameter(width24 "w" hng_srf)
+
+Executing: extractDevice("P_L34W500_33_RF" hpg_rf (ply "G") (rfps "S") (rfpd "D") (wel "...
+
+Executing: attachParameter(m_mos25 "nf" hpg_rf)
+
+Executing: attachParameter(length25 "l" hpg_rf)
+
+Executing: attachParameter(width25 "w" hpg_rf)
+
+Executing: extractDevice("P_PO7W500_33_RF" hpg_srf (ply "G") (rfps "S") (rfpd "D") (wel ...
+
+Executing: attachParameter(m_mos26 "nf" hpg_srf)
+
+Executing: attachParameter(length26 "l" hpg_srf)
+
+Executing: attachParameter(width26 "w" hpg_srf)
+
+Executing: extractDevice("RNNPO_RF" nsnpyr_rf (ply "PLUS" "MINUS") (psub "B") (cellView ...
+
+Executing: attachParameter(res "r" nsnpyr_rf)
+
+Executing: attachParameter(length "l" nsnpyr_rf)
+
+Executing: attachParameter(width "w" nsnpyr_rf)
+
+Executing: extractDevice("RNPPO_RF" nsppyr_rf (ply "PLUS" "MINUS") (wel "B") (cellView "...
+
+Executing: attachParameter(res "r" nsppyr_rf)
+
+Executing: attachParameter(length "l" nsppyr_rf)
+
+Executing: attachParameter(width "w" nsppyr_rf)
+
+Executing: extractDevice("RNHR_RF" hrpyres_rf (ply "PLUS" "MINUS") (wel "B") (cellView "...
+
+Executing: attachParameter(res "r" hrpyres_rf)
+
+Executing: attachParameter(width "w" hrpyres_rf)
+
+Executing: attachParameter(length "l" hrpyres_rf)
+
+Executing: extractDevice("VARMIS_18_RF" varmis_rf (slm_term "PLUS") (wel "MINUS") (psub ...
+
+Executing: attachParameter(nf "nf" varmis_rf)
+
+Executing: attachParameter(cap_mis "c" varmis_rf)
+
+Executing: attachParameter(w "w" varmis_rf)
+
+Executing: attachParameter(l "l" varmis_rf)
+
+Executing: extractDevice("VARDIOP_RF" vard_rf (psd "PLUS") (wel "MINUS") (cellView "VARD...
+
+Executing: attachParameter(nf "nf" vard_rf)
+
+Executing: attachParameter(Cap_vard "c" vard_rf)
+
+Executing: attachParameter(width_vard "w" vard_rf)
+
+Executing: attachParameter(length_vard "l" vard_rf)
+
+Executing: extractDevice("MIMCAPM_RF" cmmc_msq_rf (MMC "PLUS") (slm_c "MINUS") (psub "B"...
+
+Executing: attachParameter(nx "nx" cmmc_msq_rf)
+
+Executing: attachParameter(ny "ny" cmmc_msq_rf)
+
+Executing: attachParameter(Cap_mmc_rf "c" cmmc_msq_rf)
+
+Executing: attachParameter(width_mmc_rf "w" cmmc_msq_rf)
+
+Executing: attachParameter(length_mmc_rf "l" cmmc_msq_rf)
+
+Executing: extractDevice("PAD_RF" rf_pad (top_m_c "PLUS") (M1 "MINUS") (namePrefix "X") ...
+
+Executing: attachParameter(index "index" rf_pad)
+
+Executing: extractDevice("L_SLCR20K_RF" ind_me (ind_plus "PLUS") (ind_minus "MINUS") (ps...
+
+Executing: attachParameter(W "w" ind_me)
+
+Executing: attachParameter(N "n" ind_me)
+
+Executing: attachParameter(D "d" ind_me)
+
+Executing: attachParameter(S "s" ind_me)
+
+Executing: attachParameter(L "L" ind_me)
+
+Finished running rules. Task processor time in main process:
+cpu: 0.10  elap: 0  pf: 0  in: 0  out: 800  virt: 147M  phys: 772M
+
+No output post-processing: This is not a DRC run
+
+Finished building the persistent database.
+cpu: 0.00  elap: 0  pf: 0  in: 0  out: 6448  virt: 152M  phys: 785M
+
+
+*****  aveng terminated normally  *****
+
+
+Finished /cad_area/install/ASSURA41//tools.lnx86/assura/bin/aveng
+
+Starting /cad_area/install/ASSURA41//tools.lnx86/assura/bin/avrpt /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/TG.rsf -exec1
+@(#)$CDS: avrpt_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:29 (sjfhw885) $
+sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
+
+run on CICS4.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/avrpt on Thu Nov  6 16:24:26 2025
+
+
+   Creating Error Database 'TG'...
+
+   Reading VDB ...
+--------------------------------------------------------------------------------
+Rule      Message                                    FlatCount     RealCount
+--------------------------------------------------------------------------------
+(    1)  dataAuditErrors                                     0            0
+(    2)  psub_StampErrorFloat                                0            0
+(    3)  psub_StampErrorMult                                 0            0
+(    4)  psub_StampErrorConnect                              0            0
+(    5)  wel_StampErrorFloat                                 0            0
+(    6)  wel_StampErrorMult                                  0            0
+(    7)  wel_StampErrorConnect                               0            0
+(    8)  TWEL_StampErrorFloat                                0            0
+(    9)  TWEL_StampErrorMult                                 0            0
+(   10)  TWEL_StampErrorConnect                              0            0
+(   11)  malformed device ngate_sp                           0            0
+(   12)  malformed device pgate_sp                           0            0
+(   13)  malformed device hngate_sp                          0            0
+(   14)  malformed device hpgate_sp                          0            0
+(   15)  malformed device ng_sram                            0            0
+(   16)  malformed device pg_sram                            0            0
+(   17)  malformed device welres                             0            0
+(   18)  malformed device sndres                             0            0
+(   19)  malformed device spdres                             0            0
+(   20)  malformed device snpyr                              0            0
+(   21)  malformed device sppyr                              0            0
+(   22)  malformed device nsndres                            0            0
+(   23)  malformed device nspdres                            0            0
+(   24)  malformed device nsnpyr                             0            0
+(   25)  malformed device nsppyr                             0            0
+(   26)  malformed device bjt_v5                             0            0
+(   27)  malformed device bjt_v10                            0            0
+(   28)  malformed device dioden                             0            0
+(   29)  malformed device diodep                             0            0
+(   30)  malformed device ngate_mm                           0            0
+(   31)  malformed device pgate_mm                           0            0
+(   32)  malformed device nmos_cap                           0            0
+(   33)  malformed device pmos_cap                           0            0
+(   34)  malformed device hngate_mm                          0            0
+(   35)  malformed device hpgate_mm                          0            0
+(   36)  malformed device ngate_lvt                          0            0
+(   37)  malformed device pgate_lvt                          0            0
+(   38)  malformed device hngate_lvt                         0            0
+(   39)  malformed device hpgate_lvt                         0            0
+(   40)  malformed device ngate_zt                           0            0
+(   41)  malformed device hngate_zt                          0            0
+(   42)  malformed device ngate_bpw                          0            0
+(   43)  malformed device hngate_bpw                         0            0
+(   44)  malformed device welres_mm                          0            0
+(   45)  malformed device sndres_mm                          0            0
+(   46)  malformed device sndres_mma                         0            0
+(   47)  malformed device spdres_mm                          0            0
+(   48)  malformed device spdres_mma                         0            0
+(   49)  malformed device nsndres_mm                         0            0
+(   50)  malformed device nspdres_mm                         0            0
+(   51)  malformed device nsnpyr_mm                          0            0
+(   52)  malformed device nsppyr_mm                          0            0
+(   53)  malformed device hrpyres                            0            0
+(   54)  malformed device m1res                              0            0
+(   55)  malformed device m2res                              0            0
+(   56)  malformed device m3res                              0            0
+(   57)  malformed device m4res                              0            0
+(   58)  malformed device m5res                              0            0
+(   59)  malformed device m6res                              0            0
+(   60)  malformed device bjt_v5_mm                          0            0
+(   61)  malformed device bjt_v10_mm                         0            0
+(   62)  malformed device cmmc_mm                            0            0
+(   63)  malformed device dioden_mm                          0            0
+(   64)  malformed device diodep_mm                          0            0
+(   65)  malformed device ng_rf                              0            0
+(   66)  malformed device ng_srf                             0            0
+(   67)  malformed device pg_rf                              0            0
+(   68)  malformed device pg_srf                             0            0
+(   69)  malformed device hng_rf                             0            0
+(   70)  malformed device hng_srf                            0            0
+(   71)  malformed device hpg_rf                             0            0
+(   72)  malformed device hpg_srf                            0            0
+(   73)  malformed device nsnpyr_rf                          0            0
+(   74)  malformed device nsppyr_rf                          0            0
+(   75)  malformed device hrpyres_rf                         0            0
+(   76)  malformed device varmis_rf                          0            0
+(   77)  malformed device vard_rf                            0            0
+(   78)  malformed device cmmc_msq_rf                        0            0
+(   79)  malformed device rf_pad                             0            0
+(   80)  malformed device ind_me                             0            0
+(   81)  unstable device for ind_me_Device_70                0            0
+(   83)  unstable device for rf_pad_Device_69                0            0
+(   85)  unstable device for cmmc_msq_rf_Device_6            0            0
+(   87)  unstable device for vard_rf_Device_67               0            0
+(   89)  unstable device for varmis_rf_Device_66             0            0
+(   91)  unstable device for hrpyres_rf_Device_65            0            0
+(   93)  unstable device for nsppyr_rf_Device_64             0            0
+(   95)  unstable device for nsnpyr_rf_Device_63             0            0
+(   97)  unstable device for hpg_srf_Device_62               0            0
+(   99)  unstable device for hpg_rf_Device_61                0            0
+(  101)  unstable device for hng_srf_Device_60               0            0
+(  103)  unstable device for hng_rf_Device_59                0            0
+(  105)  unstable device for pg_srf_Device_58                0            0
+(  107)  unstable device for pg_rf_Device_57                 0            0
+(  109)  unstable device for ng_srf_Device_56                0            0
+(  111)  unstable device for ng_rf_Device_55                 0            0
+(  113)  unstable device for diodep_mm_DIODE_54              0            0
+(  115)  unstable device for dioden_mm_DIODE_53              0            0
+(  117)  unstable device for cmmc_mm_Device_52               0            0
+(  119)  unstable device for bjt_v10_mm_BJT_51               0            0
+(  121)  unstable device for bjt_v5_mm_BJT_50                0            0
+(  123)  unstable device for m6res_Device_49                 0            0
+(  125)  unstable device for m5res_Device_48                 0            0
+(  127)  unstable device for m4res_Device_47                 0            0
+(  129)  unstable device for m3res_Device_46                 0            0
+(  131)  unstable device for m2res_Device_45                 0            0
+(  133)  unstable device for m1res_Device_44                 0            0
+(  135)  unstable device for hrpyres_Device_43               0            0
+(  137)  unstable device for nsppyr_mm_Device_42             0            0
+(  139)  unstable device for nsnpyr_mm_Device_41             0            0
+(  141)  unstable device for nspdres_mm_Device_40            0            0
+(  143)  unstable device for nsndres_mm_Device_39            0            0
+(  145)  unstable device for spdres_mma_Device_38            0            0
+(  147)  unstable device for spdres_mm_Device_37             0            0
+(  149)  unstable device for sndres_mma_Device_36            0            0
+(  151)  unstable device for sndres_mm_Device_35             0            0
+(  153)  unstable device for welres_mm_Device_34             0            0
+(  155)  unstable device for hngate_bpw_MOS_33               0            0
+(  157)  unstable device for ngate_bpw_MOS_32                0            0
+(  159)  unstable device for hngate_zt_MOS_31                0            0
+(  161)  unstable device for ngate_zt_MOS_30                 0            0
+(  163)  unstable device for hpgate_lvt_MOS_29               0            0
+(  165)  unstable device for hngate_lvt_MOS_28               0            0
+(  167)  unstable device for pgate_lvt_MOS_27                0            0
+(  169)  unstable device for ngate_lvt_MOS_26                0            0
+(  171)  unstable device for hpgate_mm_MOS_25                0            0
+(  173)  unstable device for hngate_mm_MOS_24                0            0
+(  175)  unstable device for pmos_cap_MOS_23                 0            0
+(  177)  unstable device for nmos_cap_MOS_22                 0            0
+(  179)  unstable device for pgate_mm_MOS_21                 0            0
+(  181)  unstable device for ngate_mm_MOS_20                 0            0
+(  183)  unstable device for diodep_DIODE_19                 0            0
+(  185)  unstable device for dioden_DIODE_18                 0            0
+(  187)  unstable device for bjt_v10_BJT_17                  0            0
+(  189)  unstable device for bjt_v5_BJT_16                   0            0
+(  191)  unstable device for nsppyr_RES_15                   0            0
+(  193)  unstable device for nsnpyr_RES_14                   0            0
+(  195)  unstable device for nspdres_RES_13                  0            0
+(  197)  unstable device for nsndres_RES_12                  0            0
+(  199)  unstable device for sppyr_RES_11                    0            0
+(  201)  unstable device for snpyr_RES_10                    0            0
+(  203)  unstable device for spdres_RES_9                    0            0
+(  205)  unstable device for sndres_RES_8                    0            0
+(  207)  unstable device for welres_RES_7                    0            0
+(  209)  unstable device for pg_sram_MOS_6                   0            0
+(  211)  unstable device for ng_sram_MOS_5                   0            0
+(  213)  unstable device for hpgate_sp_MOS_4                 0            0
+(  215)  unstable device for hngate_sp_MOS_3                 0            0
+(  217)  unstable device for pgate_sp_MOS_2                  0            0
+(  219)  unstable device for ngate_sp_MOS_1                  0            0
+--------------------------------------------------------------------------------
+Total  errors:                                               0            0
+--------------------------------------------------------------------------------
+
+   Finished creating Error Database ...
+
+   Writing Report into ./TG.err ...
+
+avrpt cpu sec:    0.03  elapsed:     0  virtual:    93M
+
+Finished /cad_area/install/ASSURA41//tools.lnx86/assura/bin/avrpt
+
+Starting /cad_area/install/ASSURA41//tools.lnx86/assura/bin/avcallproc /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/TG.rsf -exec1 -LVS -cdslib /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
+2025/11/06 16:24:26 WARNING This OS does not appear to be a Cadence supported Linux configuration.
+2025/11/06 16:24:26 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
+
+Finished /cad_area/install/ASSURA41//tools.lnx86/assura/bin/avcallproc
+
+Starting /cad_area/install/ASSURA41//tools.lnx86/assura/bin/avnx /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/TG.rsf -exec1 -LVS -cdslib /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
+Virtuoso Framework License (111) was checked out successfully. Total checkout time was 0.86s.
+Checking out license for Assura_LVS
+Checking out license for Phys_Ver_Sys_LVS_XL
+*WARNING* Failed to obtain license for Assura_LVS
+Checking out license for Phys_Ver_Sys_DRC_XL
+*WARNING* Failed to obtain license for Phys_Ver_Sys_LVS_XL
+Checking out license for Pegasus_LVS_SP
+*WARNING* Failed to obtain license for Phys_Ver_Sys_DRC_XL
+Checking out license for Pegasus_LVS
+*WARNING* Failed to obtain license for Pegasus_LVS_SP
+@(#)$CDS: avnx_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:29 (sjfhw885) $
+sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
+
+run on CICS4.kletech.ac.in from /cad_area/install/ASSURA41/tools.lnx86/assura/bin/64bit/avnx on Thu Nov  6 16:24:55 2025
+
+avnx started...
+2025/11/06 16:24:55 WARNING This OS does not appear to be a Cadence supported Linux configuration.
+2025/11/06 16:24:55 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>
+cpu: 0.05  elap: 0  pf: 0  in: 0  out: 16  virt: 589M  phys: 1003M
+
+Run time = 17.00 seconds
+CPU time =  0.06 seconds
+
+                  End of Summary Report
+
+************************************************************************
+cpu: 0.00  elap: 0  pf: 0  in: 0  out: 12968  virt: 521M  phys: 1003M
+***** avnx terminated normally ***** 
+
+
+Finished /cad_area/install/ASSURA41//tools.lnx86/assura/bin/avnx
+
+Starting /cad_area/install/ASSURA41//tools.lnx86/assura/bin/nvn /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/TG.rsf -postExtract -exec1 -cdslib /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
+Checking out license for Assura_LVS
+Checking out license for Phys_Ver_Sys_LVS_XL
+Checking out license for Phys_Ver_Sys_DRC_XL
+Checking out license for Pegasus_LVS_SP
+Checking out license for Pegasus_LVS
+@(#)$CDS: nvn_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:36 (sjfhw885) $
+sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
+run on CICS4.kletech.ac.in at Thu Nov  6 16:25:12 2025
+Reading schematic network
+Reading layout network
+ inputting network TG.ldb
+Preprocessing schematic network phase 1
+Preprocessing layout network phase 1
+ WARNING (AVLVSNN-10050) : indDevice - cell 'nkind4nH(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : indDevice - cell 'L_SLCR20K_RF(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : capDevice - cell 'PAD_RF(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : capDevice - cell 'MIMCAPM_RF(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : capDevice - cell 'MIMCAPS_MM(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : capDevice - cell 'VARDIOP_RF(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : capDevice - cell 'VARMIS_18_RF(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : resDevice - cell 'RM6_MM(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : resDevice - cell 'RM5_MM(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : resDevice - cell 'RM4_MM(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : resDevice - cell 'RM3_MM(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : resDevice - cell 'RM2_MM(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : resDevice - cell 'RM1_MM(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : resDevice - cell 'RNHR_RF(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : resDevice - cell 'RNHR1000_MM(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : resDevice - cell 'RNPPO_RF(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : resDevice - cell 'RNPPO_MM(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : resDevice - cell 'RNNPO_RF(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : resDevice - cell 'RNNPO_MM(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : resDevice - cell 'RNPD_MM(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : resDevice - cell 'RNND_MM(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : resDevice - cell 'RSPD_MM(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : resDevice - cell 'RSND_MM(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : resDevice - cell 'RSNWELL_MM(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : mosDevice - cell 'P_PO7W500_33_RF(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : mosDevice - cell 'P_PO7W500_18_RF(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : mosDevice - cell 'P_L34W500_33_RF(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : mosDevice - cell 'P_L18W500_18_RF(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : mosDevice - cell 'N_PO7W500_33_RF(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : mosDevice - cell 'N_PO7W500_18_RF(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : mosDevice - cell 'N_L34W500_33_RF(GENERIC)' not found.
+ WARNING (AVLVSNN-10050) : mosDevice - cell 'N_L18W500_18_RF(GENERIC)' not found.
+Preprocessing schematic network phase 2
+Preprocessing layout network phase 2
+Top cell  TG schematic CMOS vs TG layout CMOS
+Schematic and Layout Match
+cpu=0.00m  wall=0.28m  mem=109.91mb
+
+Finished /cad_area/install/ASSURA41//tools.lnx86/assura/bin/nvn
+
+Starting /cad_area/install/ASSURA41//tools.lnx86/assura/bin/vldbToRpa TG.snn TG.tre TG.cel
+
+Finished /cad_area/install/ASSURA41//tools.lnx86/assura/bin/vldbToRpa
+
+Starting /cad_area/install/ASSURA41//tools.lnx86/assura/bin/vldbToRpa TG.lnn TG.tre2 TG.cel2
+
+Finished /cad_area/install/ASSURA41//tools.lnx86/assura/bin/vldbToRpa
+
+Starting /cad_area/install/ASSURA41//tools.lnx86/assura/bin/ercChk /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/TG.rsf
+Virtuoso Framework License (111) was checked out successfully. Total checkout time was 6.01s.
+WARNING License '111' took more than 5.00 seconds (actual time was 6.01 seconds) to check out.
+*WARNING* '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib', Line 6: Cannot find file '$GF_PDK_HOME/DesignEnv/VirtuosoOA/setup/superstack.cds.lib'.
+*WARNING* '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib', Line 6: Skipping: '$GF_PDK_HOME/DesignEnv/VirtuosoOA/setup/superstack.cds.lib'
+*WARNING* LIB basic from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 10 redefines
+LIB basic from File /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib
+Insert UNDEFINE basic
+before DEFINE basic
+    in /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
+Or remove or comment out DEFINE basic
+    in /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib
+to suppress this warning message.
+*WARNING* LIB analogLib from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 11 redefines
+LIB analogLib from File /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib
+Insert UNDEFINE analogLib
+before DEFINE analogLib
+    in /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
+Or remove or comment out DEFINE analogLib
+    in /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib
+to suppress this warning message.
+*WARNING* LIB UMC_18_CMOS from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 28 redefines
+LIB UMC_18_CMOS from the same file (defined earlier.)
+*WARNING* LIB UMC180Faraday from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 35 redefines
+LIB UMC180Faraday from the same file (defined earlier.)
+*WARNING* The directory: '/cad_area/install/Virtuoso_files/sai' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'sai'.
+*WARNING* The directory: '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/$PDK_DIR/asap7ssc7p5t_05' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'asap7ssc7p5t'.
+*WARNING* The directory: '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/$PDK_DIR/cdslib/asap7_TechLib' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'asap7_TechLib'.
+*WARNING* The directory: '/cad_area/install/pdk/UMC/UMC180Faraday/fsa0m_a/2008Q3v1.2/50VT_GENERIC_IO/FrontEnd/composer/FSA0M_A_50VT_GENERIC_IO' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'FSA0M_A_50VT_GENERIC_IO'.
+*WARNING* The directory: '/cad_area/install/pdk/UMC/UMC180Faraday/fsa0m_a/2008Q3v1.2/50VT_GENERIC_IO/BackEnd/lef' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'UMC180Faraday'.
+*WARNING* '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib', Line 6: Cannot find file '$GF_PDK_HOME/DesignEnv/VirtuosoOA/setup/superstack.cds.lib'.
+*WARNING* '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib', Line 6: Skipping: '$GF_PDK_HOME/DesignEnv/VirtuosoOA/setup/superstack.cds.lib'
+*WARNING* LIB basic from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 10 redefines
+LIB basic from File /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib
+Insert UNDEFINE basic
+before DEFINE basic
+    in /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
+Or remove or comment out DEFINE basic
+    in /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib
+to suppress this warning message.
+*WARNING* LIB analogLib from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 11 redefines
+LIB analogLib from File /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib
+Insert UNDEFINE analogLib
+before DEFINE analogLib
+    in /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib
+Or remove or comment out DEFINE analogLib
+    in /cad_area/install/IC618/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib
+to suppress this warning message.
+*WARNING* LIB UMC_18_CMOS from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 28 redefines
+LIB UMC_18_CMOS from the same file (defined earlier.)
+*WARNING* LIB UMC180Faraday from File /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib Line 35 redefines
+LIB UMC180Faraday from the same file (defined earlier.)
+*WARNING* The directory: '/cad_area/install/Virtuoso_files/sai' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'sai'.
+*WARNING* The directory: '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/$PDK_DIR/asap7ssc7p5t_05' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'asap7ssc7p5t'.
+*WARNING* The directory: '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/$PDK_DIR/cdslib/asap7_TechLib' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'asap7_TechLib'.
+*WARNING* The directory: '/cad_area/install/pdk/UMC/UMC180Faraday/fsa0m_a/2008Q3v1.2/50VT_GENERIC_IO/FrontEnd/composer/FSA0M_A_50VT_GENERIC_IO' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'FSA0M_A_50VT_GENERIC_IO'.
+*WARNING* The directory: '/cad_area/install/pdk/UMC/UMC180Faraday/fsa0m_a/2008Q3v1.2/50VT_GENERIC_IO/BackEnd/lef' does not exist
+	but was defined in libFile '/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/cds.lib' for Lib 'UMC180Faraday'.
+	Loading UMC_18_CMOS/loadCxt.ile ... done!
+	Loading context 'UMC_18_CMOS' from library 'UMC_18_CMOS' ... done!
+	Loading context 'Util' from library 'UMC_18_CMOS' ... done!
+ Loading  /cad_area/install/pdk/Cadence_PDK/UMC180FDK/Cadence_IC6/G-9FD-MIXED_MODE_RFCMOS18-1.8V_3.3V-1P6M-MMC_UM180FDKMFC00000OA-FDK-Ver.A02_PB.zip_FILES/UM180FDKMFC00000OA_A02_DESIGNKIT.tar.gz_FILES/UM180FDKMFC00000OA_A02_PB.tar.gz_FILES/UMC_18_CMOS//libInitCustomExit.il
+
+************************************************************* 
+
+ Assura LVS of UMC 0.18um 1.8V/3.3V 1P6M MM/RF Process  
+ Version 1.3 P1 
+ June 6, 2005 
+ 
+
+************************************************************* 
+
+
+Finished /cad_area/install/ASSURA41//tools.lnx86/assura/bin/ercChk
+
+Starting /cad_area/install/ASSURA41//tools.lnx86/assura/bin/avcallproc /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/TG.rsf -trp -exec1
+
+Finished /cad_area/install/ASSURA41//tools.lnx86/assura/bin/avcallproc
+
+
+Assura LVS terminated normally.
+
+
+
+Run ended: Thu Nov  6 16:25:35 2025
+
+*****  Assura terminated normally  *****
+

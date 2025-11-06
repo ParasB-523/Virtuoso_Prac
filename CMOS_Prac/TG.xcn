@@ -1,0 +1,250 @@
+text po_text attach ply
+text m1_text attach M1
+text m2_text attach M2
+text m3_text attach M3
+text m4_text attach M4
+text m5_text attach slm_c
+text m6_text attach top_m_c
+text po_textt attach ply
+text m1_textt attach M1
+text m2_textt attach M2
+text m3_textt attach M3
+text m4_textt attach M4
+text m5_textt attach slm_c
+text m6_textt attach top_m_c
+connect slm_c M4 by VI4
+connect M4 M3 by VI3
+connect M3 M2 by VI2
+connect M2 M1 by VI1
+connect M1 ply by polycon
+connect M1 nsd by nsdcon
+connect M1 ntap by nsdcon
+connect nsd ntap by nsdcon
+connect M1 psd by psdcon
+connect M1 ptap by psdcon
+connect psd ptap by psdcon
+connect top_m_c MMC by _VI5_MMC
+connect top_m_c slm_c by _VI5_slm_c
+stamp psub by ptap
+stamp wel by ntap
+stamp TWEL by ptap
+stamp rfpd by psd
+stamp rfps by psd
+stamp rfnd by nsd
+stamp rfns by nsd
+stamp qte by psd
+stamp qtb by nsd
+stamp qtc by psd
+stamp ind_plus by top_m_c
+stamp ind_minus by top_m_c
+stamp slm_term by top_m_c
+model=mos[N],N
+dfiimodel=mos[N],N#20ivpcell
+element mos[N] ngate_sp_MOS_1 ply nsd psub 
+model=mos[P],P
+dfiimodel=mos[P],P#20ivpcell
+element mos[P] pgate_sp_MOS_2 ply psd wel 
+model=mos[NT],NT
+dfiimodel=mos[NT],NT#20ivpcell
+element mos[NT] hngate_sp_MOS_3 ply nsd psub 
+model=mos[PT],PT
+dfiimodel=mos[PT],PT#20ivpcell
+element mos[PT] hpgate_sp_MOS_4 ply psd wel 
+model=mos[NB],NB
+dfiimodel=mos[NB],NB#20ivpcell
+element mos[NB] ng_sram_MOS_5 ply nsd psub 
+model=mos[PB],PB
+dfiimodel=mos[PB],PB#20ivpcell
+element mos[PB] pg_sram_MOS_6 ply psd wel 
+model=res[RSNWELL],RSNWELL
+dfiimodel=res[RSNWELL],RSNWELL#20ivpcell
+element res[RSNWELL] welres_RES_7 wel 
+model=res[RSND],RSND
+dfiimodel=res[RSND],RSND#20ivpcell
+element res[RSND] sndres_RES_8 nsd 
+model=res[RSPD],RSPD
+dfiimodel=res[RSPD],RSPD#20ivpcell
+element res[RSPD] spdres_RES_9 psd 
+model=res[RSNPO],RSNPO
+dfiimodel=res[RSNPO],RSNPO#20ivpcell
+element res[RSNPO] snpyr_RES_10 ply 
+model=res[RSPPO],RSPPO
+dfiimodel=res[RSPPO],RSPPO#20ivpcell
+element res[RSPPO] sppyr_RES_11 ply 
+model=res[RNND],RNND
+dfiimodel=res[RNND],RNND#20ivpcell
+element res[RNND] nsndres_RES_12 nsd 
+model=res[RNPD],RNPD
+dfiimodel=res[RNPD],RNPD#20ivpcell
+element res[RNPD] nspdres_RES_13 psd 
+model=res[RNNPO],RNNPO
+dfiimodel=res[RNNPO],RNNPO#20ivpcell
+element res[RNNPO] nsnpyr_RES_14 ply 
+model=res[RNPPO],RNPPO
+dfiimodel=res[RNPPO],RNPPO#20ivpcell
+element res[RNPPO] nsppyr_RES_15 ply 
+model=bjt[PNP_V50X50],PNP_V50X50
+dfiimodel=bjt[PNP_V50X50],PNP_V50X50#20ivpcell
+element bjt[PNP_V50X50] bjt_v5_BJT_16 qtc qtb qte 
+model=bjt[PNP_V100X100],PNP_V100X100
+dfiimodel=bjt[PNP_V100X100],PNP_V100X100#20ivpcell
+element bjt[PNP_V100X100] bjt_v10_BJT_17 qtc qtb qte 
+model=diode[DN],DN
+dfiimodel=diode[DN],DN#20ivpcell
+element diode[DN] dioden_DIODE_18 psub nsd 
+model=diode[DP],DP
+dfiimodel=diode[DP],DP#20ivpcell
+element diode[DP] diodep_DIODE_19 psd wel 
+model=mos[N_18_MM],N_18_MM
+dfiimodel=mos[N_18_MM],N_18_MM#20ivpcell
+element mos[N_18_MM] ngate_mm_MOS_20 ply nsd psub 
+model=mos[P_18_MM],P_18_MM
+dfiimodel=mos[P_18_MM],P_18_MM#20ivpcell
+element mos[P_18_MM] pgate_mm_MOS_21 ply psd wel 
+model=mos[N_18_MM_av2],N_18_MM
+dfiimodel=mos[N_18_MM_av2],NCAP_MM#20ivpcell
+element mos[N_18_MM_av2] nmos_cap_MOS_22 ply nsd psub 
+model=mos[P_18_MM_av2],P_18_MM
+dfiimodel=mos[P_18_MM_av2],PCAP_MM#20ivpcell
+element mos[P_18_MM_av2] pmos_cap_MOS_23 ply psd wel 
+model=mos[N_33_MM],N_33_MM
+dfiimodel=mos[N_33_MM],N_33_MM#20ivpcell
+element mos[N_33_MM] hngate_mm_MOS_24 ply nsd psub 
+model=mos[P_33_MM],P_33_MM
+dfiimodel=mos[P_33_MM],P_33_MM#20ivpcell
+element mos[P_33_MM] hpgate_mm_MOS_25 ply psd wel 
+model=mos[N_LV_18_MM],N_LV_18_MM
+dfiimodel=mos[N_LV_18_MM],N_LV_18_MM#20ivpcell
+element mos[N_LV_18_MM] ngate_lvt_MOS_26 ply nsd psub 
+model=mos[P_LV_18_MM],P_LV_18_MM
+dfiimodel=mos[P_LV_18_MM],P_LV_18_MM#20ivpcell
+element mos[P_LV_18_MM] pgate_lvt_MOS_27 ply psd wel 
+model=mos[N_LV_33_MM],N_LV_33_MM
+dfiimodel=mos[N_LV_33_MM],N_LV_33_MM#20ivpcell
+element mos[N_LV_33_MM] hngate_lvt_MOS_28 ply nsd psub 
+model=mos[P_LV_33_MM],P_LV_33_MM
+dfiimodel=mos[P_LV_33_MM],P_LV_33_MM#20ivpcell
+element mos[P_LV_33_MM] hpgate_lvt_MOS_29 ply psd wel 
+model=mos[N_ZERO_18_MM],N_ZERO_18_MM
+dfiimodel=mos[N_ZERO_18_MM],N_ZERO_18_MM#20ivpcell
+element mos[N_ZERO_18_MM] ngate_zt_MOS_30 ply nsd psub 
+model=mos[N_ZERO_33_MM],N_ZERO_33_MM
+dfiimodel=mos[N_ZERO_33_MM],N_ZERO_33_MM#20ivpcell
+element mos[N_ZERO_33_MM] hngate_zt_MOS_31 ply nsd psub 
+model=mos[N_BPW_18_MM],N_BPW_18_MM
+dfiimodel=mos[N_BPW_18_MM],N_BPW_18_MM#20ivpcell
+element mos[N_BPW_18_MM] ngate_bpw_MOS_32 ply nsd TWEL 
+model=mos[N_BPW_33_MM],N_BPW_33_MM
+dfiimodel=mos[N_BPW_33_MM],N_BPW_33_MM#20ivpcell
+element mos[N_BPW_33_MM] hngate_bpw_MOS_33 ply nsd TWEL 
+model=generic[RSNWELL_MM],RSNWELL_MM
+dfiimodel=generic[RSNWELL_MM],RSNWELL_MM#20ivpcell
+element generic[RSNWELL_MM] welres_mm_Device_34 wel[PLUS] wel[MINUS] psub[B] 
+model=generic[RSND_MM],RSND_MM
+dfiimodel=generic[RSND_MM],RSND_MM#20ivpcell
+element generic[RSND_MM] sndres_mm_Device_35 nsd[PLUS] nsd[MINUS] psub[B] 
+model=generic[RSND_MM_av2],RSND_MM
+dfiimodel=generic[RSND_MM_av2],RSND_MM#20ivpcell
+element generic[RSND_MM_av2] sndres_mma_Device_36 nsd[PLUS] nsd[MINUS] psub[B] 
+model=generic[RSPD_MM],RSPD_MM
+dfiimodel=generic[RSPD_MM],RSPD_MM#20ivpcell
+element generic[RSPD_MM] spdres_mm_Device_37 psd[PLUS] psd[MINUS] wel[B] 
+model=generic[RSPD_MM_av2],RSPD_MM
+dfiimodel=generic[RSPD_MM_av2],RSPD_MM#20ivpcell
+element generic[RSPD_MM_av2] spdres_mma_Device_38 psd[PLUS] psd[MINUS] wel[B] 
+model=generic[RNND_MM],RNND_MM
+dfiimodel=generic[RNND_MM],RNND_MM#20ivpcell
+element generic[RNND_MM] nsndres_mm_Device_39 nsd[PLUS] nsd[MINUS] psub[B] 
+model=generic[RNPD_MM],RNPD_MM
+dfiimodel=generic[RNPD_MM],RNPD_MM#20ivpcell
+element generic[RNPD_MM] nspdres_mm_Device_40 psd[PLUS] psd[MINUS] wel[B] 
+model=generic[RNNPO_MM],RNNPO_MM
+dfiimodel=generic[RNNPO_MM],RNNPO_MM#20ivpcell
+element generic[RNNPO_MM] nsnpyr_mm_Device_41 ply[PLUS] ply[MINUS] psub[B] 
+model=generic[RNPPO_MM],RNPPO_MM
+dfiimodel=generic[RNPPO_MM],RNPPO_MM#20ivpcell
+element generic[RNPPO_MM] nsppyr_mm_Device_42 ply[PLUS] ply[MINUS] wel[B] 
+model=generic[RNHR1000_MM],RNHR1000_MM
+dfiimodel=generic[RNHR1000_MM],RNHR1000_MM#20ivpcell
+element generic[RNHR1000_MM] hrpyres_Device_43 ply[PLUS] ply[MINUS] wel[B] 
+model=generic[RM1_MM],RM1_MM
+dfiimodel=generic[RM1_MM],RM1_MM#20ivpcell
+element generic[RM1_MM] m1res_Device_44 M1[PLUS] M1[MINUS] 
+model=generic[RM2_MM],RM2_MM
+dfiimodel=generic[RM2_MM],RM2_MM#20ivpcell
+element generic[RM2_MM] m2res_Device_45 M2[PLUS] M2[MINUS] 
+model=generic[RM3_MM],RM3_MM
+dfiimodel=generic[RM3_MM],RM3_MM#20ivpcell
+element generic[RM3_MM] m3res_Device_46 M3[PLUS] M3[MINUS] 
+model=generic[RM4_MM],RM4_MM
+dfiimodel=generic[RM4_MM],RM4_MM#20ivpcell
+element generic[RM4_MM] m4res_Device_47 M4[PLUS] M4[MINUS] 
+model=generic[RM5_MM],RM5_MM
+dfiimodel=generic[RM5_MM],RM5_MM#20ivpcell
+element generic[RM5_MM] m5res_Device_48 slm_c[PLUS] slm_c[MINUS] 
+model=generic[RM6_MM],RM6_MM
+dfiimodel=generic[RM6_MM],RM6_MM#20ivpcell
+element generic[RM6_MM] m6res_Device_49 top_m_c[PLUS] top_m_c[MINUS] 
+model=bjt[PNP_V50X50_MM],PNP_V50X50_MM
+dfiimodel=bjt[PNP_V50X50_MM],PNP_V50X50_MM#20ivpcell
+element bjt[PNP_V50X50_MM] bjt_v5_mm_BJT_50 qtc qtb qte 
+model=bjt[PNP_V100X100_MM],PNP_V100X100_MM
+dfiimodel=bjt[PNP_V100X100_MM],PNP_V100X100_MM#20ivpcell
+element bjt[PNP_V100X100_MM] bjt_v10_mm_BJT_51 qtc qtb qte 
+model=generic[MIMCAPS_MM],MIMCAPS_MM
+dfiimodel=generic[MIMCAPS_MM],MIMCAPS_MM#20ivpcell
+element generic[MIMCAPS_MM] cmmc_mm_Device_52 MMC[PLUS] slm_c[MINUS] 
+model=diode[DION_MM],DION_MM
+dfiimodel=diode[DION_MM],DION_MM#20ivpcell
+element diode[DION_MM] dioden_mm_DIODE_53 psub nsd 
+model=diode[DIOP_MM],DIOP_MM
+dfiimodel=diode[DIOP_MM],DIOP_MM#20ivpcell
+element diode[DIOP_MM] diodep_mm_DIODE_54 psd wel 
+model=generic[N_L18W500_18_RF],N_L18W500_18_RF
+dfiimodel=generic[N_L18W500_18_RF],N_L18W500_18_RF#20ivpcell
+element generic[N_L18W500_18_RF] ng_rf_Device_55 ply[G] rfns[S] rfnd[D] psub[B] 
+model=generic[N_PO7W500_18_RF],N_PO7W500_18_RF
+dfiimodel=generic[N_PO7W500_18_RF],N_PO7W500_18_RF#20ivpcell
+element generic[N_PO7W500_18_RF] ng_srf_Device_56 ply[G] rfns[S] rfnd[D] psub[B] 
+model=generic[P_L18W500_18_RF],P_L18W500_18_RF
+dfiimodel=generic[P_L18W500_18_RF],P_L18W500_18_RF#20ivpcell
+element generic[P_L18W500_18_RF] pg_rf_Device_57 ply[G] rfps[S] rfpd[D] wel[B] 
+model=generic[P_PO7W500_18_RF],P_PO7W500_18_RF
+dfiimodel=generic[P_PO7W500_18_RF],P_PO7W500_18_RF#20ivpcell
+element generic[P_PO7W500_18_RF] pg_srf_Device_58 ply[G] rfps[S] rfpd[D] wel[B] 
+model=generic[N_L34W500_33_RF],N_L34W500_33_RF
+dfiimodel=generic[N_L34W500_33_RF],N_L34W500_33_RF#20ivpcell
+element generic[N_L34W500_33_RF] hng_rf_Device_59 ply[G] rfns[S] rfnd[D] psub[B] 
+model=generic[N_PO7W500_33_RF],N_PO7W500_33_RF
+dfiimodel=generic[N_PO7W500_33_RF],N_PO7W500_33_RF#20ivpcell
+element generic[N_PO7W500_33_RF] hng_srf_Device_60 ply[G] rfns[S] rfnd[D] psub[B] 
+model=generic[P_L34W500_33_RF],P_L34W500_33_RF
+dfiimodel=generic[P_L34W500_33_RF],P_L34W500_33_RF#20ivpcell
+element generic[P_L34W500_33_RF] hpg_rf_Device_61 ply[G] rfps[S] rfpd[D] wel[B] 
+model=generic[P_PO7W500_33_RF],P_PO7W500_33_RF
+dfiimodel=generic[P_PO7W500_33_RF],P_PO7W500_33_RF#20ivpcell
+element generic[P_PO7W500_33_RF] hpg_srf_Device_62 ply[G] rfps[S] rfpd[D] wel[B] 
+model=generic[RNNPO_RF],RNNPO_RF
+dfiimodel=generic[RNNPO_RF],RNNPO_RF#20ivpcell
+element generic[RNNPO_RF] nsnpyr_rf_Device_63 ply[PLUS] ply[MINUS] psub[B] 
+model=generic[RNPPO_RF],RNPPO_RF
+dfiimodel=generic[RNPPO_RF],RNPPO_RF#20ivpcell
+element generic[RNPPO_RF] nsppyr_rf_Device_64 ply[PLUS] ply[MINUS] wel[B] 
+model=generic[RNHR_RF],RNHR_RF
+dfiimodel=generic[RNHR_RF],RNHR_RF#20ivpcell
+element generic[RNHR_RF] hrpyres_rf_Device_65 ply[PLUS] ply[MINUS] wel[B] 
+model=generic[VARMIS_18_RF],VARMIS_18_RF
+dfiimodel=generic[VARMIS_18_RF],VARMIS_18_RF#20ivpcell
+element generic[VARMIS_18_RF] varmis_rf_Device_66 slm_term[PLUS] wel[MINUS] psub[B] 
+model=generic[VARDIOP_RF],VARDIOP_RF
+dfiimodel=generic[VARDIOP_RF],VARDIOP_RF#20ivpcell
+element generic[VARDIOP_RF] vard_rf_Device_67 psd[PLUS] wel[MINUS] 
+model=generic_C[MIMCAPM_RF],MIMCAPM_RF
+dfiimodel=generic_C[MIMCAPM_RF],MIMCAPM_RF#20ivpcell
+element generic_C[MIMCAPM_RF] cmmc_msq_rf_Device_68 MMC[PLUS] slm_c[MINUS] psub[B] 
+model=generic[PAD_RF],PAD_RF
+dfiimodel=generic[PAD_RF],PAD_RF#20ivpcell
+element generic[PAD_RF] rf_pad_Device_69 top_m_c[PLUS] M1[MINUS] 
+model=generic[L_SLCR20K_RF],L_SLCR20K_RF
+dfiimodel=generic[L_SLCR20K_RF],L_SLCR20K_RF#20ivpcell
+element generic[L_SLCR20K_RF] ind_me_Device_70 ind_plus[PLUS] ind_minus[MINUS] psub[B] 

@@ -1,0 +1,13 @@
+
+***** Begin Label Report *****
+
+ Label in cell 'TG layout CMOS':
+  info: Assign pin label "Vin" at (0.380, -5.210) to layer `M1'.
+  info: Assign pin label "Ctrl" at (1.270, -5.910) to layer `M1'.
+  info: Assign pin label "Vss" at (3.310, -7.350) to layer `M1'.
+  info: Assign pin label "Ctrlbar" at (1.270, -4.590) to layer `M1'.
+  info: Assign pin label "Vout" at (2.010, -5.240) to layer `M1'.
+  info: Assign pin label "Vdd" at (3.310, -3.180) to layer `M1'.
+
+***** End of Label Report *****
+
