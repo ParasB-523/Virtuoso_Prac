@@ -1,0 +1,15 @@
+
+***** Begin Label Report *****
+
+ Label in cell 'AOI_122 layout CMOS':
+  info: Assign pin label "Vss" at (0.000, -13.010) to layer `M1'.
+  info: Assign pin label "C" at (1.260, -8.130) to layer `M1'.
+  info: Assign pin label "B" at (2.120, -8.130) to layer `M1'.
+  info: Assign pin label "A" at (2.980, -8.130) to layer `M1'.
+  info: Assign pin label "D" at (3.840, -8.130) to layer `M1'.
+  info: Assign pin label "Vout" at (5.260, -9.510) to layer `M1'.
+  info: Assign pin label "E" at (4.700, -8.130) to layer `M1'.
+  info: Assign pin label "Vdd" at (0.000, -3.000) to layer `M1'.
+
+***** End of Label Report *****
+
