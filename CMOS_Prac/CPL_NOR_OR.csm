@@ -1,0 +1,6 @@
+Schematic                       | Layout                       | Status
+-------------------------------------------------------------------------------
+CMOS_Inverter schematic CMOS    | CMOS_Inverter layout CMOS    | matched    
+CPL_NOR_OR schematic CMOS       | CPL_NOR_OR layout CMOS       | matched    
+
+Schematic and Layout Match

@@ -1,0 +1,21 @@
+
+***** Begin Label Report *****
+
+ Label in cell 'CMOS_Inverter layout CMOS':
+  info: Assign pin label "Vss" at (0.120, -8.000) to layer `M1'.
+  info: Assign pin label "Vin" at (1.270, -5.230) to layer `M1'.
+  info: Assign pin label "Vdd" at (0.120, -2.550) to layer `M1'.
+  info: Assign pin label "Vout" at (2.960, -5.230) to layer `M1'.
+
+ Label in cell 'CPL_NOR_OR layout CMOS':
+  info: Assign pin label "F" at (1.760, -11.760) to layer `M1'.
+  info: Assign pin label "Vss" at (7.840, -14.530) to layer `M1'.
+  info: Assign pin label "A" at (7.490, -11.880) to layer `M1'.
+  info: Assign pin label "B" at (6.610, -10.900) to layer `M1'.
+  info: Assign pin label "Ab" at (8.190, -11.020) to layer `M1'.
+  info: Assign pin label "Bb" at (9.070, -10.900) to layer `M1'.
+  info: Assign pin label "Vdd" at (7.840, -9.060) to layer `M1'.
+  info: Assign pin label "Fb" at (13.910, -11.760) to layer `M1'.
+
+***** End of Label Report *****
+
