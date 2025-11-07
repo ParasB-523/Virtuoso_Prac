@@ -1,0 +1,312 @@
+;----------------------------------------------------------------------------
+; @(#)$CDS: assura version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/22 00:04 (sjfhw885) $
+; sub-version 4.1_USR6_EHF13
+;----------------------------------------------------------------------------
+
+
+;----------------------------------------------------------------------------
+; avParameter Section
+; Created by the Assura UI
+;----------------------------------------------------------------------------
+
+avParameters(
+  ?inputLayout ( "df2" "CMOS" )
+  ?cellName "2_1_MUX_TG"
+  ?viewName "layout"
+  ?rulesFile "./Assura_UMC180/extract.rul"
+  ?avrpt t
+)
+
+
+
+
+;----------------------------------------------------------------------------
+; avCompareRules Section from Rules Files
+; Specified in the Assura UI
+;----------------------------------------------------------------------------
+
+procedure( doNotCompare(arg1 arg2) prog(  ()  return(nil) ) )  
+    
+; *****************************************************************
+; 	         Compare RF MOS properties
+; *****************************************************************
+
+procedure( compareRFMOS( layPlist, schPlist )
+    prog( (missingLay missingSch)
+
+      tolW  = 0.01	; the tolerance of gate width  is 1%
+      tolL  = 0.01	; the tolerance of gate length is 1%
+
+; If w,l,nf,m are missing, set them to W,L,NF,M respectively
+
+      when( !schPlist->l  schPlist->l  = schPlist->L  )
+      when( !schPlist->w  schPlist->w  = schPlist->W  )
+      when( !schPlist->m  schPlist->m  = schPlist->M  )
+      when( !layPlist->l  layPlist->l  = layPlist->L  )
+      when( !layPlist->w  layPlist->w  = layPlist->W  )
+      when( !layPlist->nf layPlist->nf = layPlist->NF )
+
+; If m (nf factor) is missing, set it to 1
+
+      when( !layPlist->nf  layPlist->nf = 1  )
+      when( !schPlist->m   schPlist->m  = 1  )
+
+; If W or L is missing generate a parameter mismatch
+            
+      foreach( prop '( w l )
+        unless( get( layPlist prop )
+          missingLay = cons( prop missingLay )
+        ) ;unless
+        unless( get( schPlist prop )
+          missingSch = cons( prop missingSch )
+        ) ;unless
+      ) ;foreach
+      
+; Report all missing parameters
+
+      when( ( missingLay || missingSch )      
+	when( missingSch 
+	  sprintf( msg1 "Sch MOS missing params: %s" 
+	    buildString( missingSch ",") )
+	) ;when
+	when( !missingSch
+	  sprintf( msg1 "Sch MOS W/L/M %g %g %g" 
+            float(schPlist->w) float(schPlist->l) float(schPlist->m)
+          )
+	) ;when
+	when( missingLay
+	  sprintf( msg2 "Lay MOS missing params: %s" 
+	    buildString( missingLay ",") )
+ 	) ;when
+	when( !missingLay
+	  sprintf( msg2 "Lay MOS W/L/NF %g %g %g" 
+            float(layPlist->w) float(layPlist->l) float(layPlist->nf)
+          )
+	) ;when
+        sprintf( msg "Err: %s ; %s" msg1 msg2 )
+        return( msg )
+      )
+
+; now we know that w, l and m are defined for both plists
+
+      layW = float( layPlist->nf * layPlist->w )
+      layL = float( layPlist->l )
+      schW = float( schPlist->m * schPlist->w )
+      schL = float( schPlist->l )
+   
+      Werr1 = nil
+      Lerr1 = nil     
+      when( ( abs( layW - schW ) / schW ) > tolW Werr1 = t )
+      when( ( abs( layL - schL ) / schL ) > tolL Lerr1 = t )
+      
+      myschW=schW*1e-6
+      myschL=schL*1e-6
+            
+      Werr2 = nil
+      Lerr2 = nil         
+      when( ( abs( layW - myschW ) / myschW ) > tolW Werr2 = t )
+      when( ( abs( layL - myschL ) / myschL ) > tolL Lerr2 = t )
+
+; if no errors return nil
+
+	myFlag1=nil
+	myFlag2=nil
+	when(!Werr1 && !Lerr1 myFlag1=t) 
+	when(!Werr2 && !Lerr2 myFlag2=t) 	
+      when( myFlag1 || myFlag2 return(nil) )    
+
+; now we know there is a parameter error
+      if(schL>10e-3 && schW>10e-3 then
+      sprintf( 
+        msg
+        "Err: MOS Sch L/W %g %g ; Lay L/W %g %g " 
+        myschL myschW  layL layW 
+      )
+      return( msg )
+      else            
+      sprintf( 
+        msg1
+        "Err: MOS Sch L/W %g %g ; Lay L/W %g %g " 
+        schL schW  layL layW 
+      )
+      return( msg1 )
+      );if
+    ) ; end prog
+  ) ; end compareRFMOS
+
+   avCompareRules(
+       
+    	schematic( 
+      	  setPower( all "*VCC*" )
+      	  setPower( all "*VDD*" )
+      	  setGround( all "*GND*" )
+      	  setGround( all "*VSS*" )
+
+          swapPins( "N_L18W500_18_RF" nil )         
+          swapPins( "N_L34W500_33_RF" nil )         
+          swapPins( "N_PO7W500_18_RF" nil )         
+          swapPins( "N_PO7W500_33_RF" nil )         
+          swapPins( "P_L18W500_18_RF" nil )         
+          swapPins( "P_L34W500_33_RF" nil )         
+          swapPins( "P_PO7W500_18_RF" nil )         
+          swapPins( "P_PO7W500_33_RF" nil )         
+          swapPins( "VARMIS_18_RF" nil )         
+          swapPins( "VARDIOP_RF" nil )         
+          swapPins( "MIMCAPS_MM" nil )         
+          swapPins( "MIMCAPM_RF" nil )         
+          swapPins( "PAD_RF" nil )
+          swapPins( "L_SLCR20K_RF" nil )  
+          swapPins( "nkind4nH" nil )  
+    	)
+ 
+        layout(
+      	  setPower( all "*VCC*" )
+          setPower( all "*VDD*" )
+          setGround( all "*GND*" )
+          setGround( all "*VSS*" )
+
+       	  mosDevice( "N_L18W500_18_RF(GENERIC)" ( "D" "G" "S" "B" ) )
+	  mosDevice( "N_L34W500_33_RF(GENERIC)" ( "D" "G" "S" "B" ) )
+	  mosDevice( "N_PO7W500_18_RF(GENERIC)" ( "D" "G" "S" "B" ) )
+	  mosDevice( "N_PO7W500_33_RF(GENERIC)" ( "D" "G" "S" "B" ) )
+	  mosDevice( "P_L18W500_18_RF(GENERIC)" ( "D" "G" "S" "B" ) )
+	  mosDevice( "P_L34W500_33_RF(GENERIC)" ( "D" "G" "S" "B" ) )
+	  mosDevice( "P_PO7W500_18_RF(GENERIC)" ( "D" "G" "S" "B" ) )
+	  mosDevice( "P_PO7W500_33_RF(GENERIC)" ( "D" "G" "S" "B" ) )
+	  resDevice( "RSNWELL_MM(GENERIC)" ( "PLUS" "MINUS" "B" ) )
+	  resDevice( "RSND_MM(GENERIC)" ( "PLUS" "MINUS" "B" ) )
+	  resDevice( "RSPD_MM(GENERIC)" ( "PLUS" "MINUS" "B" ) )
+;	  resDevice( "RSNPO_MM(GENERIC)" ( "PLUS" "MINUS" "B" ) )
+;	  resDevice( "RSPPO_MM(GENERIC)" ( "PLUS" "MINUS" "B" ) )
+	  resDevice( "RNND_MM(GENERIC)" ( "PLUS" "MINUS" "B" ) )
+	  resDevice( "RNPD_MM(GENERIC)" ( "PLUS" "MINUS" "B" ) )
+	  resDevice( "RNNPO_MM(GENERIC)" ( "PLUS" "MINUS" "B" ) )
+	  resDevice( "RNNPO_RF(GENERIC)" ( "PLUS" "MINUS" "B" ) )
+	  resDevice( "RNPPO_MM(GENERIC)" ( "PLUS" "MINUS" "B" ) )
+	  resDevice( "RNPPO_RF(GENERIC)" ( "PLUS" "MINUS" "B" ) )
+	  resDevice( "RNHR1000_MM(GENERIC)" ( "PLUS" "MINUS" "B"  ))
+	  resDevice( "RNHR_RF(GENERIC)" ( "PLUS" "MINUS" "B" ) )
+	  resDevice( "RM1_MM(GENERIC)" ( "PLUS" "MINUS" nil ) )
+	  resDevice( "RM2_MM(GENERIC)" ( "PLUS" "MINUS" nil ) )
+	  resDevice( "RM3_MM(GENERIC)" ( "PLUS" "MINUS" nil ) )
+	  resDevice( "RM4_MM(GENERIC)" ( "PLUS" "MINUS" nil ) )
+	  resDevice( "RM5_MM(GENERIC)" ( "PLUS" "MINUS" nil ) )
+	  resDevice( "RM6_MM(GENERIC)" ( "PLUS" "MINUS" nil ) )
+	  capDevice( "VARMIS_18_RF(GENERIC)" ( "PLUS" "MINUS" "B" ) )
+	  capDevice( "VARDIOP_RF(GENERIC)" ( "PLUS" "MINUS" nil ) )
+	  capDevice( "MIMCAPS_MM(GENERIC)" ( "PLUS" "MINUS" nil ) )
+ 	  capDevice( "MIMCAPM_RF(GENERIC)" ( "PLUS" "MINUS" "B" ) )
+	  capDevice( "PAD_RF(GENERIC)" ( "PLUS" "MINUS" nil ) )
+          indDevice( "L_SLCR20K_RF(GENERIC)" ( "PLUS" "MINUS" "B" ) )
+          indDevice( "nkind4nH(GENERIC)" ( "P1" "CT" "P2" "B" ) )
+
+          swapPins( "N_L18W500_18_RF" nil )         
+          swapPins( "N_L34W500_33_RF" nil )         
+          swapPins( "N_PO7W500_18_RF" nil )         
+          swapPins( "N_PO7W500_33_RF" nil )         
+          swapPins( "P_L18W500_18_RF" nil )         
+          swapPins( "P_L34W500_33_RF" nil )         
+          swapPins( "P_PO7W500_18_RF" nil )         
+          swapPins( "P_PO7W500_33_RF" nil )         
+          swapPins( "VARMIS_18_RF" nil )         
+          swapPins( "VARDIOP_RF" nil )         
+          swapPins( "MIMCAPS_MM" nil )         
+          swapPins( "MIMCAPM_RF" nil )         
+          swapPins( "PAD_RF" nil )
+          swapPins( "L_SLCR20K_RF" nil )         
+          swapPins( "nkind4nH" nil )         
+        )
+
+	mergeParallel( "N_PO7W500_18_RF"  noMerge )
+    	mergeParallel( "N_L18W500_18_RF"  noMerge )
+	mergeParallel( "P_PO7W500_18_RF"  noMerge )
+	mergeParallel( "P_L18W500_18_RF"  noMerge )
+	mergeParallel( "N_PO7W500_33_RF"  noMerge )
+	mergeParallel( "N_L34W500_33_RF"  noMerge )
+	mergeParallel( "P_PO7W500_33_RF"  noMerge )
+	mergeParallel( "P_L34W500_33_RF"  noMerge )
+    
+	mergeParallel( "RNNPO_RF"	noMerge )
+	mergeParallel( "RNPPO_RF"	noMerge )
+	mergeParallel( "RNHR_RF"	noMerge )
+	mergeParallel( "PAD_RF"		noMerge )
+	mergeParallel( "MIMCAPM_RF"	noMerge )
+	mergeParallel( "VARMIS_18_RF"	noMerge )
+	mergeParallel( "VARDIOP_RF"	noMerge )
+	mergeParallel( "L_SLCR20k_RF"	noMerge )
+	mergeParallel( "nkind4nH"	noMerge )
+
+	mergeSeries( "N_PO7W500_18_RF"  noMerge )
+	mergeSeries( "N_L18W500_18_RF"  noMerge )
+	mergeSeries( "P_PO7W500_18_RF"  noMerge )
+	mergeSeries( "P_L18W500_18_RF"  noMerge )
+	mergeSeries( "N_PO7W500_33_RF"  noMerge )
+	mergeSeries( "N_L34W500_33_RF"  noMerge )
+	mergeSeries( "P_PO7W500_33_RF"  noMerge )
+	mergeSeries( "P_L34W500_33_RF"  noMerge )
+    
+	mergeSeries( "RNNPO_RF" 	noMerge )
+	mergeSeries( "RNPPO_RF"		noMerge )
+	mergeSeries( "RNHR_RF"  	noMerge )
+	mergeSeries( "PAD_RF"		noMerge )
+	mergeSeries( "MIMCAPM_RF"	noMerge )
+	mergeSeries( "VARMIS_18_RF"	noMerge )
+	mergeSeries( "VARDIOP_RF"	noMerge )
+	mergeSeries( "L_SLCR20k_RF"	noMerge )
+	mergeSeries( "nkind4nH"	noMerge )
+
+	compareParameter( MOS percent( "w" 1 "l" 1 ) )
+	compareParameter( "N" percent( "w" 5 "l" 5 ) )
+	compareParameter( "P" percent( "w" 5 "l" 5 ) )
+	compareParameter( "NT" percent( "w" 5 "l" 5 ) )
+	compareParameter( "PT" percent( "w" 5 "l" 5 ) )
+	compareParameter( "NB" percent( "w" 15 "l" 15 ) )
+	compareParameter( "PB" percent( "w" 15 "l" 15 ) )
+	compareParameter( "N_L18W500_18_RF" compareRFMOS )
+	compareParameter( "N_PO7W500_18_RF" compareRFMOS )
+	compareParameter( "P_PO7W500_18_RF" compareRFMOS )
+	compareParameter( "P_L18W500_18_RF" compareRFMOS )
+	compareParameter( "N_PO7W500_33_RF" compareRFMOS )
+	compareParameter( "N_L34W500_33_RF" compareRFMOS )
+	compareParameter( "P_PO7W500_33_RF" compareRFMOS )
+	compareParameter( "P_L34W500_33_RF" compareRFMOS )
+	compareParameter( RES percent( "r" 10 ) )
+	compareParameter( BJT percent( "ea" 1 ) )
+	compareParameter( CAP percent( "c" 1 ) )
+	compareParameter( DIO percent( "area" 12 ) )
+	compareParameter( "DION_MM" percent( "area" 1 ) )
+	compareParameter( "DIOP_MM" percent( "area" 1 ) )    
+	compareParameter( "PAD_RF" doNotCompare )
+	compareParameter( "L_SLCR20K_RF" doNotCompare )
+	compareParameter( "nkind4nH" doNotCompare )
+
+	autoPinSwap( t 2000 ) 
+	expandOnError( ( reduce t ) ( swap t ) )
+    
+;	filter( "X" )
+   
+    ;	nameBinding( ( pin nil ) )
+	verifyTopSchPins(t)
+	verifyTopLayPins(t)	 
+
+    ; To report filterd devices or to list devices statistics when LVS is clean.
+    ; filterReduceStatistics() 
+   
+  ) ; avCompareRules complete
+
+
+
+;----------------------------------------------------------------------------
+; avCompareRules Section from Run Submit Form
+; Created by the Assura UI
+;----------------------------------------------------------------------------
+
+avCompareRules(
+schematic(
+netlist( dfII "/home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/2_1_MUX_TG.vlr" )
+)
+)
+
+
+avLVS()
+

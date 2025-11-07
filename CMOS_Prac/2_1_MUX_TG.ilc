@@ -1,0 +1,5 @@
+UMC_18_CMOS N_18_MM layout 132
+UMC_18_CMOS P_18_MM layout 132
+CMOS CMOS_Inverter layout 1190
+CMOS TG layout 1861
+CMOS 2_1_MUX_TG layout 3999

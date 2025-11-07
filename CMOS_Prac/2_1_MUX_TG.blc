@@ -1,0 +1,6 @@
+"TG layout CMOS" "TG schematic CMOS" "P_18_MM(MOS)" "N_18_MM(MOS)"
+"P_18_MM(MOS)" "P_18_MM(MOS)"
+"N_18_MM(MOS)" "N_18_MM(MOS)"
+"CMOS_Inverter layout CMOS" "CMOS_Inverter schematic CMOS" "P_18_MM(MOS)" "N_18_MM(MOS)"
+"2_1_MUX_TG layout CMOS" "2_1_MUX_TG schematic CMOS"
+Devices filtered from layout

@@ -1,0 +1,7 @@
+Schematic                       | Layout                       | Status
+-------------------------------------------------------------------------------
+CMOS_Inverter schematic CMOS    | CMOS_Inverter layout CMOS    | matched    
+TG schematic CMOS               | TG layout CMOS               | matched    
+2_1_MUX_TG schematic CMOS       | 2_1_MUX_TG layout CMOS       | matched    
+
+Schematic and Layout Match

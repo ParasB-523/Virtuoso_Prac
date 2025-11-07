@@ -1,0 +1,27 @@
+
+***** Begin Label Report *****
+
+ Label in cell 'TG layout CMOS':
+  info: Assign pin label "Vin" at (-0.580, -5.210) to layer `M1'.
+  info: Assign pin label "Ctrl" at (1.270, -5.910) to layer `M1'.
+  info: Assign pin label "Vss" at (3.310, -7.350) to layer `M1'.
+  info: Assign pin label "Ctrlbar" at (1.270, -4.590) to layer `M1'.
+  info: Assign pin label "Vout" at (2.010, -5.240) to layer `M1'.
+  info: Assign pin label "Vdd" at (3.310, -3.180) to layer `M1'.
+
+ Label in cell 'CMOS_Inverter layout CMOS':
+  info: Assign pin label "Vss" at (0.120, -8.000) to layer `M1'.
+  info: Assign pin label "Vin" at (1.270, -5.230) to layer `M1'.
+  info: Assign pin label "Vdd" at (0.120, -2.550) to layer `M1'.
+  info: Assign pin label "Vout" at (2.960, -5.230) to layer `M1'.
+
+ Label in cell '2_1_MUX_TG layout CMOS':
+  info: Assign pin label "i1" at (7.780, -21.000) to layer `M1'.
+  info: Assign pin label "Vss" at (8.820, -16.240) to layer `M1'.
+  info: Assign pin label "S" at (6.500, -13.470) to layer `M1'.
+  info: Assign pin label "Vdd" at (8.820, -10.790) to layer `M1'.
+  info: Assign pin label "i0" at (7.780, -6.440) to layer `M1'.
+  info: Assign pin label "Y" at (15.870, -13.600) to layer `M1'.
+
+***** End of Label Report *****
+
