@@ -1,0 +1,35 @@
+@(#)$CDS: nvn_64 version av4.1:Production:dfII20.1-64b:ICADVM20.1-64b.500.25 11/04/2022 00:36 (sjfhw885) $
+sub-version 4.1_USR6_EHF13, integ signature 2022-11-04-0002
+run on CICS2.kletech.ac.in at Fri Nov  7 15:29:27 2025
+
+Schematic                       | Layout                       | Status
+-------------------------------------------------------------------------------
+CVSL_NAND_AND schematic CMOS    | CVSL_NAND_AND layout CMOS    | matched    
+
+Schematic and Layout Match
+
+Schematic:
+  Library:CMOS
+  Cell   :CVSL_NAND_AND
+  View   :schematic
+
+Layout:
+  Library:CMOS
+  Cell   :CVSL_NAND_AND
+  View   :layout
+
+
+
+Extraction  Information
+--------------------
+     0 cells have 0 mal-formed device problems
+     0 cells have 0 label short problems
+     0 cells have 0 label open problems
+
+Mismatch  Information
+--------------------
+     0 cells have 0 Net mismatches
+     0 cells have 0 Device mismatches
+     0 cells have 0 Pin mismatches
+     0 cells have 0 Parameter mismatches
+
