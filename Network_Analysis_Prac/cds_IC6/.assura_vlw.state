@@ -1,0 +1,23 @@
+;----------------------------------------------------------------------------
+; @(#)$CDS: assura version av4.1:Production:dfII6.1.5:IC6.1.5.500.9 03/01/12 03:09 (sfrh329) $
+; sub-version 4.1_USR2_HF14
+;----------------------------------------------------------------------------
+
+
+;----------------------------------------------------------------------------
+; Assura VLW saved state
+;----------------------------------------------------------------------------
+
+vuiLayerListOrder  =  "Alphabetical"
+vuiLayerList  = '(
+		("CONT" 215 "CONT = geomOr( CONT )" 1 8 t "y0 (drawing)" t)
+		("ME1" 339 "ME1 = geomOr( ME1 )" 1 3 t "y1 (drawing)" t)
+		("PO1" 143 "PO1 = geomOr( PO1 )" 1 5 t "y2 (drawing)" t)
+		("chip_ext" 61 "chip_ext = cellBoundary(root)" 0 0 t "y3 (drawing)" t)
+		("m1_pin" 81 "m1_pin = pinText( \"ME1\" )" 0 2 t "y4 (drawing)" t)
+		("ndiff" 179 "ndiff = geomOr( T?177 T?178 )" 0 6 t "y5 (drawing)" t)
+		("pdiff" 180 "pdiff = geomAnd( PPLUS actnt )" 0 7 t "y6 (drawing)" t)
+		("po_pin" 80 "po_pin = pinText( \"PO1\" )" 0 1 t "y7 (drawing)" t)
+		("welnotr" 139 "welnotr = geomAndNot( NWEL nwres )" 0 4 t "y8 (drawing)" t)
+)
+vuiVLWLocation  = '((10 951) (125 1651))

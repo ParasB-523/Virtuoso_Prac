@@ -1,0 +1,412 @@
+;Assura Antenna Rule File 
+;////////////////////////////////////////////////////////////////////// 
+;//								     //
+;//	Revision  : V2   	                                     //
+;//                                                                  //
+;//     LIMITATION OF LIABILITY:                                     //
+;//        United Microelectronics Corp. is not  liable  for  any    //
+;//        property damage, personal  injury,  loss  of  profits,    //
+;//        interruption of business,  or  for  any other special,    //
+;//        consequential or incidental  damages, however  caused,    //
+;//        whether for breach of warranty,contract tort(including    //
+;//        negligence),strict liability or otherwise.                //
+;//                                                                  //
+;//	Assura version 2.0 Release Compatible		     	     //
+;//								     //
+;//////////////////////////////////////////////////////////////////////
+;//								     // 	
+;// Revision History						     //
+;// -----------------------------------------------------------------//
+;// Version    Date4     Owner     Information			     //
+;// -----------------------------------------------------------------//
+;// V0         unknown   unknown   Create the deck		     //	
+;// V1         Johnson   8/23/2007 Modify all the antenna value      //
+;// V2         Johnson   10/2/2007 Modify 1.B.a for all metal option //
+;//////////////////////////////////////////////////////////////////////
+;// Notice (Important, Read Me First)
+;// =================================
+;// (1) Reference Document:
+;//		    G-03-MIXEDMODE/RFCMOS18-1.8V/3.3V-1P6M-MMC-TLR   
+;//       	      "0.18um Mixed Mode/RFCMOS Technology 1.8V/3.3V 
+;//		      1P6M Process Topological Layout Rule	     
+;//	  	      (With Metal/Metal Capacitor Module)"	     
+;//       	      - Rev. 2.9			     
+;//
+;// (2) Please modify the argument of ?inputLayout and ?cellName
+;//	in avParameters() according to your database.
+;//
+;// (3) The following switches are present in this file:
+;//
+;//     By default, if none of the switches are set, the file will assume 
+;//     1-poly 6-metal process.
+;//
+;//
+;//     - "metal2_is_top"         Switch to check rules for 2 layers of metal
+;//     - "metal3_is_top"         Switch to check rules for 3 layers of metal
+;//     - "metal4_is_top"         Switch to check rules for 4 layers of metal
+;//     - "metal5_is_top"         Switch to check rules for 5 layers of metal
+;//     - "metal6_is_top"         Switch to check rules for 6 layers of metal
+;//
+;
+; ********  Input Layer Definitions  ********
+; 
+drcExtractRules(
+
+  layerDefs( "gds2"
+    active   = layer( 1 )     ; Active
+    cont     = layer( 39 )    ; Contact
+    poly     = layer( 41 )    ; Poly
+    met1     = layer( 46 )    ; Metal 1
+    via1     = layer( 47 )    ; Via 1
+    met2     = layer( 48 )    ; Metal 2
+    via2     = layer( 49 )    ; Via 2
+    met3     = layer( 50 )    ; Metal 3
+    via3     = layer( 51 )    ; Via 3
+    met4     = layer( 52 )    ; Metal 4
+    via4     = layer( 53 )    ; Via 4
+    met5     = layer( 54 )    ; Metal 5
+    via5     = layer( 55 )    ; Via 5
+    met6     = layer( 56 )    ; Metal 6
+    
+  ) ; layerDefs complete
+
+
+  layerDefs( "df2"
+   ;namein     = layer(df2_layer_name type("drawing") )  ; name
+    active   = layer("DIFF" type("drawing"))          ; Active
+    poly     = layer("PO1" type("drawing"))           ; Poly
+    cont     = layer("CONT" type("drawing"))          ; Contact
+    met1     = layer("ME1" type("drawing"))           ; Metal 1
+    via1     = layer("VI1" type("drawing"))           ; Via 1
+    met2     = layer("ME2" type("drawing"))           ; Metal 2
+    via2     = layer("VI2" type("drawing"))           ; Via 2
+    met3     = layer("ME3" type("drawing"))           ; Metal 3
+    via3     = layer("VI3" type("drawing"))           ; Via 3
+    met4     = layer("ME4" type("drawing"))           ; Metal 4
+    via4     = layer("VI4" type("drawing"))           ; Via 4
+    met5     = layer("ME5" type("drawing"))           ; Metal 5
+    via5     = layer("VI5" type("drawing"))           ; Via 5
+    met6     = layer("ME6" type("drawing"))           ; Metal 6    
+    
+
+  ) ; layerDefs complete
+  
+
+  OD       = geomOr( active )
+  PO       = geomOr( poly )
+  CO       = geomOr( cont )
+  M1       = geomOr( met1 )
+  V1       = geomOr( via1 )
+  M2       = geomOr( met2 )
+  V2       = geomOr( via2 )
+  M3       = geomOr( met3 )
+  V3       = geomOr( via3 )
+  M4       = geomOr( met4 )
+  V4       = geomOr( via4 )
+  M5       = geomOr( met5 )
+  V5       = geomOr( via5 )
+  M6       = geomOr( met6 )
+ 
+  
+;***** Antenna Rules
+
+  gate     = geomAnd( OD PO )
+  sdonly   = geomAndNot( OD PO )
+  sd       = geomOr( drc( sdonly area >= .36 fig ) )
+  sd1      = geomButtOrOver( sd geomButtOrOver( M1 sd ignore == 1 ) )
+  gate_connect = geomCat( gate )
+   
+
+;------
+; Poly
+;------
+   
+     PO_not_gate = geomAndNot(PO gate)
+     over_gate_connect = geomSize(gate_connect 0.05)
+     gate_side_cont = geomAnd(gate over_gate_connect)
+     poly_side_cont = geomAnd(PO over_gate_connect)
+
+   geomConnect( via( gate_side_cont gate gate_connect ) 
+                via( poly_side_cont PO gate_connect ) 
+              )  
+               
+   processAntenna(
+     gate( ( gate PO ) )
+     antenna( PO )
+     diffusion( )
+     ratio2_PO = PO.perimeter / gate.perimeter
+     ant_poly_perim_top = drcAntenna( PO ( gate ) ratio2_PO ignore <= 200
+                        "1.A.a : Max Poly antenna ratio is 200" )
+   ) ;end process antenna
+ 
+ 
+;--------- 
+; Metal 1
+;---------
+
+   geomConnect( 
+     buttOrOver( PO gate )
+     via( CO M1 PO sd sd1 )
+   )
+
+   processAntenna(
+     gate( ( gate PO ) )
+     antenna( M1 )
+     diffusion( sd )
+     ratio2_m1_a = M1.perimeter / gate.perimeter
+     ant_m1_perim_a = drcAntenna( M1 ( gate ) ratio2_m1_a ignore <= 800
+                        "1.A.b Maximum M1 antenna ratio is 800" )
+   ) ;end process antenna
+
+   processAntenna(
+     gate( ( gate PO ) )
+     antenna( M1 )
+     diffusion( sd1  )
+     ratio2_m1_b = M1.perimeter / gate.perimeter
+     ant_m1_perim_b = drcAntenna( M1 ( gate ) ratio2_m1_b ignore <= 10000
+                        "1.B.a Maximum M1 antenna ratio with one diode is 10000" )
+   ) ;end process antenna   
+
+
+;---------
+; Metal 2
+;---------
+
+   if( avSwitch( "metal2_is_top" ) then
+   
+   METT = geomOr( M2 )
+   VITT = geomOr( V1 )
+   
+   else
+
+   geomConnect( 
+     buttOrOver( PO gate )
+     via( CO M1 PO sd sd1 )
+     via( V1 M2 M1 ) 
+   )
+   
+   processAntenna(
+     gate( ( gate PO ) )
+     antenna( M2 )
+     diffusion( sd )
+     ratio2_m2_a = M2.perimeter / gate.perimeter
+     ant_m2_perim_a = drcAntenna( M2 ( gate ) ratio2_m2_a ignore <= 800
+                        "1.A.b : Maximum M2 antenna ratio is 800" )
+   ) ;end process antenna
+
+   processAntenna(
+     gate( ( gate PO ) )
+     antenna( M2 )
+     diffusion( sd1  )
+     ratio2_m2_b = M2.perimeter / gate.perimeter
+     ant_m2_perim_b = drcAntenna( M2 ( gate ) ratio2_m2_b ignore <= 10000
+                        "1.B.a : Maximum M2 antenna ratio with one diode is 10000" )
+   ) ;end process antenna
+
+
+;---------
+; Metal 3
+;---------
+
+   if( avSwitch( "metal3_is_top" ) then
+   
+   METT = geomOr( M3 )
+   VITT = geomOr( V2 )
+   
+   else
+  
+   geomConnect( 
+     buttOrOver( PO gate )
+     via( CO M1 PO sd sd1 )
+     via( V1 M2 M1 ) 
+     via( V2 M3 M2 ) 
+   )
+   
+   processAntenna(
+     gate( ( gate PO ) )
+     antenna( M3 ) 
+     diffusion( sd ) 
+     ratio2_m3_a = M3.perimeter / gate.perimeter
+     ant_m3_perim_a = drcAntenna( M3 ( gate ) ratio2_m3_a ignore <= 800
+                        "1.A.b : Maximum M3 antenna ratio is 800" )
+   ) ;end process antenna
+   
+   processAntenna(
+     gate( ( gate PO ) )
+     antenna( M3 )
+     diffusion( sd1 )
+     ratio2_m3_b = M3.perimeter / gate.perimeter
+     ant_m3_perim_b = drcAntenna( M3 ( gate ) ratio2_m3_b ignore <= 10000
+                        "1.B.a : Maximum M3 antenna ratio with one diode is 10000" )
+   ) ;end process antenna
+  
+
+;---------
+; Metal 4
+;---------
+
+   if( avSwitch( "metal4_is_top" ) then
+   
+   METT = geomOr( M4 )
+   VITT = geomOr( V3 )
+   
+   else
+   
+   geomConnect( 
+     buttOrOver( PO gate )
+     via( CO M1 PO sd sd1 )
+     via( V1 M2 M1 ) 
+     via( V2 M3 M2 )
+     via( V3 M4 M3 )
+   )
+   
+   processAntenna(
+     gate( ( gate PO ) )
+     antenna( M4 ) 
+     diffusion( sd )
+     ratio2_m4_a = M4.perimeter / gate.perimeter
+     ant_m4_perim_a = drcAntenna( M4 ( gate ) ratio2_m4_a ignore <= 800
+                        "1.A.b : Maximum M4 antenna ratio is 800" )
+   ) ;end process antenna
+   
+   
+   processAntenna(
+     gate( ( gate PO ) )
+     antenna( M4 )
+     diffusion( sd1 )
+     ratio2_m4_b = M4.perimeter / gate.perimeter
+     ant_m4_perim_b = drcAntenna( M4 ( gate ) ratio2_m4_b ignore <= 10000
+                        "1.B.a : Maximum M4 antenna ratio with diode is 10000" )
+   ) ;end process antenna   
+ 
+
+;---------
+; Metal 5
+;---------
+
+   if( avSwitch( "metal5_is_top" ) then
+   
+   METT = geomOr( M5 )
+   VITT = geomOr( V4 )
+   
+   else
+   
+   METT = geomOr( M6 )
+   VITT = geomOr( V5 )
+   
+   geomConnect( 
+     buttOrOver( PO gate )
+     via( CO M1 PO sd sd1 )
+     via( V1 M2 M1 ) 
+     via( V2 M3 M2 )
+     via( V3 M4 M3 )
+     via( V4 M5 M4 )
+   )
+   
+   processAntenna(
+     gate( ( gate PO ) )
+     antenna( M5 )
+     diffusion( sd )
+     ratio2_m5_a = M5.perimeter / gate.perimeter
+     ant_m5_perim_a = drcAntenna( M5 ( gate ) ratio2_m5_a ignore <= 800
+                        "1.A.b : Maximum M5 antenna ratio is 800" )
+   ) ;end process antenna
+ 
+   
+   processAntenna(
+     gate( ( gate PO ) )
+     antenna( M5 )
+     diffusion( sd1 )
+     ratio2_m5_b = M5.perimeter / gate.perimeter
+     ant_m5_perim_b = drcAntenna( M5 ( gate ) ratio2_m5_b ignore <= 10000
+                        "1.B.a : Maximum M5 antenna ratio with diode is 10000" )
+   ) ;end process antenna   
+   
+   
+         ) ;end if metal-5 is top  
+       ) ;end if metal-4 is top  
+     ) ;end if metal-3 is top
+  ) ;end if metal-2 is top
+
+
+;---------
+; TOP Metal 
+;---------
+
+   if( avSwitch( "metal2_is_top" ) then
+   
+   geomConnect( 
+     buttOrOver( PO gate )
+     via( CO M1 PO sd sd1 )
+     via( VITT METT M1 )
+     )
+   
+   else if( avSwitch( "metal3_is_top" ) then   
+   
+   geomConnect( 
+     buttOrOver( PO gate )
+     via( CO M1 PO sd sd1)
+     via( V1 M2 M1 ) 
+     via( VITT METT M2 )
+   )
+   
+   else if( avSwitch( "metal4_is_top" ) then     
+     
+     geomConnect( 
+     buttOrOver( PO gate )
+     via( CO M1 PO sd sd1)
+     via( V1 M2 M1 ) 
+     via( V2 M3 M2 )
+     via( VITT METT M3 )
+     )
+     
+   else if( avSwitch( "metal5_is_top" ) then
+   
+     geomConnect( 
+     buttOrOver( PO gate )
+     via( CO M1 PO sd sd1)
+     via( V1 M2 M1 ) 
+     via( V2 M3 M2 )
+     via( V3 M4 M3 )
+     via( VITT METT M4 )
+     )
+     
+   else
+ 
+   geomConnect( 
+     buttOrOver( PO gate )
+     via( CO M1 PO sd sd1)
+     via( V1 M2 M1 ) 
+     via( V2 M3 M2 )
+     via( V3 M4 M3 )
+     via( V4 M5 M4 )
+     via( VITT METT M5 ) 
+   )
+
+         ) ;end if metal-5 is top  
+       ) ;end if metal-4 is top  
+     ) ;end if metal-3 is top
+  ) ;end if metal-2 is top
+
+   
+   
+   processAntenna(
+     gate( ( gate PO ) )
+     antenna( METT )   
+     ratio2_mett_a = METT.perimeter / gate.perimeter
+     diffusion( sd )
+     ant_mett_perim_a = drcAntenna( METT ( gate ) ratio2_mett_a ignore <= 400
+                        "1.A.b : Maximum Top metal antenna ratio is 400" )
+   ) ;end process antenna
+   
+   
+   processAntenna(
+     gate( ( gate PO ) )
+     antenna( METT )
+     diffusion( sd1 )
+     ratio2_mett_b = METT.perimeter / gate.perimeter
+     ant_mett_perim_b = drcAntenna( METT ( gate ) ratio2_mett_b ignore <= 5000
+                        "1.B.a : Maximum Top metal ratio with diode  is 5000" )
+   ) ;end process antenna   
+ 
+) ; drcExtractRules complete

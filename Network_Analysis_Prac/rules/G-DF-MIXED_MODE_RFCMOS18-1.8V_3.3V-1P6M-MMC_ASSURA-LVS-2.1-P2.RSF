@@ -1,0 +1,86 @@
+;;   Title    : Assura LVS RSF of 0.18um Mixed Mode/RFCMOS Technology 
+;;              1.8V/3.3V 1P6M with Metal/Metal Capacitor Process 
+
+  avParameters(
+
+    ?rulesFile "/home/roopa_t/proj/UMC180/workarea/rules/G-DF-MIXED_MODE_RFCMOS18-1.8V_3.3V-1P6M-MMC_ASSURA-LVS-2.1-P2-EXTRACT.RUL"
+     ?inputLayout ("GDS2" "test.gds")
+;     ?keepData t
+;    ?inputLayout ("DF2" "library_name" )
+;    ?cdslib "./cds.lib"
+    ?viewName "layout"
+    ?cellName "test"
+    ?runName "run_test"
+    ?workingDirectory "./tmp"
+    ?userUnits "micron"
+    ?textPriOnly nil
+    ?joinPins top
+    ?flagNon45 t
+    ?flagMalformed t
+    ?overwrite t
+    ?avrpt t
+;    ?techLib "assura_tech.lib"
+;    ?technology "umc13lo_1p8m_vst_tech"
+
+;    ?set "Skip_Soft-Connect_Checks"
+
+;; ---- Top Metal Switch(Default-- 1P6M) ---- :
+;    ?set "Top_Metal--ME5"
+;    ?set "Top_Metal--ME4"
+
+     ?set "FDK"
+;      FDK users MUST turn on this switch otherwise the ivpcell of each device won't be generated
+
+
+;; ---- Top Metal Thichness Switch (Default 8K ) ----
+;;    ?set "Top_Metal_Thickness--20K"
+;;    ?set "Top_Metal_Thickness--12K"
+
+;; ---- Device Switch ----
+; To avoid RCX run-time errors, users need to skip the extraction 
+; statements of the devices without IVPCELL view.
+
+;   ?set "Skip_Logic_Device_Extraction"      
+;   ?set "Skip_Mixed_Mode_Device_Extraction" 
+;   ?set "Skip_RF_Device_Extraction"  
+
+;    Setting this switch causes LVS to extract the devices in the following libraries.  
+;                - VST: SC,IO_INLINE,IO_Staggered,PLL ; Artisan: IO ; VIRAGE .
+;    ?set "LIB"
+
+;; ---- Artisan Lib Switch( Default-- VST Lib ) ----
+;    ?set "Artisan_Lib"
+
+;    Setting this switch causes LVS to extract the devices in Faraday library.
+;    ?set "FARADAY_LIB"
+
+;    Setting this switch causes LVS to extract the SRAM devices from Pre-OPC layout.
+;    
+;    ?set "PRE_OPC"
+
+;    Setting this switch causes LVS to extract the SRAM devices from Post-OPC layout. 
+    ?set "POST_OPC"
+
+  ) ; avParameters complete
+
+  
+load "/home/roopa_t/proj/UMC180/workarea/rules//G-DF-MIXED_MODE_RFCMOS18-1.8V_3.3V-1P6M-MMC_ASSURA-LVS-2.1-P2-COMPARE.RUL"
+
+  avCompareRules(
+
+    schematic(
+       netlist( cdl "test.spi")
+     ; joinNets( "net1" "net2" "net3" ) ; to connect defferent text labels in 
+                                        ; the layout for a logically equivalent
+                                        ; signal
+    )				
+  
+   ; bindingFile( "./bind.Model" )  
+  
+  ) ; avCompareRules complete
+  
+  avLVS()
+
+; changeLabel ("old_label_name" "new_label_name")
+
+; joinableNet(cell("cell_A")) ; to connect nets of the same name within cell_A

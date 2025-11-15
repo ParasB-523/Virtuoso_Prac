@@ -1,0 +1,38 @@
+************************************************************************
+* auCdl Netlist:
+* 
+* Library Name:  test
+* Top Cell Name: inv
+* View Name:     schematic
+* Netlisted on:  Jan 12 00:42:09 2016
+************************************************************************
+
+*.BIPOLAR
+*.RESI = 2000 
+*.RESVAL
+*.CAPVAL
+*.DIOPERI
+*.DIOAREA
+*.EQUATION
+*.SCALE METER
+*.MEGA
+.PARAM
+
+*.GLOBAL vdd!
++        gnd!
+
+*.PIN vdd!
+*+    gnd!
+
+************************************************************************
+* Library Name: test
+* Cell Name:    inv
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT inv A Y
+*.PININFO A:I Y:O
+MM1 Y A gnd! gnd! N_18_MM W=240.0n L=180.0n M=1.0
+MM0 Y A vdd! vdd! P_18_MM W=240.0n L=180.0n M=1.0
+.ENDS
+

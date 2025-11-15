@@ -1,0 +1,51 @@
+Virtuoso Framework License (111) was checked out successfully. Total checkout time was 0.17s.
+*WARNING* (icLic-3) Could not get license Virtuoso_Schematic_Editor_L
+*INFO* (icLic-25) License Virtuoso_Schematic_Editor_XL ("Schematics XL") was used to run Schematics L.
+*WARNING* '/home/roopa_t/cds_IC6/cds.lib', Line 4, Repeat of INCLUDE of '/cad_area/Cadence/ic614/share/cdssetup/cds.lib'.
+*WARNING* '/cad_area/Cadence/ic614/share/cdssetup/cds.lib', Line 1, Repeat of INCLUDE of '/cad_area/Cadence/ic614/share/cdssetup/dfII/cds.lib'.
+*WARNING* LIB cdsDefTechLib from File /cad_area/Cadence/ic614/share/cdssetup/dfII/cds.lib Line 1 redefines
+LIB cdsDefTechLib from the same file (defined earlier.)
+*WARNING* '/cad_area/Cadence/ic614/share/cdssetup/dfII/cds.lib', Line 2, Repeat of INCLUDE of '/cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib'.
+*WARNING* LIB analogLib from File /cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib Line 1 redefines
+LIB analogLib from the same file (defined earlier.)
+*WARNING* LIB functional from File /cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib Line 2 redefines
+LIB functional from the same file (defined earlier.)
+*WARNING* '/cad_area/Cadence/ic614/share/cdssetup/dfII/cds.lib', Line 3, Repeat of INCLUDE of '/cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/spectre/cds.lib'.
+*WARNING* LIB rfLib from File /cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/spectre/cds.lib Line 6 redefines
+LIB rfLib from the same file (defined earlier.)
+*WARNING* LIB rfExamples from File /cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/spectre/cds.lib Line 7 redefines
+LIB rfExamples from the same file (defined earlier.)
+*WARNING* LIB ahdlLib from File /cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/spectre/cds.lib Line 8 redefines
+LIB ahdlLib from the same file (defined earlier.)
+*WARNING* '/cad_area/Cadence/ic614/share/cdssetup/dfII/cds.lib', Line 4, Repeat of INCLUDE of '/cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib'.
+*WARNING* LIB basic from File /cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib Line 1 redefines
+LIB basic from the same file (defined earlier.)
+*WARNING* LIB US_8ths from File /cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib Line 2 redefines
+LIB US_8ths from the same file (defined earlier.)
+*WARNING* '/home/roopa_t/cds_IC6/cds.lib', Line 4, Repeat of INCLUDE of '/cad_area/Cadence/ic614/share/cdssetup/cds.lib'.
+*WARNING* '/cad_area/Cadence/ic614/share/cdssetup/cds.lib', Line 1, Repeat of INCLUDE of '/cad_area/Cadence/ic614/share/cdssetup/dfII/cds.lib'.
+*WARNING* LIB cdsDefTechLib from File /cad_area/Cadence/ic614/share/cdssetup/dfII/cds.lib Line 1 redefines
+LIB cdsDefTechLib from the same file (defined earlier.)
+*WARNING* '/cad_area/Cadence/ic614/share/cdssetup/dfII/cds.lib', Line 2, Repeat of INCLUDE of '/cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib'.
+*WARNING* LIB analogLib from File /cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib Line 1 redefines
+LIB analogLib from the same file (defined earlier.)
+*WARNING* LIB functional from File /cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/artist/cds.lib Line 2 redefines
+LIB functional from the same file (defined earlier.)
+*WARNING* '/cad_area/Cadence/ic614/share/cdssetup/dfII/cds.lib', Line 3, Repeat of INCLUDE of '/cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/spectre/cds.lib'.
+*WARNING* LIB rfLib from File /cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/spectre/cds.lib Line 6 redefines
+LIB rfLib from the same file (defined earlier.)
+*WARNING* LIB rfExamples from File /cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/spectre/cds.lib Line 7 redefines
+LIB rfExamples from the same file (defined earlier.)
+*WARNING* LIB ahdlLib from File /cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/spectre/cds.lib Line 8 redefines
+LIB ahdlLib from the same file (defined earlier.)
+*WARNING* '/cad_area/Cadence/ic614/share/cdssetup/dfII/cds.lib', Line 4, Repeat of INCLUDE of '/cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib'.
+*WARNING* LIB basic from File /cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib Line 1 redefines
+LIB basic from the same file (defined earlier.)
+*WARNING* LIB US_8ths from File /cad_area/Cadence/ic614/tools.lnx86/dfII/etc/cdsDotLibs/composer/cds.lib Line 2 redefines
+LIB US_8ths from the same file (defined earlier.)
+	Loading UMC_18_CMOS/loadCxt.ile ... done!
+	Loading context 'UMC_18_CMOS' from library 'UMC_18_CMOS' ... done!
+	Loading context 'Util' from library 'UMC_18_CMOS' ... done!
+ Loading  /home/roopa_t/cds_IC6/PDK/UMC180_RFCMOS/Cadence_IC6/UM180FDKMFC00000OA_A02_DESIGNKIT/UM180FDKMFC00000OA_A02_PB/UMC_18_CMOS/libInitCustomExit.il
+Running Artist Hierarchical Netlisting ...
+End netlisting Jan 12 00:42:10 2016

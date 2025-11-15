@@ -1,0 +1,108 @@
+;Assura Antenna Rule Specified File(RSF) 
+;////////////////////////////////////////////////////////////////////// 
+;//                                                                  //
+;//	Revision  : V2 	                                     //
+;//                                                                  //
+;//     LIMITATION OF LIABILITY:                                     //
+;//        United Microelectronics Corp. is not  liable  for  any    //
+;//        property damage, personal  injury,  loss  of  profits,    //
+;//        interruption of business,  or  for  any other special,    //
+;//        consequential or incidental  damages, however  caused,    //
+;//        whether for breach of warranty,contract tort(including    //
+;//        negligence),strict liability or otherwise.                //
+;//                                                                  //
+;//	Assura version: 3.1.6  				     	     //
+;//								     //
+;//////////////////////////////////////////////////////////////////////
+;//								     // 	
+;// Revision History						     //
+;// -----------------------------------------------------------------//
+;// Version    Date4     Owner     Information			     //
+;// -----------------------------------------------------------------//
+;// V0         unknown   unknown   Create the deck		     //	
+;// V1         Johnson   8/23/2007 Modify all the antenna value      //
+;// V2         Johnson   10/2/2007 Modify 1.B.a for all metal option //
+;//////////////////////////////////////////////////////////////////////
+;// Notice (Important, Read Me First)
+;// =================================
+;// (1) Reference Document:
+;//		    G-DF-MixedMode-RFCMOS18-1.8V-3.3V-1P6M-MMC-TLR
+;//			version : 2.9   Phase : 1   
+;//
+;// (2) Please modify the argument of ?inputLayout and ?cellName
+;//	in avParameters() according to your database.
+;//
+;// (3) The following switches are present in this file:
+;//
+;//     By default, if none of the switches are set, the file will assume 
+;//     1-poly 6-metal process.
+;//
+;//
+;//     - "metal2_is_top"         Switch to check rules for 2 layers of metal
+;//     - "metal3_is_top"         Switch to check rules for 3 layers of metal
+;//     - "metal4_is_top"         Switch to check rules for 4 layers of metal
+;//     - "metal5_is_top"         Switch to check rules for 5 layers of metal
+;//     - "metal6_is_top"         Switch to check rules for 6 layers of metal
+;//
+;//
+ 
+avParameters(
+   ;?compileOnly t
+
+   ;?inputLayout ( "df2" "libraryName" )
+   ;?inputLayout ( "gds2" "/Project/drc/johnson/Assura/MIXED-MODE_RFCMOS/G-DF-MixedMode-RFCMOS18-1.8V-3.3V-1P6M-MMC-Assura-drc-2.9P2.t/Customer/antenna_draft/cobaltplus_dig_allcells.gds" )
+   ;?cellName "cobaltplus_digital"
+   ;?workingDirectory "assura_ant1_cobaltplus_dig_allcells"
+   ;?runName "assura_ant_cobaltplus_dig_allcells"
+   
+   ?inputLayout ( "gds2" "/Project/drc/johnson/Assura/MIXED-MODE_RFCMOS/G-DF-MixedMode-RFCMOS18-1.8V-3.3V-1P6M-MMC-Assura-drc-2.9P2.t/Customer/antenna_draft/INV1_antenna2_diode.gds" )
+   ?cellName "INV1_antenna2_diode"
+   ?workingDirectory "assura_ant_INV1_antenna2_diode"
+   ?runName "assura_ant_INV1_antenna2_diode"
+
+   ?viewName "layout"
+   ?rulesFile "umc_ant_assura_all_2.rul"
+   ?avrpt t
+   ?textPriOnly nil
+   ?joinPins top
+   ?autoGrid nil
+   ?userUnits "micron"
+
+   ?ignoreMissingOutLayer t
+   ?outputErrorLib t
+
+
+;choose a metal option:
+
+;  ?set "metal2_is_top"         ;Switch to check rules for BEOL Option 2
+;  ?set "metal3_is_top"         ;Switch to check rules for BEOL Option 3
+;  ?set "metal4_is_top"         ;Switch to check rules for BEOL Option 4
+;  ?set "metal5_is_top"         ;Switch to check rules for BEOL Option 5
+   
+
+;choose antenna options:
+
+   
+
+; SELECT ONE OF THE FOLLOWING (NOT BOTH!):
+
+
+) ; avParameters completed
+
+outFile( "GDS2" "drc_ant.db" "drc_ass_ant_INV1_antenna2_diode.gds"
+outLayer(  ant_poly_perim_top_gate   1  type( 0 ))
+outLayer(  ant_m1_perim_a_gate   1  type( 1 ))
+outLayer(  ant_m1_perim_b_gate   1  type( 2 ))
+outLayer(  ant_m2_perim_a_gate   1  type( 3 ))
+outLayer(  ant_m2_perim_b_gate   1  type( 4 ))
+outLayer(  ant_m3_perim_a_gate   1  type( 5 ))
+outLayer(  ant_m3_perim_b_gate   1  type( 6 ))
+outLayer(  ant_m4_perim_a_gate   1  type( 7 ))
+outLayer(  ant_m4_perim_b_gate   1  type( 8 ))
+outLayer(  ant_m5_perim_a_gate   1  type( 9 ))
+outLayer(  ant_m5_perim_b_gate   1  type( 10 ))
+outLayer(  ant_mett_perim_a_gate   1  type( 11 ))
+outLayer(  ant_mett_perim_b_gate   1  type( 12 ))
+
+;end_of_outLayer
+)

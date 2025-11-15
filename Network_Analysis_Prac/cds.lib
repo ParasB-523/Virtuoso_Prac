@@ -1,0 +1,74 @@
+# File Created by root at Mon Nov 18 19:52:07 2013
+# assisted by CdsLibEditor
+# Base gpdk045 library definition file	
+
+INCLUDE $CDSHOME/share/cdssetup/dfII/cds.lib
+INCLUDE $GF_PDK_HOME/DesignEnv/VirtuosoOA/setup/superstack.cds.lib
+
+#DEFINE US_8ths 	$CDSHOME/tools/dfII/etc/cdslib/sheets/US_8ths
+#DEFINE cdsDefTechLib 	$CDSHOME/tools/dfII/etc/cdsDefTechLib
+DEFINE basic 		$CDSHOME/tools/dfII/etc/cdslib/basic
+DEFINE analogLib 	$CDSHOME/tools/dfII/etc/cdslib/artist/analogLib
+#DEFINE ahdlLib 	${CDSHOME}/tools/dfII/samples/artist/ahdlLib
+DEFINE CALIBRE_HOME     /cad_area/vlsi/tools/MENTOR/calibre/aoj_cal_2018.2_41.34
+
+
+DEFINE avTech 		$ASSURAHOME/tools/assura/etc/avtech/avTech
+#DEFINE sample 		$CDSHOME/tools/dfII/samples/cdslib/sample
+DEFINE connectLib 	$AMSHOME/tools/affirma_ams/etc/connect_lib/connectLib
+
+
+#DEFINE gpdk180	 	$GPDK/gpdk180/libs.oa22/gpdk180
+#DEFINE SubstrateLib	$GPDK/gpdk180/libs.oa22/substrateLib
+#DEFINE gpdk090	 	$GPDK/gpdk090/libs.oa22/gpdk090
+#DEFINE gpdk045	 	$GPDK/gpdk045/gpdk045
+#DEFINE UMC_18_CMOS	/cad_area/cad/UMC180/UMC_18_CMOS/
+
+DEFINE UMC_18_CMOS /cad_area/install/pdk/umc/umc180/UMC_18_CMOS/  
+DEFINE UMC_18_CMOS /cad_area/install/pdk/Cadence_PDK/UMC180FDK/Cadence_IC6/G-9FD-MIXED_MODE_RFCMOS18-1.8V_3.3V-1P6M-MMC_UM180FDKMFC00000OA-FDK-Ver.A02_PB.zip_FILES/UM180FDKMFC00000OA_A02_DESIGNKIT.tar.gz_FILES/UM180FDKMFC00000OA_A02_PB.tar.gz_FILES/UMC_18_CMOS/
+
+DEFINE tsmc18	  /cad_area/install/pdk/tsmc/tsmc_180/tsmc_cmos_180/tsmc18/
+
+DEFINE ts018_scl_prim  	/cad_area/install/pdk/sclpdk/SCL18SL/scl_pdk/design_kit/pdklib/cadence/OA/ts018_compana_4M1L_OA/rev0.0/ref_libs/ts018_scl_prim/
+
+DEFINE UMC180Faraday    /cad_area/install/pdk/UMC/UMC180Faraday
+DEFINE UMC180Faraday    /cad_area/install/pdk/UMC/UMC180Faraday/fsa0m_a/2008Q3v1.2/50VT_GENERIC_IO/BackEnd/lef
+
+DEFINE FSA0M_A_50VT_GENERIC_IO /cad_area/install/pdk/UMC/UMC180Faraday/fsa0m_a/2008Q3v1.2/50VT_GENERIC_IO/FrontEnd/composer/FSA0M_A_50VT_GENERIC_IO
+
+#DEFINE cmos22fdsoi  /cad_area/install/pdk/GF/22FDX-EXT/V1.0_0.0a/DesignEnv/VirtuosoOA/libs/cmos22fdsoi
+#DEFINE admc_cmos22fdsoi $GF_PDK_HOME/DFM/ADMC/VirtuosoOA/sample/admc_cmos22fdsoi
+
+DEFINE asap7_TechLib $PDK_DIR/cdslib/asap7_TechLib
+
+
+DEFINE cmos22fdsoi        /cad_area/install/pdk/GF/22FDX-EXT/V1.0_0.0a/DesignEnv/VirtuosoOA/libs/cmos22fdsoi
+DEFINE cmos22fdsoi_rf     /cad_area/install/pdk/GF/22FDX-EXT/V1.0_0.0a/DesignEnv/VirtuosoOA/libs/cmos22fdsoi_rf
+DEFINE cmos22fdsoi_mmw    /cad_area/install/pdk/GF/22FDX-EXT/V1.0_0.0a/DesignEnv/VirtuosoOA/libs/cmos22fdsoi_mmw
+DEFINE cmos22fdsoi_esd    /cad_area/install/pdk/GF/22FDX-EXT/V1.0_0.0a/DesignEnv/VirtuosoOA/libs/cmos22fdsoi_esd
+
+
+########################################################
+
+#DEFINE gpdk045		$ANALOG/45nm/gpdk045		
+#DEFINE gpdk090		$ANALOG/90nm/libs.oa22/gpdk090
+#DEFINE gpdk180		$ANALOG/180nm/libs.oa22/gpdk180
+
+
+########################################################
+### Standard Cell Libraries (gsclib) ##########
+########################################################
+
+#DEFINE gpdk045_sc		$STDCELL/gsclib045
+#DEFINE gpdk090_sc		$STDCELL/gsclib090
+#DEFINE gpdk180_sc		$STDCELL/gsclib180
+
+#DEFINE gpdk45_iolib		$STDCELL/giolib045
+DEFINE asap7ssc7p5t $PDK_DIR/asap7ssc7p5t_05
+
+########################################################
+
+DEFINE sai /cad_area/install/Virtuoso_files/sai
+#Removed by ddDeleteObj: DEFINE om /cad_area/install/Virtuoso_files/om
+DEFINE CMOS /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/CMOS
+DEFINE 1#2eNetwork_Analysis /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/Network_Analysis_Prac/1#2eNetwork_Analysis

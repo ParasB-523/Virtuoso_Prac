@@ -1,0 +1,3 @@
+#!/bin/sh -f
+/cad_area/Cadence/Assura412/tools/assura/bin/assura /tmp/inv.rsf -cdslib /home/roopa_t/cds_IC6/cds.lib -restart -gui
+exit $?

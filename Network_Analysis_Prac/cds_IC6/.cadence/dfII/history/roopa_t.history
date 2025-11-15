@@ -1,0 +1,1 @@
+("inv:/\tinv test layout" (("open" (nil hierarchy "/{test inv layout }:a"))) (((-1.238 -0.039) (8.868 7.501)) "a" "Layout" 2))("inv:/\tinv test schematic" (("open" (nil hierarchy "/{test inv schematic }:a"))) (((-1.81875 -1.39375) (2.66875 1.45625)) "a" "Schematics" 2))

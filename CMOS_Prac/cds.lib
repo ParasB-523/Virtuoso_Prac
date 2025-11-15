@@ -71,3 +71,4 @@ DEFINE asap7ssc7p5t $PDK_DIR/asap7ssc7p5t_05
 DEFINE sai /cad_area/install/Virtuoso_files/sai
 #Removed by ddDeleteObj: DEFINE om /cad_area/install/Virtuoso_files/om
 DEFINE CMOS /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/CMOS
+DEFINE 1#2eNetwork_Analysis /home/01fe21bec256/1.Virtuoso_Prac/Virtuoso_Prac/CMOS_Prac/1#2eNetwork_Analysis
